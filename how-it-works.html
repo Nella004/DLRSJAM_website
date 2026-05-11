@@ -1,0 +1,1479 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>How It Works – DLRSJAM</title>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --navy:    #0A1628;
+  --navy2:   #0F2040;
+  --blue:    #1557BF;
+  --blue2:   #1A6FD4;
+  --cyan:    #00B4D8;
+  --teal:    #0A9E8A;
+  --green:   #10B981;
+  --white:   #FFFFFF;
+  --off:     #F0F4FF;
+  --light:   #8BA3C7;
+  --border:  rgba(255,255,255,0.08);
+  --border2: rgba(21,87,191,0.15);
+  --gold:    #F5A623;
+}
+
+html { scroll-behavior: smooth; overflow-x: hidden; }
+body { font-family: 'Outfit', sans-serif; background: var(--white); color: var(--navy); line-height: 1.6; overflow-x: hidden; }
+
+/* ─── SCROLL ANIMATIONS ─── */
+.reveal { opacity: 0; transform: translateY(36px); transition: opacity 0.7s ease, transform 0.7s ease; }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+.reveal-left { opacity: 0; transform: translateX(-44px); transition: opacity 0.7s ease, transform 0.7s ease; }
+.reveal-left.visible { opacity: 1; transform: translateX(0); }
+.reveal-right { opacity: 0; transform: translateX(44px); transition: opacity 0.7s ease, transform 0.7s ease; }
+.reveal-right.visible { opacity: 1; transform: translateX(0); }
+.delay-1 { transition-delay: 0.1s; } .delay-2 { transition-delay: 0.2s; }
+.delay-3 { transition-delay: 0.3s; } .delay-4 { transition-delay: 0.4s; }
+.delay-5 { transition-delay: 0.5s; } .delay-6 { transition-delay: 0.6s; }
+
+/* ─── NAV ─── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 999;
+  padding: 0 5%; height: 70px;
+  display: flex; align-items: center; justify-content: space-between;
+  background: rgba(10,22,40,0.97);
+  backdrop-filter: blur(16px);
+  box-shadow: 0 1px 0 var(--border);
+}
+.nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+.nav-logo-mark {
+  width: 38px; height: 38px; border-radius: 9px;
+  background: linear-gradient(135deg, var(--blue), var(--cyan));
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.8rem; font-weight: 900; color: white; letter-spacing: -0.03em;
+}
+.nav-logo-text { font-size: 1.05rem; font-weight: 700; color: white; }
+.nav-logo-text span { color: var(--cyan); }
+.nav-links { display: flex; align-items: center; gap: 0.2rem; list-style: none; }
+.nav-links a { padding: 0.4rem 0.85rem; border-radius: 6px; text-decoration: none; color: rgba(255,255,255,0.7); font-size: 0.875rem; font-weight: 500; transition: color 0.2s, background 0.2s; }
+.nav-links a:hover { color: white; background: rgba(255,255,255,0.07); }
+.nav-links a.active { color: var(--cyan); }
+.nav-cta { background: var(--blue) !important; color: white !important; padding: 0.42rem 1.1rem !important; }
+.nav-cta:hover { background: var(--blue2) !important; }
+.hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; }
+.hamburger span { display: block; width: 24px; height: 2px; background: white; border-radius: 2px; transition: 0.3s; }
+.mobile-menu { display: none; position: fixed; top: 70px; left: 0; right: 0; background: rgba(10,22,40,0.98); backdrop-filter: blur(20px); padding: 1.5rem 5% 2rem; border-bottom: 1px solid var(--border); z-index: 998; }
+.mobile-menu.open { display: block; }
+.mobile-menu a { display: block; padding: 0.75rem 0; color: rgba(255,255,255,0.75); text-decoration: none; font-size: 1rem; font-weight: 500; border-bottom: 1px solid var(--border); transition: color 0.2s; }
+.mobile-menu a:hover { color: var(--cyan); }
+
+/* ─── PAGE HERO ─── */
+.page-hero {
+  background: var(--navy);
+  padding: 130px 5% 90px;
+  position: relative; overflow: hidden;
+  text-align: center;
+}
+.page-hero-grid {
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(21,87,191,0.07) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(21,87,191,0.07) 1px, transparent 1px);
+  background-size: 50px 50px;
+}
+.page-hero-orb { position: absolute; border-radius: 50%; pointer-events: none; filter: blur(80px); }
+.orb-a { width: 420px; height: 420px; background: radial-gradient(circle, rgba(21,87,191,0.3), transparent 70%); top: -100px; left: -80px; }
+.orb-b { width: 320px; height: 320px; background: radial-gradient(circle, rgba(0,180,216,0.22), transparent 70%); bottom: -60px; right: 5%; }
+.orb-c { width: 220px; height: 220px; background: radial-gradient(circle, rgba(16,185,129,0.18), transparent 70%); top: 40%; left: 45%; }
+
+.page-hero-inner { position: relative; z-index: 2; max-width: 760px; margin: 0 auto; }
+.page-eyebrow {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: rgba(21,87,191,0.2); border: 1px solid rgba(21,87,191,0.4);
+  color: var(--cyan); font-size: 0.75rem; font-weight: 700;
+  letter-spacing: 0.08em; text-transform: uppercase;
+  padding: 5px 14px; border-radius: 100px; margin-bottom: 1.5rem;
+  animation: fadeDown 0.7s ease both;
+}
+.badge-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--cyan); animation: pulse 2s ease infinite; }
+@keyframes pulse { 0%,100%{opacity:1;transform:scale(1);} 50%{opacity:0.5;transform:scale(1.4);} }
+@keyframes fadeDown { from{opacity:0;transform:translateY(-10px);} to{opacity:1;transform:translateY(0);} }
+@keyframes fadeUp { from{opacity:0;transform:translateY(20px);} to{opacity:1;transform:translateY(0);} }
+
+.page-hero h1 {
+  font-size: clamp(2.2rem, 5vw, 3.8rem);
+  font-weight: 900; letter-spacing: -0.04em;
+  color: white; line-height: 1.1; margin-bottom: 1.25rem;
+  animation: fadeUp 0.8s 0.15s ease both;
+}
+.page-hero h1 .grad {
+  background: linear-gradient(90deg, var(--cyan), var(--green));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+}
+.page-hero p {
+  font-size: 1.05rem; color: rgba(255,255,255,0.55);
+  line-height: 1.8; max-width: 580px; margin: 0 auto;
+  animation: fadeUp 0.8s 0.25s ease both;
+}
+
+/* Breadcrumb */
+.breadcrumb {
+  display: flex; align-items: center; justify-content: center; gap: 0.4rem;
+  margin-top: 2rem; font-size: 0.8rem; color: rgba(255,255,255,0.3);
+  animation: fadeUp 0.8s 0.35s ease both;
+}
+.breadcrumb a { color: rgba(255,255,255,0.4); text-decoration: none; transition: color 0.2s; }
+.breadcrumb a:hover { color: var(--cyan); }
+.breadcrumb .sep { color: rgba(255,255,255,0.15); }
+.breadcrumb .current { color: var(--cyan); font-weight: 600; }
+
+/* ─── CONTAINER ─── */
+.container { max-width: 1200px; margin: 0 auto; }
+section { padding: 100px 5%; }
+.section-tag { display: inline-flex; align-items: center; gap: 6px; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--blue); margin-bottom: 0.75rem; }
+.section-tag::before { content: ''; display: inline-block; width: 20px; height: 2px; background: var(--blue); border-radius: 2px; }
+.section-title { font-size: clamp(1.8rem, 3.2vw, 2.7rem); font-weight: 800; letter-spacing: -0.04em; color: var(--navy); line-height: 1.15; margin-bottom: 1rem; }
+.section-sub { font-size: 0.975rem; color: #5A7090; line-height: 1.8; max-width: 560px; }
+
+/* ─── QUICK STATS BAND ─── */
+.stats-band {
+  background: var(--navy);
+  padding: 50px 5%;
+  border-bottom: 1px solid var(--border);
+}
+.stats-inner {
+  max-width: 1200px; margin: 0 auto;
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  gap: 2rem; text-align: center;
+}
+.stat-item { }
+.stat-num {
+  font-size: clamp(2rem, 3.5vw, 2.8rem);
+  font-weight: 900; letter-spacing: -0.05em;
+  background: linear-gradient(90deg, var(--cyan), var(--green));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  line-height: 1;
+}
+.stat-label { font-size: 0.825rem; color: rgba(255,255,255,0.45); margin-top: 0.4rem; font-weight: 500; }
+.stat-divider { width: 1px; background: var(--border); }
+
+/* ─── OVERVIEW / INTRO ─── */
+.overview-section { background: var(--white); }
+.overview-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
+.overview-text p { font-size: 0.975rem; color: #5A7090; line-height: 1.85; margin-bottom: 1rem; }
+.overview-text p strong { color: var(--navy); font-weight: 700; }
+.highlight-box {
+  background: linear-gradient(135deg, var(--off), #E8F0FF);
+  border: 1px solid var(--border2);
+  border-left: 4px solid var(--blue);
+  border-radius: 0 12px 12px 0;
+  padding: 1.25rem 1.5rem;
+  margin: 1.5rem 0;
+  font-size: 0.925rem; color: var(--navy);
+  font-family: 'Lora', serif;
+  font-style: italic; line-height: 1.7;
+}
+.role-pills { display: flex; gap: 0.6rem; flex-wrap: wrap; margin-top: 1.5rem; }
+.role-pill {
+  display: inline-flex; align-items: center; gap: 6px;
+  background: var(--off); border: 1px solid var(--border2);
+  border-radius: 100px; padding: 5px 14px;
+  font-size: 0.8rem; font-weight: 600; color: var(--blue);
+}
+.rp-dot { width: 7px; height: 7px; border-radius: 50%; }
+.rp-citizen { background: var(--blue); }
+.rp-officer { background: var(--teal); }
+.rp-admin   { background: var(--gold); }
+
+/* System architecture diagram */
+.arch-card {
+  background: var(--navy);
+  border-radius: 20px;
+  padding: 2rem;
+  border: 1px solid var(--border);
+  position: relative; overflow: hidden;
+}
+.arch-card::before {
+  content: ''; position: absolute;
+  top: -60px; right: -60px;
+  width: 200px; height: 200px;
+  background: radial-gradient(circle, rgba(21,87,191,0.3), transparent 70%);
+  pointer-events: none;
+}
+.arch-title { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.35); margin-bottom: 1.75rem; }
+.arch-layers { display: flex; flex-direction: column; gap: 0.75rem; }
+.arch-layer {
+  border-radius: 10px; padding: 0.9rem 1.1rem;
+  display: flex; align-items: center; gap: 0.85rem;
+}
+.arch-layer.al-blue   { background: rgba(21,87,191,0.18); border: 1px solid rgba(21,87,191,0.3); }
+.arch-layer.al-cyan   { background: rgba(0,180,216,0.12); border: 1px solid rgba(0,180,216,0.25); }
+.arch-layer.al-teal   { background: rgba(10,158,138,0.12); border: 1px solid rgba(10,158,138,0.25); }
+.arch-layer.al-gold   { background: rgba(245,166,35,0.1);  border: 1px solid rgba(245,166,35,0.2); }
+.arch-layer.al-green  { background: rgba(16,185,129,0.1);  border: 1px solid rgba(16,185,129,0.22); }
+.arch-icon { font-size: 1.2rem; flex-shrink: 0; }
+.arch-layer-name { font-size: 0.875rem; font-weight: 700; color: white; }
+.arch-layer-desc { font-size: 0.75rem; color: rgba(255,255,255,0.45); margin-top: 1px; }
+.arch-connector { display: flex; align-items: center; justify-content: center; gap: 0.35rem; }
+.arch-connector span { font-size: 0.65rem; color: rgba(255,255,255,0.2); font-weight: 600; letter-spacing: 0.05em; }
+.arch-line { flex: 1; height: 1px; background: rgba(255,255,255,0.07); }
+
+/* ─── USER ROLES ─── */
+.roles-section { background: var(--off); }
+.roles-section .section-header { text-align: center; margin-bottom: 3.5rem; }
+.roles-section .section-header .section-tag { justify-content: center; }
+.roles-section .section-header .section-tag::before { display: none; }
+.roles-section .section-header .section-sub { margin: 0 auto; }
+.roles-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+.role-card {
+  background: white; border-radius: 18px;
+  border: 1px solid var(--border2);
+  padding: 2rem;
+  box-shadow: 0 2px 20px rgba(0,0,0,0.04);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.role-card:hover { transform: translateY(-4px); box-shadow: 0 12px 36px rgba(21,87,191,0.1); }
+.role-header { display: flex; align-items: center; gap: 0.9rem; margin-bottom: 1.25rem; }
+.role-icon-wrap {
+  width: 52px; height: 52px; border-radius: 14px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.5rem; flex-shrink: 0;
+}
+.ri-blue  { background: rgba(21,87,191,0.1);  }
+.ri-teal  { background: rgba(10,158,138,0.1); }
+.ri-gold  { background: rgba(245,166,35,0.1); }
+.role-name { font-size: 1.1rem; font-weight: 800; letter-spacing: -0.02em; color: var(--navy); }
+.role-sub  { font-size: 0.78rem; color: var(--light); font-weight: 500; margin-top: 1px; }
+.role-actions { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
+.role-actions li {
+  display: flex; align-items: flex-start; gap: 0.6rem;
+  font-size: 0.85rem; color: #5A7090; line-height: 1.5;
+}
+.ra-check {
+  width: 17px; height: 17px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0; margin-top: 1px; font-size: 0.6rem; font-weight: 900;
+}
+.ra-blue  { background: rgba(21,87,191,0.12); color: var(--blue); }
+.ra-teal  { background: rgba(10,158,138,0.12); color: var(--teal); }
+.ra-gold  { background: rgba(245,166,35,0.12);  color: var(--gold); }
+
+/* ─── DEEP DIVE STEPS ─── */
+.steps-section { background: var(--white); }
+.steps-section .section-header { margin-bottom: 4rem; }
+.step-block {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 4.5rem; align-items: center;
+  margin-bottom: 6rem;
+}
+.step-block:last-child { margin-bottom: 0; }
+.step-block.reverse { direction: rtl; }
+.step-block.reverse > * { direction: ltr; }
+
+.step-number-badge {
+  display: inline-flex; align-items: center; gap: 10px;
+  margin-bottom: 1.25rem;
+}
+.step-num-circle {
+  width: 40px; height: 40px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.9rem; font-weight: 900; color: white;
+  flex-shrink: 0;
+}
+.sn-1 { background: linear-gradient(135deg, var(--blue), var(--blue2)); }
+.sn-2 { background: linear-gradient(135deg, var(--blue2), var(--cyan)); }
+.sn-3 { background: linear-gradient(135deg, var(--cyan), var(--teal)); }
+.sn-4 { background: linear-gradient(135deg, var(--teal), var(--green)); }
+.sn-5 { background: linear-gradient(135deg, var(--green), #06B6A4); }
+.step-num-label { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--light); }
+
+.step-heading {
+  font-size: clamp(1.5rem, 2.5vw, 2rem);
+  font-weight: 800; letter-spacing: -0.04em;
+  color: var(--navy); line-height: 1.2; margin-bottom: 0.75rem;
+}
+.step-desc { font-size: 0.97rem; color: #5A7090; line-height: 1.85; margin-bottom: 1.5rem; }
+.step-details { display: flex; flex-direction: column; gap: 0.7rem; }
+.step-detail {
+  display: flex; align-items: flex-start; gap: 0.75rem;
+  background: var(--off); border: 1px solid var(--border2);
+  border-radius: 10px; padding: 0.75rem 1rem;
+}
+.sd-icon { font-size: 1rem; flex-shrink: 0; margin-top: 1px; }
+.sd-text { font-size: 0.85rem; color: var(--navy); line-height: 1.5; }
+.sd-text strong { color: var(--blue); font-weight: 700; }
+
+/* Step visual panels */
+.step-visual {
+  background: var(--navy);
+  border-radius: 20px;
+  border: 1px solid var(--border);
+  overflow: hidden;
+  position: relative;
+}
+.sv-topbar {
+  background: rgba(255,255,255,0.04);
+  border-bottom: 1px solid var(--border);
+  padding: 0.75rem 1.25rem;
+  display: flex; align-items: center; gap: 0.5rem;
+}
+.sv-dot { width: 9px; height: 9px; border-radius: 50%; }
+.sv-dot-r { background: #FF5F57; }
+.sv-dot-y { background: #FEBC2E; }
+.sv-dot-g { background: #28C840; }
+.sv-topbar-title { font-size: 0.72rem; color: rgba(255,255,255,0.3); margin-left: auto; font-weight: 500; }
+.sv-body { padding: 1.75rem; }
+
+/* Registration visual */
+.form-field-mock {
+  background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 8px; padding: 0.65rem 0.85rem;
+  margin-bottom: 0.65rem;
+  display: flex; align-items: center; gap: 0.6rem;
+}
+.ff-label { font-size: 0.72rem; color: rgba(255,255,255,0.3); font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; flex-shrink: 0; width: 100px; }
+.ff-value { font-size: 0.82rem; color: rgba(255,255,255,0.7); }
+.ff-dot-row { display: flex; gap: 3px; align-items: center; }
+.ff-dot-row span { width: 7px; height: 7px; border-radius: 50%; background: rgba(255,255,255,0.6); }
+.role-selector {
+  display: flex; gap: 0.5rem; margin-top: 1rem;
+}
+.rs-opt {
+  flex: 1; border-radius: 8px; padding: 0.6rem 0.5rem; text-align: center;
+  font-size: 0.75rem; font-weight: 600;
+  border: 1px solid rgba(255,255,255,0.1);
+  background: rgba(255,255,255,0.04); color: rgba(255,255,255,0.4);
+}
+.rs-opt.rs-active { background: var(--blue); border-color: var(--blue); color: white; }
+
+/* OCR visual */
+.ocr-box {
+  background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 12px; padding: 1.25rem;
+}
+.ocr-img-mock {
+  border-radius: 8px; overflow: hidden; margin-bottom: 1rem;
+  background: rgba(21,87,191,0.15); border: 1px solid rgba(21,87,191,0.25);
+  padding: 1.25rem; display: flex; flex-direction: column; gap: 6px;
+  position: relative;
+}
+.ocr-scan-line {
+  position: absolute; left: 0; right: 0; height: 2px;
+  background: linear-gradient(90deg, transparent, var(--cyan), transparent);
+  animation: scanMove 2.5s ease-in-out infinite;
+  box-shadow: 0 0 12px var(--cyan);
+}
+@keyframes scanMove { 0%{top:15%;} 100%{top:85%;} }
+.ocr-line { height: 6px; border-radius: 3px; background: rgba(255,255,255,0.15); }
+.ocr-line.ocr-short { width: 55%; }
+.ocr-line.ocr-medium { width: 75%; }
+.ocr-line.ocr-long  { width: 95%; }
+.ocr-result-row {
+  display: flex; justify-content: space-between; align-items: center;
+  margin-bottom: 0.5rem;
+}
+.ocr-field { font-size: 0.72rem; color: rgba(255,255,255,0.4); font-weight: 600; }
+.ocr-val   { font-size: 0.78rem; color: white; font-weight: 600; }
+.ocr-acc   { font-size: 0.7rem; color: var(--green); font-weight: 700; }
+
+/* Face match visual */
+.face-match-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; margin-bottom: 1rem; }
+.face-box {
+  background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 10px; padding: 1rem; text-align: center;
+}
+.face-placeholder {
+  width: 60px; height: 60px; border-radius: 50%;
+  background: linear-gradient(135deg, rgba(21,87,191,0.4), rgba(0,180,216,0.3));
+  border: 2px solid rgba(0,180,216,0.3);
+  margin: 0 auto 0.5rem; display: flex; align-items: center; justify-content: center;
+  font-size: 1.6rem;
+}
+.face-box-label { font-size: 0.68rem; color: rgba(255,255,255,0.35); font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; }
+.face-match-score {
+  background: rgba(16,185,129,0.1); border: 1px solid rgba(16,185,129,0.25);
+  border-radius: 10px; padding: 0.9rem 1rem;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.fms-label { font-size: 0.8rem; color: rgba(255,255,255,0.6); font-weight: 600; }
+.fms-val   { font-size: 1.3rem; font-weight: 900; color: var(--green); letter-spacing: -0.03em; }
+.liveness-row {
+  display: flex; gap: 0.5rem; margin-top: 0.75rem;
+}
+.liveness-chip {
+  flex: 1; background: rgba(0,180,216,0.1); border: 1px solid rgba(0,180,216,0.2);
+  border-radius: 8px; padding: 0.5rem 0.4rem; text-align: center;
+  font-size: 0.68rem; font-weight: 700; color: var(--cyan);
+}
+
+/* Officer review visual */
+.app-summary-card {
+  background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 12px; padding: 1.25rem;
+}
+.asc-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem; }
+.asc-id { font-size: 0.7rem; color: rgba(255,255,255,0.3); font-weight: 700; letter-spacing: 0.08em; }
+.asc-status { font-size: 0.7rem; font-weight: 700; color: var(--gold); background: rgba(245,166,35,0.12); border: 1px solid rgba(245,166,35,0.2); border-radius: 100px; padding: 2px 10px; }
+.asc-rows { display: flex; flex-direction: column; gap: 0.5rem; margin-bottom: 1rem; }
+.asc-row { display: flex; justify-content: space-between; align-items: center; }
+.asc-row-key { font-size: 0.75rem; color: rgba(255,255,255,0.35); }
+.asc-row-val { font-size: 0.8rem; color: white; font-weight: 600; }
+.asc-row-val.good { color: var(--green); }
+.asc-row-val.warn { color: var(--gold); }
+.asc-actions { display: flex; gap: 0.5rem; }
+.asc-btn {
+  flex: 1; border-radius: 8px; padding: 0.6rem 0.5rem; text-align: center;
+  font-size: 0.78rem; font-weight: 700; cursor: pointer; border: none;
+  transition: 0.2s;
+}
+.asc-approve { background: var(--green); color: white; }
+.asc-approve:hover { opacity: 0.9; }
+.asc-reject  { background: rgba(239,68,68,0.15); color: #EF4444; border: 1px solid rgba(239,68,68,0.25); }
+
+/* Licence visual */
+.licence-card {
+  background: linear-gradient(135deg, var(--blue), var(--navy2));
+  border-radius: 16px; padding: 1.5rem;
+  border: 1px solid rgba(21,87,191,0.4);
+  position: relative; overflow: hidden;
+}
+.lc-bg-pattern {
+  position: absolute; inset: 0; opacity: 0.05;
+  background-image: repeating-linear-gradient(45deg, white 0, white 1px, transparent 0, transparent 50%);
+  background-size: 10px 10px;
+}
+.lc-inner { position: relative; z-index: 1; }
+.lc-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1.25rem; }
+.lc-gov { font-size: 0.68rem; font-weight: 800; letter-spacing: 0.06em; color: rgba(255,255,255,0.5); text-transform: uppercase; }
+.lc-type { font-size: 1rem; font-weight: 900; color: white; letter-spacing: -0.02em; }
+.lc-flag { font-size: 1.5rem; }
+.lc-body { display: grid; grid-template-columns: auto 1fr; gap: 1rem; align-items: center; }
+.lc-photo {
+  width: 56px; height: 70px; border-radius: 8px;
+  background: rgba(255,255,255,0.12); border: 2px solid rgba(255,255,255,0.2);
+  display: flex; align-items: center; justify-content: center; font-size: 1.75rem;
+}
+.lc-fields { display: flex; flex-direction: column; gap: 4px; }
+.lc-field-label { font-size: 0.6rem; color: rgba(255,255,255,0.35); font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; }
+.lc-field-value { font-size: 0.82rem; color: white; font-weight: 700; }
+.lc-footer { margin-top: 1rem; padding-top: 0.85rem; border-top: 1px solid rgba(255,255,255,0.1); display: flex; justify-content: space-between; align-items: center; }
+.lc-qr {
+  width: 42px; height: 42px; border-radius: 6px;
+  background: rgba(255,255,255,0.9); display: flex; align-items: center; justify-content: center;
+}
+.lc-qr-inner { font-size: 1.4rem; }
+.lc-exp { font-size: 0.65rem; color: rgba(255,255,255,0.4); }
+.lc-exp strong { color: rgba(255,255,255,0.75); display: block; font-size: 0.8rem; font-weight: 700; }
+.download-btn-mock {
+  display: flex; align-items: center; gap: 0.5rem; justify-content: center;
+  margin-top: 0.9rem;
+  background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 8px; padding: 0.6rem 1rem;
+  font-size: 0.8rem; font-weight: 700; color: white;
+}
+
+/* ─── AI DEEP DIVE ─── */
+.ai-section { background: var(--navy); padding: 100px 5%; }
+.ai-section .section-tag { color: var(--cyan); }
+.ai-section .section-tag::before { background: var(--cyan); }
+.ai-section .section-title { color: white; }
+.ai-section .section-sub { color: rgba(255,255,255,0.45); }
+.ai-header { display: flex; flex-direction: column; margin-bottom: 3.5rem; }
+.ai-modules { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+.ai-module-card {
+  background: rgba(255,255,255,0.04); border: 1px solid var(--border);
+  border-radius: 18px; padding: 2rem;
+  transition: border-color 0.3s, background 0.3s;
+}
+.ai-module-card:hover { background: rgba(255,255,255,0.07); border-color: rgba(0,180,216,0.2); }
+.ai-mod-icon {
+  width: 54px; height: 54px; border-radius: 14px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.5rem; margin-bottom: 1.25rem;
+}
+.ami-blue { background: rgba(21,87,191,0.25); }
+.ami-cyan { background: rgba(0,180,216,0.15); }
+.ami-teal { background: rgba(10,158,138,0.18); }
+.ai-mod-name { font-size: 1rem; font-weight: 800; color: white; margin-bottom: 0.5rem; letter-spacing: -0.02em; }
+.ai-mod-lib  { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; margin-bottom: 0.85rem; padding: 3px 9px; border-radius: 100px; display: inline-block; }
+.ml-blue  { color: var(--cyan); background: rgba(0,180,216,0.12); border: 1px solid rgba(0,180,216,0.2); }
+.ml-teal  { color: var(--green); background: rgba(16,185,129,0.1); border: 1px solid rgba(16,185,129,0.2); }
+.ml-gold  { color: var(--gold); background: rgba(245,166,35,0.1); border: 1px solid rgba(245,166,35,0.2); }
+.ai-mod-desc { font-size: 0.875rem; color: rgba(255,255,255,0.45); line-height: 1.75; margin-bottom: 1.25rem; }
+.ai-mod-metrics { display: flex; flex-direction: column; gap: 0.6rem; }
+.ai-metric {
+  display: flex; justify-content: space-between; align-items: center;
+  background: rgba(255,255,255,0.04); border-radius: 7px; padding: 0.45rem 0.75rem;
+}
+.aim-label { font-size: 0.75rem; color: rgba(255,255,255,0.4); }
+.aim-val   { font-size: 0.82rem; font-weight: 700; color: white; }
+
+/* Confidence score bar in AI section */
+.confidence-section {
+  margin-top: 3.5rem;
+  background: rgba(255,255,255,0.04); border: 1px solid var(--border);
+  border-radius: 18px; padding: 2rem 2.5rem;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center;
+}
+.conf-label { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(255,255,255,0.3); margin-bottom: 0.4rem; }
+.conf-score-big {
+  font-size: 3.5rem; font-weight: 900; letter-spacing: -0.06em; line-height: 1;
+  background: linear-gradient(90deg, var(--cyan), var(--green));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  margin-bottom: 0.35rem;
+}
+.conf-score-desc { font-size: 0.85rem; color: rgba(255,255,255,0.4); line-height: 1.6; }
+.conf-bars { display: flex; flex-direction: column; gap: 0.85rem; }
+.conf-bar-row { }
+.conf-bar-header { display: flex; justify-content: space-between; margin-bottom: 0.35rem; }
+.conf-bar-name { font-size: 0.78rem; color: rgba(255,255,255,0.55); font-weight: 600; }
+.conf-bar-pct  { font-size: 0.78rem; font-weight: 700; color: white; }
+.conf-bar-track { height: 6px; background: rgba(255,255,255,0.07); border-radius: 100px; overflow: hidden; }
+.conf-bar-fill  { height: 100%; border-radius: 100px; transition: width 1.4s cubic-bezier(0.22, 0.8, 0.2, 1) 0.5s; width: 0; }
+.cbf-blue  { background: linear-gradient(90deg, var(--blue), var(--blue2)); }
+.cbf-cyan  { background: linear-gradient(90deg, var(--blue2), var(--cyan)); }
+.cbf-green { background: linear-gradient(90deg, var(--teal), var(--green)); }
+
+/* ─── TECH STACK ─── */
+.tech-section { background: var(--off); }
+.tech-section .section-header { text-align: center; margin-bottom: 3.5rem; }
+.tech-section .section-tag { justify-content: center; }
+.tech-section .section-tag::before { display: none; }
+.tech-section .section-sub { margin: 0 auto; }
+.tech-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.25rem; }
+.tech-card {
+  background: white; border-radius: 16px; padding: 1.5rem;
+  border: 1px solid var(--border2);
+  box-shadow: 0 2px 16px rgba(0,0,0,0.04);
+  transition: transform 0.25s, box-shadow 0.25s;
+}
+.tech-card:hover { transform: translateY(-3px); box-shadow: 0 10px 30px rgba(21,87,191,0.08); }
+.tech-emoji { font-size: 1.8rem; margin-bottom: 0.75rem; }
+.tech-cat  { font-size: 0.65rem; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; color: var(--blue); margin-bottom: 0.3rem; }
+.tech-name { font-size: 0.975rem; font-weight: 800; color: var(--navy); margin-bottom: 0.4rem; }
+.tech-desc { font-size: 0.78rem; color: #5A7090; line-height: 1.55; }
+
+/* ─── SECURITY SECTION ─── */
+.security-section { background: var(--white); }
+.security-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
+.security-text p { font-size: 0.975rem; color: #5A7090; line-height: 1.85; margin-bottom: 1rem; }
+.sec-pillars { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 1.75rem; }
+.sec-pillar {
+  background: var(--off); border: 1px solid var(--border2);
+  border-radius: 12px; padding: 1rem 1.1rem;
+}
+.sec-pillar-icon { font-size: 1.25rem; margin-bottom: 0.4rem; }
+.sec-pillar-name { font-size: 0.85rem; font-weight: 800; color: var(--navy); margin-bottom: 0.25rem; }
+.sec-pillar-desc { font-size: 0.75rem; color: #5A7090; line-height: 1.5; }
+.sec-visual {
+  background: var(--navy); border-radius: 20px;
+  border: 1px solid var(--border); padding: 2rem;
+}
+.sec-layers { display: flex; flex-direction: column; gap: 0.75rem; }
+.sec-layer {
+  border-radius: 10px; padding: 0.9rem 1.1rem;
+  display: flex; align-items: center; gap: 1rem;
+  position: relative;
+}
+.sec-layer.sl-1 { background: rgba(21,87,191,0.15); border: 1px solid rgba(21,87,191,0.25); }
+.sec-layer.sl-2 { background: rgba(0,180,216,0.1);  border: 1px solid rgba(0,180,216,0.2); }
+.sec-layer.sl-3 { background: rgba(10,158,138,0.1); border: 1px solid rgba(10,158,138,0.2); }
+.sec-layer.sl-4 { background: rgba(16,185,129,0.1); border: 1px solid rgba(16,185,129,0.2); }
+.sec-layer-icon { font-size: 1.25rem; flex-shrink: 0; }
+.sec-layer-name { font-size: 0.875rem; font-weight: 700; color: white; }
+.sec-layer-sub  { font-size: 0.75rem; color: rgba(255,255,255,0.4); margin-top: 1px; }
+.sec-check { margin-left: auto; font-size: 0.7rem; font-weight: 700; color: var(--green); background: rgba(16,185,129,0.12); border: 1px solid rgba(16,185,129,0.2); border-radius: 100px; padding: 3px 9px; flex-shrink: 0; }
+.sec-visual-title { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.25); margin-bottom: 1.25rem; }
+
+/* ─── CTA BAND ─── */
+.cta-band {
+  background: linear-gradient(135deg, var(--navy), var(--navy2));
+  padding: 80px 5%;
+  text-align: center;
+  position: relative; overflow: hidden;
+}
+.cta-band::before {
+  content: ''; position: absolute; inset: 0;
+  background-image: linear-gradient(rgba(21,87,191,0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(21,87,191,0.06) 1px, transparent 1px);
+  background-size: 50px 50px;
+}
+.cta-band .reveal { position: relative; z-index: 1; }
+.cta-band h2 { font-size: clamp(1.8rem,3.5vw,2.8rem); font-weight: 900; color: white; letter-spacing: -0.04em; margin-bottom: 0.75rem; }
+.cta-band p { font-size: 1rem; color: rgba(255,255,255,0.45); margin-bottom: 2.25rem; max-width: 500px; margin-left: auto; margin-right: auto; }
+.cta-buttons { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+.btn { display: inline-flex; align-items: center; gap: 6px; padding: 0.7rem 1.75rem; border-radius: 8px; font-size: 0.9rem; font-weight: 700; text-decoration: none; transition: all 0.2s; cursor: pointer; border: none; }
+.btn-white { background: white; color: var(--navy); }
+.btn-white:hover { background: var(--off); }
+.btn-outline-white { background: transparent; color: white; border: 1px solid rgba(255,255,255,0.25); }
+.btn-outline-white:hover { background: rgba(255,255,255,0.07); }
+
+/* ─── FOOTER ─── */
+footer {
+  background: var(--navy); border-top: 1px solid var(--border);
+  padding: 2.5rem 5%;
+  display: flex; align-items: center; justify-content: space-between;
+  flex-wrap: wrap; gap: 1.5rem;
+}
+.footer-logo { display: flex; align-items: center; gap: 9px; text-decoration: none; }
+.footer-logo-mark {
+  width: 34px; height: 34px; border-radius: 8px;
+  background: linear-gradient(135deg, var(--blue), var(--cyan));
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.68rem; font-weight: 900; color: white;
+}
+.footer-logo-text { font-size: 0.95rem; font-weight: 700; color: white; }
+.footer-links { display: flex; gap: 0.3rem; flex-wrap: wrap; }
+.footer-links a { padding: 0.3rem 0.7rem; color: rgba(255,255,255,0.4); text-decoration: none; font-size: 0.82rem; border-radius: 6px; transition: color 0.2s; }
+.footer-links a:hover { color: white; }
+.footer-right { font-size: 0.78rem; color: rgba(255,255,255,0.25); line-height: 1.6; text-align: right; }
+
+/* ─── RESPONSIVE ─── */
+@media (max-width: 960px) {
+  .overview-grid, .step-block, .security-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+  .step-block.reverse { direction: ltr; }
+  .roles-grid { grid-template-columns: 1fr; }
+  .ai-modules { grid-template-columns: 1fr; }
+  .tech-grid { grid-template-columns: repeat(2, 1fr); }
+  .stats-inner { grid-template-columns: repeat(2, 1fr); }
+  .confidence-section { grid-template-columns: 1fr; gap: 2rem; }
+  .sec-pillars { grid-template-columns: 1fr; }
+}
+@media (max-width: 640px) {
+  .nav-links { display: none; }
+  .hamburger { display: flex; }
+  .tech-grid { grid-template-columns: 1fr 1fr; }
+  .stats-inner { grid-template-columns: repeat(2, 1fr); }
+  footer { flex-direction: column; align-items: flex-start; }
+  .footer-right { text-align: left; }
+}
+
+</style>
+</head>
+<body>
+
+<!-- ─── NAV ─── -->
+<nav id="navbar">
+  <a href="index.html" class="nav-logo">
+    <div class="nav-logo-mark">DLR</div>
+    <span class="nav-logo-text">DLRS<span>JAM</span></span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="how-it-works.html" class="active">How It Works</a></li>
+    <li><a href="team.html">Team</a></li>
+    <li><a href="contact.html" class="nav-cta">Contact</a></li>
+  </ul>
+  <div class="hamburger" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="index.html">Home</a>
+  <a href="about.html">About</a>
+  <a href="how-it-works.html">How It Works</a>
+  <a href="team.html">Team</a>
+  <a href="contact.html">Contact</a>
+</div>
+
+<!-- ─── PAGE HERO ─── -->
+<section class="page-hero">
+  <div class="page-hero-grid"></div>
+  <div class="page-hero-orb orb-a"></div>
+  <div class="page-hero-orb orb-b"></div>
+  <div class="page-hero-orb orb-c"></div>
+  <div class="page-hero-inner">
+    <div class="page-eyebrow">
+      <div class="badge-dot"></div>
+      Features & Process
+    </div>
+    <h1>A system built to be<br><span class="grad">fast, secure & fair.</span></h1>
+    <p>A complete walkthrough of every feature, every step, and every technology powering DLRSJAM — from first login to digital licence in hand.</p>
+    <div class="breadcrumb">
+      <a href="index.html">Home</a>
+      <span class="sep">›</span>
+      <span class="current">How It Works</span>
+    </div>
+  </div>
+</section>
+
+<!-- ─── STATS BAND ─── -->
+<div class="stats-band">
+  <div class="stats-inner">
+    <div class="stat-item reveal delay-1">
+      <div class="stat-num">5</div>
+      <div class="stat-label">Steps to renewal</div>
+    </div>
+    <div class="stat-item reveal delay-2">
+      <div class="stat-num">3</div>
+      <div class="stat-label">AI verification modules</div>
+    </div>
+    <div class="stat-item reveal delay-3">
+      <div class="stat-num">98.2%</div>
+      <div class="stat-label">OCR extraction accuracy</div>
+    </div>
+    <div class="stat-item reveal delay-4">
+      <div class="stat-num">0</div>
+      <div class="stat-label">In-person visits required</div>
+    </div>
+  </div>
+</div>
+
+<!-- ─── OVERVIEW / INTRO ─── -->
+<section class="overview-section">
+  <div class="container">
+    <div class="overview-grid">
+      <div class="overview-text reveal-left">
+        <div class="section-tag">System Overview</div>
+        <h2 class="section-title">One platform,<br>three user roles.</h2>
+        <p>DLRSJAM is a role-based Progressive Web Application that brings together three distinct user types — each with their own dashboard, permissions, and workflow — all connected through a single secure platform.</p>
+        <div class="highlight-box">
+          "The AI handles the heavy lifting. The TAJ officer makes the final call. The citizen gets their licence — from home, in minutes."
+        </div>
+        <p>No app store downloads. No dedicated hardware. Any modern smartphone, tablet, or computer with a camera and internet connection is all a citizen needs to complete the full renewal process.</p>
+        <div class="role-pills">
+          <div class="role-pill"><div class="rp-dot rp-citizen"></div> Citizen</div>
+          <div class="role-pill"><div class="rp-dot rp-officer"></div> TAJ Officer</div>
+          <div class="role-pill"><div class="rp-dot rp-admin"></div> System Admin</div>
+        </div>
+      </div>
+
+      <div class="reveal-right">
+        <div class="arch-card">
+          <div class="arch-title">System Architecture — Layer View</div>
+          <div class="arch-layers">
+            <div class="arch-layer al-blue">
+              <div class="arch-icon">🌐</div>
+              <div>
+                <div class="arch-layer-name">Citizen PWA Interface</div>
+                <div class="arch-layer-desc">React · Responsive on any device · No install needed</div>
+              </div>
+            </div>
+            <div class="arch-connector"><div class="arch-line"></div><span>API</span><div class="arch-line"></div></div>
+            <div class="arch-layer al-cyan">
+              <div class="arch-icon">⚙️</div>
+              <div>
+                <div class="arch-layer-name">Application Logic Layer</div>
+                <div class="arch-layer-desc">Node.js / Express · Authentication · Role routing</div>
+              </div>
+            </div>
+            <div class="arch-connector"><div class="arch-line"></div><span>Calls</span><div class="arch-line"></div></div>
+            <div class="arch-layer al-teal">
+              <div class="arch-icon">🤖</div>
+              <div>
+                <div class="arch-layer-name">AI Verification Engine</div>
+                <div class="arch-layer-desc">Tesseract.js · face-api.js · TensorFlow Liveness</div>
+              </div>
+            </div>
+            <div class="arch-connector"><div class="arch-line"></div><span>Stores</span><div class="arch-line"></div></div>
+            <div class="arch-layer al-gold">
+              <div class="arch-icon">🏛️</div>
+              <div>
+                <div class="arch-layer-name">Officer Review Dashboard</div>
+                <div class="arch-layer-desc">AI results · Override controls · Approval workflow</div>
+              </div>
+            </div>
+            <div class="arch-connector"><div class="arch-line"></div><span>Issues</span><div class="arch-line"></div></div>
+            <div class="arch-layer al-green">
+              <div class="arch-icon">🪪</div>
+              <div>
+                <div class="arch-layer-name">Digital Licence Output</div>
+                <div class="arch-layer-desc">PDF + QR Code generation · Instant download</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── USER ROLES ─── -->
+<section class="roles-section">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-tag">User Roles</div>
+      <h2 class="section-title">Who uses DLRSJAM,<br>and what they can do.</h2>
+      <p class="section-sub">Each role is protected by secure login and restricted to only the actions relevant to that user — no overlap, no confusion.</p>
+    </div>
+    <div class="roles-grid">
+
+      <div class="role-card reveal delay-1">
+        <div class="role-header">
+          <div class="role-icon-wrap ri-blue">👤</div>
+          <div>
+            <div class="role-name">Citizen</div>
+            <div class="role-sub">The applicant — applying for renewal</div>
+          </div>
+        </div>
+        <ul class="role-actions">
+          <li><div class="ra-check ra-blue">✓</div>Create a secure account and log in</li>
+          <li><div class="ra-check ra-blue">✓</div>Fill out the digital renewal application form</li>
+          <li><div class="ra-check ra-blue">✓</div>Upload current licence and supporting ID documents</li>
+          <li><div class="ra-check ra-blue">✓</div>Complete the liveness detection selfie check</li>
+          <li><div class="ra-check ra-blue">✓</div>Track application status in real time</li>
+          <li><div class="ra-check ra-blue">✓</div>Download the approved digital licence as a PDF</li>
+        </ul>
+      </div>
+
+      <div class="role-card reveal delay-2">
+        <div class="role-header">
+          <div class="role-icon-wrap ri-teal">🏛️</div>
+          <div>
+            <div class="role-name">TAJ Officer</div>
+            <div class="role-sub">Government reviewer — final approval authority</div>
+          </div>
+        </div>
+        <ul class="role-actions">
+          <li><div class="ra-check ra-teal">✓</div>View a queue of all submitted applications</li>
+          <li><div class="ra-check ra-teal">✓</div>Review AI-generated verification scores and flags</li>
+          <li><div class="ra-check ra-teal">✓</div>Inspect uploaded documents and selfie images</li>
+          <li><div class="ra-check ra-teal">✓</div>Approve or reject applications with written notes</li>
+          <li><div class="ra-check ra-teal">✓</div>Override AI results when professional judgment requires</li>
+          <li><div class="ra-check ra-teal">✓</div>Trigger digital licence generation on approval</li>
+        </ul>
+      </div>
+
+      <div class="role-card reveal delay-3">
+        <div class="role-header">
+          <div class="role-icon-wrap ri-gold">⚙️</div>
+          <div>
+            <div class="role-name">System Admin</div>
+            <div class="role-sub">Platform manager — oversight and configuration</div>
+          </div>
+        </div>
+        <ul class="role-actions">
+          <li><div class="ra-check ra-gold">✓</div>Create and manage officer and citizen accounts</li>
+          <li><div class="ra-check ra-gold">✓</div>Monitor all applications across the system</li>
+          <li><div class="ra-check ra-gold">✓</div>View audit logs of officer decisions and actions</li>
+          <li><div class="ra-check ra-gold">✓</div>Configure AI confidence thresholds and flags</li>
+          <li><div class="ra-check ra-gold">✓</div>Generate system-wide performance reports</li>
+          <li><div class="ra-check ra-gold">✓</div>Manage system settings and access controls</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ─── DEEP DIVE STEPS ─── -->
+<section class="steps-section">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-tag">Step-by-Step Walkthrough</div>
+      <h2 class="section-title">The full renewal journey,<br>explained in detail.</h2>
+      <p class="section-sub">Every step a citizen takes — from creating their account to holding their digital licence.</p>
+    </div>
+
+    <!-- STEP 1 -->
+    <div class="step-block">
+      <div class="reveal-left">
+        <div class="step-number-badge">
+          <div class="step-num-circle sn-1">1</div>
+          <div class="step-num-label">Step One</div>
+        </div>
+        <h3 class="step-heading">Register &<br>Secure Login</h3>
+        <p class="step-desc">Citizens create an account using their name, TRN (Taxpayer Registration Number), email, and a strong password. DLRSJAM uses role-based authentication to ensure each user only ever sees what they're permitted to access — there's no risk of a citizen accessing officer tools.</p>
+        <div class="step-details">
+          <div class="step-detail">
+            <div class="sd-icon">🔐</div>
+            <div class="sd-text"><strong>Secure credentials</strong> — password hashing and session tokens protect every account from unauthorised access.</div>
+          </div>
+          <div class="step-detail">
+            <div class="sd-icon">🎭</div>
+            <div class="sd-text"><strong>Role enforcement</strong> — upon login, each user is automatically routed to their correct dashboard (Citizen, Officer, or Admin).</div>
+          </div>
+          <div class="step-detail">
+            <div class="sd-icon">📱</div>
+            <div class="sd-text"><strong>Works on any device</strong> — registration requires no app download; the PWA runs in any modern browser.</div>
+          </div>
+        </div>
+      </div>
+      <div class="reveal-right">
+        <div class="step-visual">
+          <div class="sv-topbar">
+            <div class="sv-dot sv-dot-r"></div><div class="sv-dot sv-dot-y"></div><div class="sv-dot sv-dot-g"></div>
+            <div class="sv-topbar-title">DLRSJAM · Register</div>
+          </div>
+          <div class="sv-body">
+            <div class="form-field-mock"><div class="ff-label">Full Name</div><div class="ff-value">Marcus A. Campbell</div></div>
+            <div class="form-field-mock"><div class="ff-label">TRN</div><div class="ff-value">123-456-789</div></div>
+            <div class="form-field-mock"><div class="ff-label">Email</div><div class="ff-value">m.campbell@email.com</div></div>
+            <div class="form-field-mock"><div class="ff-label">Password</div><div class="ff-dot-row"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div></div>
+            <div style="font-size:0.7rem;color:rgba(255,255,255,0.3);margin:1rem 0 0.4rem;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;">Select your role</div>
+            <div class="role-selector">
+              <div class="rs-opt rs-active">👤 Citizen</div>
+              <div class="rs-opt">🏛️ TAJ Officer</div>
+              <div class="rs-opt">⚙️ Admin</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- STEP 2 -->
+    <div class="step-block reverse">
+      <div class="reveal-right">
+        <div class="step-number-badge">
+          <div class="step-num-circle sn-2">2</div>
+          <div class="step-num-label">Step Two</div>
+        </div>
+        <h3 class="step-heading">Submit Your<br>Application</h3>
+        <p class="step-desc">After logging in, citizens complete a structured digital form capturing their renewal details and upload two key documents — their current driver's licence and a supporting form of ID. The upload interface guides users through each requirement with clear instructions.</p>
+        <div class="step-details">
+          <div class="step-detail">
+            <div class="sd-icon">📋</div>
+            <div class="sd-text"><strong>Digital form</strong> — captures personal details, licence number, and renewal type in a clean, validated interface.</div>
+          </div>
+          <div class="step-detail">
+            <div class="sd-icon">📎</div>
+            <div class="sd-text"><strong>Document upload</strong> — accepts photos or scans of the current licence and one supporting ID (passport, national ID).</div>
+          </div>
+          <div class="step-detail">
+            <div class="sd-icon">📡</div>
+            <div class="sd-text"><strong>Instant submission</strong> — once documents are uploaded, the application is sent to the AI pipeline in real time.</div>
+          </div>
+        </div>
+      </div>
+      <div class="reveal-left">
+        <div class="step-visual">
+          <div class="sv-topbar">
+            <div class="sv-dot sv-dot-r"></div><div class="sv-dot sv-dot-y"></div><div class="sv-dot sv-dot-g"></div>
+            <div class="sv-topbar-title">DLRSJAM · New Application</div>
+          </div>
+          <div class="sv-body">
+            <div class="ocr-box">
+              <div style="font-size:0.7rem;color:rgba(255,255,255,0.3);font-weight:700;letter-spacing:0.07em;text-transform:uppercase;margin-bottom:0.85rem;">Upload Current Licence</div>
+              <div class="ocr-img-mock">
+                <div class="ocr-scan-line"></div>
+                <div class="ocr-line ocr-short" style="margin-bottom:4px;"></div>
+                <div class="ocr-line ocr-medium" style="margin-bottom:4px;"></div>
+                <div class="ocr-line ocr-long" style="margin-bottom:4px;"></div>
+                <div class="ocr-line ocr-medium" style="margin-bottom:4px;"></div>
+                <div class="ocr-line ocr-short"></div>
+              </div>
+              <div style="display:flex;gap:0.5rem;margin-top:0.85rem;">
+                <div style="flex:1;background:rgba(255,255,255,0.05);border:1px dashed rgba(255,255,255,0.12);border-radius:8px;padding:0.8rem;text-align:center;font-size:0.75rem;color:rgba(255,255,255,0.35);">
+                  📁 Upload ID Doc
+                </div>
+                <div style="flex:1;background:rgba(21,87,191,0.15);border:1px solid rgba(21,87,191,0.3);border-radius:8px;padding:0.8rem;text-align:center;font-size:0.75rem;color:var(--cyan);font-weight:700;">
+                  ✓ Licence Uploaded
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- STEP 3 -->
+    <div class="step-block">
+      <div class="reveal-left">
+        <div class="step-number-badge">
+          <div class="step-num-circle sn-3">3</div>
+          <div class="step-num-label">Step Three</div>
+        </div>
+        <h3 class="step-heading">AI Identity<br>Verification</h3>
+        <p class="step-desc">This is the core of DLRSJAM. Three separate AI modules run automatically the moment a citizen submits their application — Tesseract.js reads the document text, face-api.js compares the ID photo against a live selfie, and a TensorFlow.js model confirms the selfie is from a real, live person.</p>
+        <div class="step-details">
+          <div class="step-detail">
+            <div class="sd-icon">🔍</div>
+            <div class="sd-text"><strong>OCR Text Extraction</strong> — Tesseract.js reads every field on the uploaded licence and cross-checks details against the application form at 98.2% accuracy.</div>
+          </div>
+          <div class="step-detail">
+            <div class="sd-icon">👤</div>
+            <div class="sd-text"><strong>Facial Recognition</strong> — face-api.js generates a 128-point face descriptor and computes a similarity score between the ID photo and the live selfie.</div>
+          </div>
+          <div class="step-detail">
+            <div class="sd-icon">🎥</div>
+            <div class="sd-text"><strong>Liveness Detection</strong> — a TensorFlow.js model checks for blink patterns and micro-movements to confirm the selfie is not a photo or screen replay.</div>
+          </div>
+        </div>
+      </div>
+      <div class="reveal-right">
+        <div class="step-visual">
+          <div class="sv-topbar">
+            <div class="sv-dot sv-dot-r"></div><div class="sv-dot sv-dot-y"></div><div class="sv-dot sv-dot-g"></div>
+            <div class="sv-topbar-title">DLRSJAM · AI Verification</div>
+          </div>
+          <div class="sv-body">
+            <div class="face-match-grid">
+              <div class="face-box">
+                <div class="face-placeholder">🪪</div>
+                <div class="face-box-label">ID Photo</div>
+              </div>
+              <div class="face-box">
+                <div class="face-placeholder">🤳</div>
+                <div class="face-box-label">Live Selfie</div>
+              </div>
+            </div>
+            <div class="face-match-score">
+              <div class="fms-label">Face Match Score</div>
+              <div class="fms-val" id="faceScore">0%</div>
+            </div>
+            <div class="liveness-row">
+              <div class="liveness-chip">✓ Blink Detected</div>
+              <div class="liveness-chip">✓ Live Person</div>
+              <div class="liveness-chip">✓ No Replay</div>
+            </div>
+            <div style="margin-top:0.75rem;display:flex;justify-content:space-between;align-items:center;">
+              <span style="font-size:0.72rem;color:rgba(255,255,255,0.3);font-weight:600;">OCR Accuracy</span>
+              <span style="font-size:0.8rem;font-weight:800;color:var(--green);">98.2%</span>
+            </div>
+            <div style="height:4px;background:rgba(255,255,255,0.06);border-radius:100px;margin-top:0.35rem;overflow:hidden;">
+              <div id="ocrBar" style="height:100%;width:0;background:linear-gradient(90deg,var(--teal),var(--green));border-radius:100px;transition:width 1.4s ease 0.3s;"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- STEP 4 -->
+    <div class="step-block reverse">
+      <div class="reveal-right">
+        <div class="step-number-badge">
+          <div class="step-num-circle sn-4">4</div>
+          <div class="step-num-label">Step Four</div>
+        </div>
+        <h3 class="step-heading">TAJ Officer<br>Review & Approval</h3>
+        <p class="step-desc">Every application — regardless of its AI confidence score — passes through a TAJ officer before any licence is issued. The officer dashboard presents the AI results in a clear, structured format. Officers can approve, reject, or flag an application for further review, and can override AI results when professional judgment requires it.</p>
+        <div class="step-details">
+          <div class="step-detail">
+            <div class="sd-icon">📊</div>
+            <div class="sd-text"><strong>AI-assisted review</strong> — officers see confidence scores, OCR output, and face match results side by side, saving significant review time.</div>
+          </div>
+          <div class="step-detail">
+            <div class="sd-icon">🔁</div>
+            <div class="sd-text"><strong>Human override</strong> — the AI assists but never replaces. Officers retain full authority to approve or reject regardless of AI results.</div>
+          </div>
+          <div class="step-detail">
+            <div class="sd-icon">📝</div>
+            <div class="sd-text"><strong>Audit trail</strong> — every decision is logged with a timestamp, officer ID, and written notes for full accountability.</div>
+          </div>
+        </div>
+      </div>
+      <div class="reveal-left">
+        <div class="step-visual">
+          <div class="sv-topbar">
+            <div class="sv-dot sv-dot-r"></div><div class="sv-dot sv-dot-y"></div><div class="sv-dot sv-dot-g"></div>
+            <div class="sv-topbar-title">Officer Dashboard · Review Application</div>
+          </div>
+          <div class="sv-body">
+            <div class="app-summary-card">
+              <div class="asc-header">
+                <div class="asc-id">APP-2026-0847</div>
+                <div class="asc-status">Pending Review</div>
+              </div>
+              <div class="asc-rows">
+                <div class="asc-row"><div class="asc-row-key">OCR Accuracy</div><div class="asc-row-val good">98.2% ✓</div></div>
+                <div class="asc-row"><div class="asc-row-key">Face Match</div><div class="asc-row-val good">94.7% ✓</div></div>
+                <div class="asc-row"><div class="asc-row-key">Liveness</div><div class="asc-row-val good">Confirmed ✓</div></div>
+                <div class="asc-row"><div class="asc-row-key">TRN Match</div><div class="asc-row-val good">Verified ✓</div></div>
+                <div class="asc-row"><div class="asc-row-key">AI Confidence</div><div class="asc-row-val warn">94.7% — Review</div></div>
+              </div>
+              <div class="asc-actions">
+                <button class="asc-btn asc-approve">✓ Approve</button>
+                <button class="asc-btn asc-reject">✕ Reject</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- STEP 5 -->
+    <div class="step-block">
+      <div class="reveal-left">
+        <div class="step-number-badge">
+          <div class="step-num-circle sn-5">5</div>
+          <div class="step-num-label">Step Five</div>
+        </div>
+        <h3 class="step-heading">Download Your<br>Digital Licence</h3>
+        <p class="step-desc">The moment a TAJ officer approves an application, DLRSJAM automatically generates a personalised digital driver's licence as a downloadable PDF. The licence includes all standard identification fields and a unique QR code that allows on-the-spot verification by any authority with a QR scanner.</p>
+        <div class="step-details">
+          <div class="step-detail">
+            <div class="sd-icon">📄</div>
+            <div class="sd-text"><strong>Instant PDF generation</strong> — the digital licence is created and available for download immediately upon officer approval.</div>
+          </div>
+          <div class="step-detail">
+            <div class="sd-icon">📲</div>
+            <div class="sd-text"><strong>QR verification code</strong> — each licence carries a unique QR code that links to a tamper-proof verification record for law enforcement and authorities.</div>
+          </div>
+          <div class="step-detail">
+            <div class="sd-icon">🔒</div>
+            <div class="sd-text"><strong>Tamper-proof design</strong> — the document is cryptographically signed and cannot be forged or altered without invalidating the QR verification.</div>
+          </div>
+        </div>
+      </div>
+      <div class="reveal-right">
+        <div class="step-visual">
+          <div class="sv-topbar">
+            <div class="sv-dot sv-dot-r"></div><div class="sv-dot sv-dot-y"></div><div class="sv-dot sv-dot-g"></div>
+            <div class="sv-topbar-title">DLRSJAM · Your Digital Licence</div>
+          </div>
+          <div class="sv-body">
+            <div class="licence-card">
+              <div class="lc-bg-pattern"></div>
+              <div class="lc-inner">
+                <div class="lc-header">
+                  <div>
+                    <div class="lc-gov">Government of Jamaica</div>
+                    <div class="lc-type">Driver's Licence</div>
+                  </div>
+                  <div class="lc-flag">🇯🇲</div>
+                </div>
+                <div class="lc-body">
+                  <div class="lc-photo">👤</div>
+                  <div class="lc-fields">
+                    <div class="lc-field-label">Full Name</div>
+                    <div class="lc-field-value">Marcus A. Campbell</div>
+                    <div class="lc-field-label" style="margin-top:6px;">Licence No.</div>
+                    <div class="lc-field-value">JA-2026-00847</div>
+                    <div class="lc-field-label" style="margin-top:6px;">Class</div>
+                    <div class="lc-field-value">Class A — Private</div>
+                  </div>
+                </div>
+                <div class="lc-footer">
+                  <div class="lc-exp">
+                    <div class="lc-field-label">Expires</div>
+                    <strong>May 2031</strong>
+                  </div>
+                  <div class="lc-qr"><div class="lc-qr-inner">▦</div></div>
+                </div>
+              </div>
+            </div>
+            <div class="download-btn-mock">⬇ Download PDF Licence</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ─── AI DEEP DIVE ─── -->
+<section class="ai-section">
+  <div class="container">
+    <div class="ai-header reveal">
+      <div class="section-tag">Under the Hood</div>
+      <h2 class="section-title" style="color:white;">The AI verification engine,<br>explained.</h2>
+      <p class="section-sub">Three independent AI modules work in parallel the moment an application is submitted, each verifying a different dimension of the applicant's identity.</p>
+    </div>
+    <div class="ai-modules">
+      <div class="ai-module-card reveal delay-1">
+        <div class="ai-mod-icon ami-blue">🔍</div>
+        <div class="ai-mod-name">OCR Document Reading</div>
+        <div class="ai-mod-lib ml-blue">Tesseract.js</div>
+        <div class="ai-mod-desc">Tesseract.js extracts all text content from the uploaded licence image using optical character recognition. Each field — name, licence number, expiry date, address — is parsed and automatically cross-referenced against the data the citizen entered in their application form.</div>
+        <div class="ai-mod-metrics">
+          <div class="ai-metric"><div class="aim-label">Extraction Accuracy</div><div class="aim-val">98.2%</div></div>
+          <div class="ai-metric"><div class="aim-label">Avg. Processing Time</div><div class="aim-val">&lt; 3 seconds</div></div>
+          <div class="ai-metric"><div class="aim-label">Fields Extracted</div><div class="aim-val">8 data points</div></div>
+        </div>
+      </div>
+      <div class="ai-module-card reveal delay-2">
+        <div class="ai-mod-icon ami-cyan">👤</div>
+        <div class="ai-mod-name">Facial Recognition</div>
+        <div class="ai-mod-lib ml-teal">face-api.js</div>
+        <div class="ai-mod-desc">face-api.js generates a 128-dimensional face descriptor for both the photo on the uploaded ID document and the live selfie captured during the application. The cosine similarity between the two descriptors produces a percentage match score, flagging any result below the configured threshold for officer review.</div>
+        <div class="ai-mod-metrics">
+          <div class="ai-metric"><div class="aim-label">Face Match Score</div><div class="aim-val">94.7% avg.</div></div>
+          <div class="ai-metric"><div class="aim-label">Descriptor Points</div><div class="aim-val">128 landmarks</div></div>
+          <div class="ai-metric"><div class="aim-label">Method</div><div class="aim-val">Cosine similarity</div></div>
+        </div>
+      </div>
+      <div class="ai-module-card reveal delay-3">
+        <div class="ai-mod-icon ami-teal">🎥</div>
+        <div class="ai-mod-name">Liveness Detection</div>
+        <div class="ai-mod-lib ml-gold">TensorFlow.js</div>
+        <div class="ai-mod-desc">A TensorFlow.js model analyses the selfie video stream to confirm the person is physically present in front of the camera — not a printed photo or a screen recording. The model checks for natural eye blinks, micro-expressions, and depth of field cues to confirm liveness before any facial matching can proceed.</div>
+        <div class="ai-mod-metrics">
+          <div class="ai-metric"><div class="aim-label">Detection Method</div><div class="aim-val">Blink + depth cues</div></div>
+          <div class="ai-metric"><div class="aim-label">Anti-Spoofing</div><div class="aim-val">Photo & replay</div></div>
+          <div class="ai-metric"><div class="aim-label">Framework</div><div class="aim-val">TensorFlow.js</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Combined Confidence Score -->
+    <div class="confidence-section reveal">
+      <div>
+        <div class="conf-label">Overall Confidence Score</div>
+        <div class="conf-score-big" id="aiConfScore">0%</div>
+        <div class="conf-score-desc">The overall score is a weighted composite of all three AI module outputs — OCR accuracy, face match similarity, and liveness confidence — presented to the officer for their final decision.</div>
+      </div>
+      <div class="conf-bars">
+        <div class="conf-bar-row">
+          <div class="conf-bar-header">
+            <div class="conf-bar-name">OCR Extraction</div>
+            <div class="conf-bar-pct">98.2%</div>
+          </div>
+          <div class="conf-bar-track"><div class="conf-bar-fill cbf-blue" id="bar1"></div></div>
+        </div>
+        <div class="conf-bar-row">
+          <div class="conf-bar-header">
+            <div class="conf-bar-name">Face Match</div>
+            <div class="conf-bar-pct">94.7%</div>
+          </div>
+          <div class="conf-bar-track"><div class="conf-bar-fill cbf-cyan" id="bar2"></div></div>
+        </div>
+        <div class="conf-bar-row">
+          <div class="conf-bar-header">
+            <div class="conf-bar-name">Liveness Confidence</div>
+            <div class="conf-bar-pct">99.1%</div>
+          </div>
+          <div class="conf-bar-track"><div class="conf-bar-fill cbf-green" id="bar3"></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── TECH STACK ─── -->
+<section class="tech-section">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-tag">Technology Stack</div>
+      <h2 class="section-title">Built with proven,<br>open-source technology.</h2>
+      <p class="section-sub">Every tool in the DLRSJAM stack was chosen for reliability, open licensing, and fitness for purpose — no proprietary black boxes.</p>
+    </div>
+    <div class="tech-grid">
+      <div class="tech-card reveal delay-1">
+        <div class="tech-emoji">⚛️</div>
+        <div class="tech-cat">Frontend</div>
+        <div class="tech-name">React.js</div>
+        <div class="tech-desc">Powers the citizen-facing PWA and officer dashboard with component-based, reactive UI architecture.</div>
+      </div>
+      <div class="tech-card reveal delay-2">
+        <div class="tech-emoji">🟢</div>
+        <div class="tech-cat">Backend</div>
+        <div class="tech-name">Node.js / Express</div>
+        <div class="tech-desc">Handles all API routing, authentication logic, file processing, and communication between frontend and AI layers.</div>
+      </div>
+      <div class="tech-card reveal delay-3">
+        <div class="tech-emoji">🔍</div>
+        <div class="tech-cat">OCR</div>
+        <div class="tech-name">Tesseract.js</div>
+        <div class="tech-desc">Open-source optical character recognition engine that extracts and validates all text from uploaded licence documents.</div>
+      </div>
+      <div class="tech-card reveal delay-4">
+        <div class="tech-emoji">👁️</div>
+        <div class="tech-cat">Face AI</div>
+        <div class="tech-name">face-api.js</div>
+        <div class="tech-desc">JavaScript face recognition library built on TensorFlow.js, powering the 128-point facial descriptor and matching pipeline.</div>
+      </div>
+      <div class="tech-card reveal delay-1">
+        <div class="tech-emoji">🧠</div>
+        <div class="tech-cat">Liveness</div>
+        <div class="tech-name">TensorFlow.js</div>
+        <div class="tech-desc">ML runtime used for liveness detection, analysing blink patterns and depth cues in the real-time selfie video stream.</div>
+      </div>
+      <div class="tech-card reveal delay-2">
+        <div class="tech-emoji">🗄️</div>
+        <div class="tech-cat">Database</div>
+        <div class="tech-name">MongoDB</div>
+        <div class="tech-desc">Flexible NoSQL database storing application records, user profiles, verification results, and audit logs.</div>
+      </div>
+      <div class="tech-card reveal delay-3">
+        <div class="tech-emoji">📄</div>
+        <div class="tech-cat">Documents</div>
+        <div class="tech-name">PDFKit</div>
+        <div class="tech-desc">Generates the formatted digital driver's licence PDF with embedded QR codes on application approval.</div>
+      </div>
+      <div class="tech-card reveal delay-4">
+        <div class="tech-emoji">☁️</div>
+        <div class="tech-cat">Hosting</div>
+        <div class="tech-name">GitHub Pages</div>
+        <div class="tech-desc">Static site hosting for the frontend PWA with CI/CD integration — fast, reliable, and free for academic deployment.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── SECURITY ─── -->
+<section class="security-section">
+  <div class="container">
+    <div class="security-grid">
+      <div class="security-text reveal-left">
+        <div class="section-tag">Security Design</div>
+        <h2 class="section-title">Designed with security<br>at every layer.</h2>
+        <p>DLRSJAM was not built with security as an afterthought — it was baked into the architecture from the first line of code. From the way passwords are stored to the way documents are transmitted, every element of the platform follows established security best practices.</p>
+        <p>Crucially, human oversight is itself a security feature. The AI never makes the final call — a real TAJ officer reviews every application before a licence is issued. This hybrid model combines the speed and consistency of AI with the judgment and accountability of a human institution.</p>
+        <div class="sec-pillars">
+          <div class="sec-pillar">
+            <div class="sec-pillar-icon">🔐</div>
+            <div class="sec-pillar-name">Encrypted Passwords</div>
+            <div class="sec-pillar-desc">bcrypt hashing ensures stored passwords are never recoverable, even in a breach.</div>
+          </div>
+          <div class="sec-pillar">
+            <div class="sec-pillar-icon">🎫</div>
+            <div class="sec-pillar-name">JWT Sessions</div>
+            <div class="sec-pillar-desc">JSON Web Tokens enforce role-based access on every protected API endpoint.</div>
+          </div>
+          <div class="sec-pillar">
+            <div class="sec-pillar-icon">🔒</div>
+            <div class="sec-pillar-name">HTTPS Everywhere</div>
+            <div class="sec-pillar-desc">All data in transit is encrypted — documents, selfies, and form data never travel in plain text.</div>
+          </div>
+          <div class="sec-pillar">
+            <div class="sec-pillar-icon">📋</div>
+            <div class="sec-pillar-name">Full Audit Trail</div>
+            <div class="sec-pillar-desc">Every officer decision and system action is logged with timestamps for full accountability.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="reveal-right">
+        <div class="sec-visual">
+          <div class="sec-visual-title">Security Stack — Defence in Depth</div>
+          <div class="sec-layers">
+            <div class="sec-layer sl-1">
+              <div class="sec-layer-icon">🧱</div>
+              <div>
+                <div class="sec-layer-name">Role-Based Access Control</div>
+                <div class="sec-layer-sub">Citizens, Officers, and Admins are strictly isolated</div>
+              </div>
+              <div class="sec-check">Active</div>
+            </div>
+            <div class="sec-layer sl-2">
+              <div class="sec-layer-icon">🔐</div>
+              <div>
+                <div class="sec-layer-name">bcrypt + JWT Authentication</div>
+                <div class="sec-layer-sub">Password hashing and signed session tokens</div>
+              </div>
+              <div class="sec-check">Active</div>
+            </div>
+            <div class="sec-layer sl-2">
+              <div class="sec-layer-icon">🌐</div>
+              <div>
+                <div class="sec-layer-name">TLS / HTTPS Encryption</div>
+                <div class="sec-layer-sub">All API traffic and document uploads are encrypted</div>
+              </div>
+              <div class="sec-check">Active</div>
+            </div>
+            <div class="sec-layer sl-3">
+              <div class="sec-layer-icon">🎥</div>
+              <div>
+                <div class="sec-layer-name">Liveness Anti-Spoofing</div>
+                <div class="sec-layer-sub">Blocks photo and screen-replay attacks in real time</div>
+              </div>
+              <div class="sec-check">Active</div>
+            </div>
+            <div class="sec-layer sl-3">
+              <div class="sec-layer-icon">📲</div>
+              <div>
+                <div class="sec-layer-name">QR Cryptographic Signing</div>
+                <div class="sec-layer-sub">Digital licences are signed and tamper-evident</div>
+              </div>
+              <div class="sec-check">Active</div>
+            </div>
+            <div class="sec-layer sl-4">
+              <div class="sec-layer-icon">🏛️</div>
+              <div>
+                <div class="sec-layer-name">Human Officer Oversight</div>
+                <div class="sec-layer-sub">Every application reviewed by a TAJ officer before issue</div>
+              </div>
+              <div class="sec-check">Active</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ─── CTA BAND ─── -->
+<section class="cta-band">
+  <div class="reveal">
+    <h2>Curious who built all of this?</h2>
+    <p>Meet the UWI COMP3901 team behind DLRSJAM — or watch the full system demo.</p>
+    <div class="cta-buttons">
+      <a href="team.html" class="btn btn-white">Meet the Team →</a>
+      <a href="index.html#demo" class="btn btn-outline-white">Watch the Demo</a>
+    </div>
+  </div>
+</section>
+
+<!-- ─── FOOTER ─── -->
+<footer>
+  <a href="index.html" class="footer-logo">
+    <div class="footer-logo-mark">DLR</div>
+    <span class="footer-logo-text">DLRSJAM</span>
+  </a>
+  <div class="footer-links">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="how-it-works.html">How It Works</a>
+    <a href="team.html">Team</a>
+  </div>
+  <div class="footer-right">
+    COMP3901 Capstone Project<br>
+    University of the West Indies · 2026<br>
+    Supervised by Prof. Gunjan Mansingh
+  </div>
+</footer>
+
+<script>
+  function toggleMenu() {
+    document.getElementById('mobileMenu').classList.toggle('open');
+  }
+
+  // Scroll reveal
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) entry.target.classList.add('visible');
+    });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal, .reveal-left, .reveal-right').forEach(el => observer.observe(el));
+
+  // Animate face score counter
+  const faceScoreEl = document.getElementById('faceScore');
+  const ocrBarEl = document.getElementById('ocrBar');
+  const faceObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        if (ocrBarEl) ocrBarEl.style.width = '98.2%';
+        let count = 0;
+        const interval = setInterval(() => {
+          count += 1.5;
+          if (count >= 94.7) { count = 94.7; clearInterval(interval); }
+          if (faceScoreEl) faceScoreEl.textContent = count.toFixed(1) + '%';
+        }, 25);
+        faceObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.5 });
+  if (faceScoreEl) faceObserver.observe(faceScoreEl);
+
+  // Animate confidence bars in AI section
+  const bar1 = document.getElementById('bar1');
+  const bar2 = document.getElementById('bar2');
+  const bar3 = document.getElementById('bar3');
+  const aiScoreEl = document.getElementById('aiConfScore');
+  const confObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        if (bar1) bar1.style.width = '98.2%';
+        if (bar2) bar2.style.width = '94.7%';
+        if (bar3) bar3.style.width = '99.1%';
+        let count = 0;
+        const target = 94.7;
+        const interval = setInterval(() => {
+          count += 1.5;
+          if (count >= target) { count = target; clearInterval(interval); }
+          if (aiScoreEl) aiScoreEl.textContent = count.toFixed(1) + '%';
+        }, 25);
+        confObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.4 });
+  if (bar1) confObserver.observe(bar1);
+</script>
+
+</body>
+</html>
