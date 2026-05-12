@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact – DLRSJAM</title>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --navy:    #0A1628;
+  --navy2:   #0F2040;
+  --blue:    #1557BF;
+  --blue2:   #1A6FD4;
+  --cyan:    #00B4D8;
+  --teal:    #0A9E8A;
+  --green:   #10B981;
+  --white:   #FFFFFF;
+  --off:     #F0F4FF;
+  --muted:   #5A7090;
+  --light:   #8BA3C7;
+  --border:  rgba(255,255,255,0.08);
+  --border2: rgba(21,87,191,0.15);
+  --gold:    #F5A623;
+}
+
+html { scroll-behavior: smooth; overflow-x: hidden; }
+body { font-family: 'Outfit', sans-serif; background: var(--white); color: var(--navy); line-height: 1.6; overflow-x: hidden; }
+
+/* ─── ANIMATIONS ─── */
+.reveal { opacity: 0; transform: translateY(36px); transition: opacity 0.7s ease, transform 0.7s ease; }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+.reveal-left { opacity: 0; transform: translateX(-44px); transition: opacity 0.7s ease, transform 0.7s ease; }
+.reveal-left.visible { opacity: 1; transform: translateX(0); }
+.reveal-right { opacity: 0; transform: translateX(44px); transition: opacity 0.7s ease, transform 0.7s ease; }
+.reveal-right.visible { opacity: 1; transform: translateX(0); }
+.delay-1{transition-delay:.1s} .delay-2{transition-delay:.2s} .delay-3{transition-delay:.3s}
+.delay-4{transition-delay:.4s} .delay-5{transition-delay:.5s} .delay-6{transition-delay:.6s}
+
+/* ─── NAV ─── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 999;
+  padding: 0 5%; height: 70px;
+  display: flex; align-items: center; justify-content: space-between;
+  background: rgba(10,22,40,0.97);
+  backdrop-filter: blur(16px);
+  box-shadow: 0 1px 0 var(--border);
+}
+.nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+.nav-logo-mark { width: 38px; height: 38px; border-radius: 9px; background: linear-gradient(135deg, var(--blue), var(--cyan)); display: flex; align-items: center; justify-content: center; font-size: 0.8rem; font-weight: 900; color: white; letter-spacing: -0.03em; }
+.nav-logo-text { font-size: 1.05rem; font-weight: 700; color: white; }
+.nav-logo-text span { color: var(--cyan); }
+.nav-links { display: flex; align-items: center; gap: 0.2rem; list-style: none; }
+.nav-links a { padding: 0.4rem 0.85rem; border-radius: 6px; text-decoration: none; color: rgba(255,255,255,0.7); font-size: 0.875rem; font-weight: 500; transition: color 0.2s, background 0.2s; }
+.nav-links a:hover { color: white; background: rgba(255,255,255,0.07); }
+.nav-links a.active { color: var(--cyan); }
+.nav-cta { background: var(--blue) !important; color: white !important; padding: 0.42rem 1.1rem !important; }
+.nav-cta:hover { background: var(--blue2) !important; }
+.hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; }
+.hamburger span { display: block; width: 24px; height: 2px; background: white; border-radius: 2px; }
+.mobile-menu { display: none; position: fixed; top: 70px; left: 0; right: 0; background: rgba(10,22,40,0.98); backdrop-filter: blur(20px); padding: 1.5rem 5% 2rem; border-bottom: 1px solid var(--border); z-index: 998; }
+.mobile-menu.open { display: block; }
+.mobile-menu a { display: block; padding: 0.75rem 0; color: rgba(255,255,255,0.75); text-decoration: none; font-size: 1rem; font-weight: 500; border-bottom: 1px solid var(--border); transition: color 0.2s; }
+.mobile-menu a:hover { color: var(--cyan); }
+
+/* ─── PAGE HERO ─── */
+.page-hero {
+  background: var(--navy);
+  padding: 130px 5% 90px;
+  position: relative; overflow: hidden; text-align: center;
+}
+.page-hero-grid { position: absolute; inset: 0; background-image: linear-gradient(rgba(21,87,191,0.07) 1px, transparent 1px), linear-gradient(90deg, rgba(21,87,191,0.07) 1px, transparent 1px); background-size: 50px 50px; }
+.orb { position: absolute; border-radius: 50%; pointer-events: none; filter: blur(80px); }
+.orb-a { width: 400px; height: 400px; background: radial-gradient(circle, rgba(21,87,191,0.3), transparent 70%); top: -100px; left: -60px; }
+.orb-b { width: 300px; height: 300px; background: radial-gradient(circle, rgba(0,180,216,0.2), transparent 70%); bottom: -50px; right: 5%; }
+.orb-c { width: 200px; height: 200px; background: radial-gradient(circle, rgba(16,185,129,0.15), transparent 70%); top: 30%; right: 25%; }
+.page-hero-inner { position: relative; z-index: 2; max-width: 760px; margin: 0 auto; }
+.page-eyebrow { display: inline-flex; align-items: center; gap: 8px; background: rgba(21,87,191,0.2); border: 1px solid rgba(21,87,191,0.4); color: var(--cyan); font-size: 0.75rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; padding: 5px 14px; border-radius: 100px; margin-bottom: 1.5rem; animation: fadeDown 0.7s ease both; }
+@keyframes fadeDown { from{opacity:0;transform:translateY(-10px)} to{opacity:1;transform:translateY(0)} }
+@keyframes fadeUp { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:translateY(0)} }
+.page-hero h1 { font-size: clamp(2.2rem, 5vw, 3.8rem); font-weight: 900; letter-spacing: -0.04em; color: white; line-height: 1.1; margin-bottom: 1.25rem; animation: fadeUp 0.8s 0.15s ease both; }
+.page-hero h1 .grad { background: linear-gradient(90deg, var(--cyan), var(--green)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.page-hero p { font-size: 1.05rem; color: rgba(255,255,255,0.55); line-height: 1.8; max-width: 560px; margin: 0 auto; animation: fadeUp 0.8s 0.25s ease both; }
+.breadcrumb { display: flex; align-items: center; justify-content: center; gap: 0.4rem; margin-top: 2rem; font-size: 0.8rem; color: rgba(255,255,255,0.3); animation: fadeUp 0.8s 0.35s ease both; }
+.breadcrumb a { color: rgba(255,255,255,0.4); text-decoration: none; transition: color 0.2s; }
+.breadcrumb a:hover { color: var(--cyan); }
+.breadcrumb .sep { color: rgba(255,255,255,0.15); }
+.breadcrumb .current { color: var(--cyan); font-weight: 600; }
+
+/* ─── COMMONS ─── */
+.container { max-width: 1200px; margin: 0 auto; }
+section { padding: 100px 5%; }
+.section-tag { display: inline-flex; align-items: center; gap: 6px; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--blue); margin-bottom: 0.75rem; }
+.section-tag::before { content: ''; display: inline-block; width: 20px; height: 2px; background: var(--blue); border-radius: 2px; }
+.section-title { font-size: clamp(1.8rem, 3.2vw, 2.7rem); font-weight: 800; letter-spacing: -0.04em; color: var(--navy); line-height: 1.15; margin-bottom: 1rem; }
+.section-sub { font-size: 0.975rem; color: var(--muted); line-height: 1.8; max-width: 580px; }
+
+/* ─── MAIN CONTACT SECTION ─── */
+.contact-main { background: var(--white); }
+.contact-grid { display: grid; grid-template-columns: 1fr 1.1fr; gap: 5rem; align-items: start; }
+
+/* Left — info panel */
+.contact-info { }
+.contact-info .section-sub { margin-bottom: 2.5rem; }
+
+.info-cards { display: flex; flex-direction: column; gap: 1rem; margin-bottom: 2.5rem; }
+.info-card {
+  display: flex; align-items: flex-start; gap: 1rem;
+  background: var(--off); border: 1px solid var(--border2);
+  border-radius: 12px; padding: 1.25rem;
+  transition: border-color 0.2s, transform 0.2s;
+}
+.info-card:hover { border-color: rgba(21,87,191,0.3); transform: translateX(4px); }
+.info-icon {
+  width: 42px; height: 42px; border-radius: 10px; flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center; font-size: 1.1rem;
+}
+.ic-blue { background: #EFF6FF; }
+.ic-teal { background: #ECFDF5; }
+.ic-gold { background: #FFFBEB; }
+.ic-purple { background: #F5F3FF; }
+.info-card-text h4 { font-size: 0.875rem; font-weight: 700; color: var(--navy); margin-bottom: 2px; }
+.info-card-text p { font-size: 0.825rem; color: var(--muted); line-height: 1.6; }
+.info-card-text a { color: var(--blue); text-decoration: none; font-weight: 500; transition: color 0.2s; }
+.info-card-text a:hover { color: var(--blue2); text-decoration: underline; }
+
+/* Project info box */
+.project-box {
+  background: var(--navy); border-radius: 14px; padding: 1.75rem;
+  position: relative; overflow: hidden;
+}
+.project-box::before { content: ''; position: absolute; inset: 0; background-image: linear-gradient(rgba(21,87,191,0.08) 1px, transparent 1px), linear-gradient(90deg, rgba(21,87,191,0.08) 1px, transparent 1px); background-size: 28px 28px; }
+.project-box-inner { position: relative; z-index: 1; }
+.project-box-label { font-size: 0.68rem; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; color: var(--cyan); margin-bottom: 1rem; display: flex; align-items: center; gap: 6px; }
+.project-box-label::before { content: ''; display: block; width: 14px; height: 2px; background: var(--cyan); }
+.project-rows { display: flex; flex-direction: column; gap: 0; }
+.project-row {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 0.75rem 0; border-bottom: 1px solid rgba(255,255,255,0.06);
+  font-size: 0.82rem;
+}
+.project-row:last-child { border-bottom: none; }
+.pr-key { color: rgba(255,255,255,0.4); font-weight: 500; }
+.pr-val { color: rgba(255,255,255,0.85); font-weight: 600; text-align: right; }
+.pr-val.cyan { color: var(--cyan); }
+.pr-val.green { color: var(--green); }
+
+/* ─── FORM ─── */
+.contact-form-wrap {
+  background: var(--off); border: 1px solid var(--border2);
+  border-radius: 20px; overflow: hidden;
+  box-shadow: 0 20px 60px rgba(21,87,191,0.07);
+}
+.form-header {
+  padding: 1.5rem 2rem; background: var(--navy);
+  border-bottom: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: space-between;
+}
+.form-header-left { display: flex; align-items: center; gap: 10px; }
+.form-header-icon { width: 36px; height: 36px; border-radius: 8px; background: linear-gradient(135deg, var(--blue), var(--cyan)); display: flex; align-items: center; justify-content: center; font-size: 0.95rem; }
+.form-header-title { font-size: 0.9rem; font-weight: 700; color: white; }
+.form-header-sub { font-size: 0.72rem; color: rgba(255,255,255,0.4); }
+.form-dots { display: flex; gap: 5px; }
+.fd { width: 8px; height: 8px; border-radius: 50%; }
+.fd-r{background:#FF5F57} .fd-y{background:#FEBC2E} .fd-g{background:#28C840}
+
+.form-body { padding: 2rem; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem; }
+.form-group { margin-bottom: 1rem; display: flex; flex-direction: column; }
+.form-group label { font-size: 0.8rem; font-weight: 700; color: var(--navy); margin-bottom: 0.4rem; letter-spacing: 0.02em; }
+.form-group label span { color: var(--blue); }
+.form-input, .form-select, .form-textarea {
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.875rem; color: var(--navy);
+  background: white; border: 1.5px solid #D1DCF0;
+  border-radius: 8px; padding: 0.7rem 1rem;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  width: 100%; outline: none;
+}
+.form-input:focus, .form-select:focus, .form-textarea:focus {
+  border-color: var(--blue);
+  box-shadow: 0 0 0 3px rgba(21,87,191,0.1);
+}
+.form-input::placeholder, .form-textarea::placeholder { color: #A0B0C8; }
+.form-select { cursor: pointer; appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='none' viewBox='0 0 24 24' stroke='%238BA3C7' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 1rem center; padding-right: 2.5rem; }
+.form-textarea { resize: vertical; min-height: 120px; line-height: 1.6; }
+.char-count { font-size: 0.72rem; color: var(--light); text-align: right; margin-top: 3px; }
+
+.form-footer { padding: 1.25rem 2rem; background: white; border-top: 1px solid #E8EEF8; display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
+.form-note { font-size: 0.78rem; color: var(--muted); display: flex; align-items: center; gap: 5px; }
+.btn-submit {
+  background: linear-gradient(135deg, var(--blue), var(--blue2));
+  color: white; font-family: 'Outfit', sans-serif;
+  font-size: 0.9rem; font-weight: 700;
+  padding: 0.75rem 2rem; border: none; border-radius: 8px;
+  cursor: pointer; display: flex; align-items: center; gap: 8px;
+  transition: transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 4px 16px rgba(21,87,191,0.3);
+}
+.btn-submit:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(21,87,191,0.4); }
+.btn-submit:active { transform: translateY(0); }
+
+/* Success state */
+.form-success {
+  display: none; padding: 3rem 2rem; text-align: center;
+}
+.success-icon { font-size: 3rem; margin-bottom: 1rem; animation: bounceIn 0.5s ease; }
+@keyframes bounceIn { 0%{transform:scale(0)} 60%{transform:scale(1.2)} 100%{transform:scale(1)} }
+.form-success h3 { font-size: 1.2rem; font-weight: 800; color: var(--navy); margin-bottom: 0.5rem; }
+.form-success p { font-size: 0.875rem; color: var(--muted); line-height: 1.7; }
+
+/* ─── TEAM CONTACTS ─── */
+.team-contacts-section { background: var(--off); }
+.team-contacts-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
+.team-contact-card {
+  background: white; border: 1px solid var(--border2); border-radius: 14px;
+  padding: 1.5rem; transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+  display: flex; flex-direction: column;
+}
+.team-contact-card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(21,87,191,0.1); border-color: rgba(21,87,191,0.25); }
+.tc-avatar {
+  width: 48px; height: 48px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.9rem; font-weight: 800; color: white;
+  margin-bottom: 1rem; flex-shrink: 0;
+}
+.av-1{background:linear-gradient(135deg,#1557BF,#00B4D8)}
+.av-2{background:linear-gradient(135deg,#0F2040,#1557BF)}
+.av-3{background:linear-gradient(135deg,#C4951A,#F5A623)}
+.av-4{background:linear-gradient(135deg,#7C3AED,#A78BFA)}
+.av-5{background:linear-gradient(135deg,#0A1628,#1557BF)}
+.tc-name { font-size: 0.95rem; font-weight: 800; color: var(--navy); margin-bottom: 2px; letter-spacing: -0.01em; }
+.tc-id { font-size: 0.72rem; color: var(--light); font-weight: 500; margin-bottom: 0.75rem; }
+.tc-email {
+  display: flex; align-items: center; gap: 6px;
+  font-size: 0.8rem; color: var(--blue); text-decoration: none; font-weight: 500;
+  padding: 6px 10px; border-radius: 7px;
+  background: var(--off); border: 1px solid var(--border2);
+  transition: background 0.2s, border-color 0.2s;
+  margin-top: auto;
+  word-break: break-all;
+}
+.tc-email:hover { background: #EFF6FF; border-color: rgba(21,87,191,0.3); }
+
+/* Last 2 cards — centre them */
+.team-contacts-grid .team-contact-card:nth-child(4) { grid-column: 1; }
+.team-contacts-grid .team-contact-card:nth-child(5) { grid-column: 2; }
+
+/* ─── SUPERVISORS ─── */
+.supervisors-section { background: var(--white); }
+.supervisors-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+.supervisor-card {
+  background: var(--navy); border-radius: 16px; padding: 2rem;
+  display: flex; align-items: flex-start; gap: 1.25rem;
+  transition: transform 0.2s, box-shadow 0.2s;
+  position: relative; overflow: hidden;
+}
+.supervisor-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--blue), var(--cyan)); }
+.supervisor-card:hover { transform: translateY(-3px); box-shadow: 0 16px 48px rgba(0,0,0,0.2); }
+.sup-avatar { width: 54px; height: 54px; border-radius: 50%; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 1rem; font-weight: 800; color: white; border: 2px solid rgba(255,255,255,0.1); }
+.sa-green { background: linear-gradient(135deg, var(--teal), var(--green)); }
+.sa-blue { background: linear-gradient(135deg, var(--blue), var(--blue2)); }
+.sup-info h3 { font-size: 1rem; font-weight: 800; color: white; margin-bottom: 3px; }
+.sup-role { font-size: 0.75rem; color: var(--cyan); font-weight: 600; margin-bottom: 0.65rem; letter-spacing: 0.02em; }
+.sup-desc { font-size: 0.85rem; color: rgba(255,255,255,0.5); line-height: 1.7; }
+
+/* ─── QUICK LINKS ─── */
+.quick-links-section { background: var(--navy); padding: 80px 5%; }
+.quick-links-section .section-tag { color: var(--cyan); }
+.quick-links-section .section-tag::before { background: var(--cyan); }
+.quick-links-section .section-title { color: white; }
+.quick-links-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; position: relative; z-index: 1; }
+.quick-link-card {
+  background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 14px; padding: 1.5rem; text-decoration: none;
+  transition: background 0.2s, border-color 0.2s, transform 0.2s;
+  display: flex; flex-direction: column; gap: 0.75rem;
+  position: relative; overflow: hidden;
+}
+.quick-link-card::after { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, var(--blue), var(--cyan)); opacity: 0; transition: opacity 0.3s; }
+.quick-link-card:hover { background: rgba(255,255,255,0.06); border-color: rgba(21,87,191,0.35); transform: translateY(-3px); }
+.quick-link-card:hover::after { opacity: 1; }
+.ql-icon { font-size: 1.5rem; }
+.ql-title { font-size: 0.9rem; font-weight: 700; color: white; }
+.ql-desc { font-size: 0.8rem; color: rgba(255,255,255,0.45); line-height: 1.55; }
+.ql-arrow { font-size: 0.8rem; color: var(--cyan); font-weight: 700; margin-top: auto; transition: transform 0.2s; }
+.quick-link-card:hover .ql-arrow { transform: translateX(4px); }
+
+/* ─── FOOTER ─── */
+footer { background: #060E1A; padding: 3rem 5%; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1.5rem; border-top: 1px solid rgba(255,255,255,0.05); }
+.footer-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+.footer-logo-mark { width: 32px; height: 32px; border-radius: 7px; background: linear-gradient(135deg, var(--blue), var(--cyan)); display: flex; align-items: center; justify-content: center; font-size: 0.7rem; font-weight: 900; color: white; }
+.footer-logo-text { font-size: 0.95rem; font-weight: 700; color: rgba(255,255,255,0.8); }
+.footer-links { display: flex; gap: 1.5rem; flex-wrap: wrap; }
+.footer-links a { color: rgba(255,255,255,0.35); text-decoration: none; font-size: 0.82rem; font-weight: 500; transition: color 0.2s; }
+.footer-links a:hover { color: var(--cyan); }
+.footer-right { font-size: 0.78rem; color: rgba(255,255,255,0.25); text-align: right; line-height: 1.6; }
+
+@media (max-width: 960px) {
+  .contact-grid { grid-template-columns: 1fr; gap: 3rem; }
+  .form-row { grid-template-columns: 1fr; }
+  .team-contacts-grid { grid-template-columns: 1fr 1fr; }
+  .team-contacts-grid .team-contact-card:nth-child(4),
+  .team-contacts-grid .team-contact-card:nth-child(5) { grid-column: auto; }
+  .supervisors-grid { grid-template-columns: 1fr; }
+  .quick-links-grid { grid-template-columns: 1fr 1fr; }
+  .nav-links { display: none; }
+  .hamburger { display: flex; }
+}
+@media (max-width: 600px) {
+  .team-contacts-grid { grid-template-columns: 1fr; }
+  .quick-links-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="nav-logo">
+    <div class="nav-logo-mark">DLR</div>
+    <span class="nav-logo-text">DLRS<span>JAM</span></span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="how-it-works.html">How It Works</a></li>
+    <li><a href="team.html">Our Team</a></li>
+    <li><a href="contact.html" class="active nav-cta">Contact</a></li>
+  </ul>
+  <div class="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="index.html">Home</a>
+  <a href="about.html">About</a>
+  <a href="how-it-works.html">How It Works</a>
+  <a href="team.html">Our Team</a>
+  <a href="contact.html">Contact</a>
+</div>
+
+<!-- PAGE HERO -->
+<div class="page-hero">
+  <div class="page-hero-grid"></div>
+  <div class="orb orb-a"></div>
+  <div class="orb orb-b"></div>
+  <div class="orb orb-c"></div>
+  <div class="page-hero-inner">
+    <div class="page-eyebrow">📬 &nbsp;Get in Touch</div>
+    <h1>Contact the<br><span class="grad">DLRSJAM Team.</span></h1>
+    <p>Have a question about the project, the system, or the technology behind it? Reach out — we would love to hear from you.</p>
+    <div class="breadcrumb">
+      <a href="index.html">Home</a><span class="sep">›</span>
+      <span class="current">Contact</span>
+    </div>
+  </div>
+</div>
+
+<!-- MAIN CONTACT -->
+<section class="contact-main">
+  <div class="container">
+    <div class="contact-grid">
+
+      <!-- LEFT — Info -->
+      <div class="reveal-left">
+        <div class="section-tag">Reach Out</div>
+        <h2 class="section-title">We're a team of<br>five UWI students.</h2>
+        <p class="section-sub">DLRSJAM was built as a COMP3901 Capstone Project at the University of the West Indies, Mona campus. Whether you're curious about the system, the technology, or the research behind it — we're happy to talk.</p>
+
+        <div class="info-cards">
+          <div class="info-card">
+            <div class="info-icon ic-blue">🎓</div>
+            <div class="info-card-text">
+              <h4>University</h4>
+              <p>University of the West Indies, Mona Campus<br>Kingston, Jamaica</p>
+            </div>
+          </div>
+          <div class="info-card">
+            <div class="info-icon ic-teal">📚</div>
+            <div class="info-card-text">
+              <h4>Course</h4>
+              <p>COMP3901 – Capstone Project<br>Department of Computing</p>
+            </div>
+          </div>
+          <div class="info-card">
+            <div class="info-icon ic-gold">👨‍🏫</div>
+            <div class="info-card-text">
+              <h4>Supervisor</h4>
+              <p>Prof. Gunjan Mansingh<br>Course Instructor: Dr. Carl Beckford</p>
+            </div>
+          </div>
+          <div class="info-card">
+            <div class="info-icon ic-purple">📅</div>
+            <div class="info-card-text">
+              <h4>Submission Date</h4>
+              <p>February 11, 2026<br>Marketing Website Due: May 14, 2026</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-box">
+          <div class="project-box-inner">
+            <div class="project-box-label">Project Details</div>
+            <div class="project-rows">
+              <div class="project-row">
+                <span class="pr-key">Project Name</span>
+                <span class="pr-val">DLRSJAM</span>
+              </div>
+              <div class="project-row">
+                <span class="pr-key">Full Name</span>
+                <span class="pr-val" style="font-size:0.75rem;">Digital Licence Renewal System Jamaica</span>
+              </div>
+              <div class="project-row">
+                <span class="pr-key">Tech Stack</span>
+                <span class="pr-val cyan">React · Flask · Python</span>
+              </div>
+              <div class="project-row">
+                <span class="pr-key">AI Modules</span>
+                <span class="pr-val cyan">OCR · FaceMatch · Liveness</span>
+              </div>
+              <div class="project-row">
+                <span class="pr-key">Type</span>
+                <span class="pr-val">Progressive Web App (PWA)</span>
+              </div>
+              <div class="project-row">
+                <span class="pr-key">Status</span>
+                <span class="pr-val green">✓ Prototype Complete</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT — Form -->
+      <div class="reveal-right">
+        <div class="contact-form-wrap">
+          <div class="form-header">
+            <div class="form-header-left">
+              <div class="form-header-icon">✉️</div>
+              <div>
+                <div class="form-header-title">Send a Message</div>
+                <div class="form-header-sub">We'll get back to you as soon as we can</div>
+              </div>
+            </div>
+            <div class="form-dots">
+              <div class="fd fd-r"></div>
+              <div class="fd fd-y"></div>
+              <div class="fd fd-g"></div>
+            </div>
+          </div>
+
+          <div class="form-body" id="formBody">
+            <div class="form-row">
+              <div class="form-group">
+                <label>First Name <span>*</span></label>
+                <input type="text" class="form-input" placeholder="e.g. John" id="firstName" required>
+              </div>
+              <div class="form-group">
+                <label>Last Name <span>*</span></label>
+                <input type="text" class="form-input" placeholder="e.g. Brown" id="lastName" required>
+              </div>
+            </div>
+            <div class="form-group">
+              <label>Email Address <span>*</span></label>
+              <input type="email" class="form-input" placeholder="you@example.com" id="emailInput" required>
+            </div>
+            <div class="form-group">
+              <label>Reason for Contact <span>*</span></label>
+              <select class="form-select" id="reasonSelect">
+                <option value="" disabled selected>Select a reason…</option>
+                <option>Question about the project</option>
+                <option>Question about the technology</option>
+                <option>Academic / research enquiry</option>
+                <option>Feedback on the system</option>
+                <option>Press / media enquiry</option>
+                <option>Other</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Message <span>*</span></label>
+              <textarea class="form-textarea" placeholder="Write your message here…" id="messageInput" maxlength="500" oninput="updateCount()"></textarea>
+              <div class="char-count"><span id="charCount">0</span> / 500 characters</div>
+            </div>
+          </div>
+
+          <div class="form-success" id="formSuccess">
+            <div class="success-icon">✅</div>
+            <h3>Message Received!</h3>
+            <p>Thanks for reaching out. A member of the DLRSJAM team will get back to you shortly.</p>
+          </div>
+
+          <div class="form-footer" id="formFooter">
+            <div class="form-note">
+              <svg width="13" height="13" fill="none" viewBox="0 0 24 24" stroke="#8BA3C7" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+              Your details are kept private
+            </div>
+            <button class="btn-submit" onclick="handleSubmit()">
+              Send Message
+              <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path d="M22 2L11 13"/><path d="M22 2L15 22 11 13 2 9l20-7z"/></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- TEAM CONTACTS -->
+<section class="team-contacts-section">
+  <div class="container">
+    <div class="section-header reveal" style="margin-bottom:3rem;">
+      <div class="section-tag">The Team</div>
+      <h2 class="section-title">Reach a specific<br>team member.</h2>
+      <p class="section-sub">Want to contact a specific developer? Each member of the DLRSJAM team can be reached directly at the emails below.</p>
+    </div>
+    <div class="team-contacts-grid">
+
+      <div class="team-contact-card reveal delay-1">
+        <div class="tc-avatar av-1">AB</div>
+        <div class="tc-name">Alexia Barrows</div>
+        <div class="tc-id">Student ID: 620161540</div>
+        <a href="mailto:alexiabarrows@gmail.com" class="tc-email">
+          <svg width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,12 2,6"/></svg>
+          alexiabarrows@gmail.com
+        </a>
+      </div>
+
+      <div class="team-contact-card reveal delay-2">
+        <div class="tc-avatar av-2">BE</div>
+        <div class="tc-name">Brandon Ellington</div>
+        <div class="tc-id">Student ID: 620160480</div>
+        <a href="mailto:brandymathic@gmail.com" class="tc-email">
+          <svg width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,12 2,6"/></svg>
+          brandymathic@gmail.com
+        </a>
+      </div>
+
+      <div class="team-contact-card reveal delay-3">
+        <div class="tc-avatar av-3">SE</div>
+        <div class="tc-name">Sydonae England</div>
+        <div class="tc-id">Student ID: 620163331</div>
+        <a href="mailto:sydonaeengland@gmail.com" class="tc-email">
+          <svg width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,12 2,6"/></svg>
+          sydonaeengland@gmail.com
+        </a>
+      </div>
+
+      <div class="team-contact-card reveal delay-4">
+        <div class="tc-avatar av-4">JL</div>
+        <div class="tc-name">Jhanel Lalor</div>
+        <div class="tc-id">Student ID: 620161442</div>
+        <a href="mailto:lalorjhanel4@gmail.com" class="tc-email">
+          <svg width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,12 2,6"/></svg>
+          lalorjhanel4@gmail.com
+        </a>
+      </div>
+
+      <div class="team-contact-card reveal delay-5">
+        <div class="tc-avatar av-5">SS</div>
+        <div class="tc-name">Sean Spence</div>
+        <div class="tc-id">Student ID: 620161083</div>
+        <a href="mailto:seanspence2019@gmail.com" class="tc-email">
+          <svg width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,12 2,6"/></svg>
+          seanspence2019@gmail.com
+        </a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- SUPERVISORS -->
+<section class="supervisors-section">
+  <div class="container">
+    <div class="section-header reveal" style="margin-bottom:3rem;">
+      <div class="section-tag">Academic Supervision</div>
+      <h2 class="section-title">Guided by experienced<br>faculty.</h2>
+      <p class="section-sub">DLRSJAM was developed under the direct supervision of the following faculty members at the UWI Department of Computing.</p>
+    </div>
+    <div class="supervisors-grid">
+      <div class="supervisor-card reveal delay-1">
+        <div class="sup-avatar sa-green">GM</div>
+        <div class="sup-info">
+          <h3>Prof. Gunjan Mansingh</h3>
+          <div class="sup-role">Project Supervisor</div>
+          <p class="sup-desc">Provided technical and academic oversight throughout the full development lifecycle — guiding system architecture decisions, AI integration strategy, and the real-world applicability of the DLRSJAM prototype.</p>
+        </div>
+      </div>
+      <div class="supervisor-card reveal delay-2">
+        <div class="sup-avatar sa-blue">CB</div>
+        <div class="sup-info">
+          <h3>Dr. Carl Beckford</h3>
+          <div class="sup-role">Course Instructor — COMP3901</div>
+          <p class="sup-desc">Responsible for setting Capstone Project requirements, assessing incremental development progress, and evaluating the final deliverable — including this marketing website and the DLRSJAM source code submission.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- QUICK LINKS -->
+<section class="quick-links-section">
+  <div class="container">
+    <div class="section-header reveal" style="margin-bottom:3rem;">
+      <div class="section-tag" style="color:var(--cyan);"><span style="display:inline-block;width:20px;height:2px;background:var(--cyan);border-radius:2px;margin-right:6px;"></span>Explore More</div>
+      <h2 class="section-title" style="color:white;">Keep exploring<br>DLRSJAM.</h2>
+    </div>
+    <div class="quick-links-grid">
+      <a href="index.html" class="quick-link-card reveal delay-1">
+        <div class="ql-icon">🏠</div>
+        <div class="ql-title">Home</div>
+        <div class="ql-desc">Back to the main overview and hero introduction.</div>
+        <div class="ql-arrow">→</div>
+      </a>
+      <a href="about.html" class="quick-link-card reveal delay-2">
+        <div class="ql-icon">💡</div>
+        <div class="ql-title">About</div>
+        <div class="ql-desc">The problem, the solution, and the vision behind DLRSJAM.</div>
+        <div class="ql-arrow">→</div>
+      </a>
+      <a href="how-it-works.html" class="quick-link-card reveal delay-3">
+        <div class="ql-icon">⚙️</div>
+        <div class="ql-title">How It Works</div>
+        <div class="ql-desc">Full features, step-by-step walkthrough, and AI deep dive.</div>
+        <div class="ql-arrow">→</div>
+      </a>
+      <a href="team.html" class="quick-link-card reveal delay-4">
+        <div class="ql-icon">👥</div>
+        <div class="ql-title">Our Team</div>
+        <div class="ql-desc">Meet the five UWI developers who built the system.</div>
+        <div class="ql-arrow">→</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <a href="index.html" class="footer-logo">
+    <div class="footer-logo-mark">DLR</div>
+    <span class="footer-logo-text">DLRSJAM</span>
+  </a>
+  <div class="footer-links">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="how-it-works.html">How It Works</a>
+    <a href="team.html">Team</a>
+    <a href="contact.html">Contact</a>
+  </div>
+  <div class="footer-right">
+    COMP3901 Capstone Project<br>
+    University of the West Indies · 2026<br>
+    Supervised by Prof. Gunjan Mansingh
+  </div>
+</footer>
+
+<script>
+  function toggleMenu() {
+    document.getElementById('mobileMenu').classList.toggle('open');
+  }
+
+  // Scroll reveal
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal, .reveal-left, .reveal-right').forEach(el => observer.observe(el));
+
+  // Character counter
+  function updateCount() {
+    const msg = document.getElementById('messageInput');
+    document.getElementById('charCount').textContent = msg.value.length;
+  }
+
+  // Form submit handler
+  function handleSubmit() {
+    const first = document.getElementById('firstName').value.trim();
+    const last = document.getElementById('lastName').value.trim();
+    const email = document.getElementById('emailInput').value.trim();
+    const reason = document.getElementById('reasonSelect').value;
+    const message = document.getElementById('messageInput').value.trim();
+
+    if (!first || !last || !email || !reason || !message) {
+      // Shake effect on empty fields
+      const inputs = [
+        document.getElementById('firstName'),
+        document.getElementById('lastName'),
+        document.getElementById('emailInput'),
+        document.getElementById('reasonSelect'),
+        document.getElementById('messageInput')
+      ];
+      inputs.forEach(input => {
+        if (!input.value.trim()) {
+          input.style.borderColor = '#EF4444';
+          input.style.boxShadow = '0 0 0 3px rgba(239,68,68,0.1)';
+          setTimeout(() => {
+            input.style.borderColor = '';
+            input.style.boxShadow = '';
+          }, 2000);
+        }
+      });
+      return;
+    }
+
+    // Show success
+    document.getElementById('formBody').style.display = 'none';
+    document.getElementById('formFooter').style.display = 'none';
+    document.getElementById('formSuccess').style.display = 'block';
+  }
+</script>
+
+</body>
+</html>
