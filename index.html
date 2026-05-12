@@ -397,6 +397,22 @@ nav.scrolled {
 .float-badge-1 { top: -18px; right: 30px; }
 .float-badge-2 { bottom: -16px; left: 20px; background: rgba(21,87,191,0.9); animation-delay: 2s; }
 
+  /* ─── PARTICLES ─── */
+.particles {
+  position: absolute; inset: 0; z-index: 1; pointer-events: none; overflow: hidden;
+}
+.particle {
+  position: absolute; border-radius: 50%;
+  background: white; opacity: 0;
+  animation: particleFloat linear infinite;
+}
+@keyframes particleFloat {
+  0%   { opacity: 0; transform: translateY(0) scale(0); }
+  10%  { opacity: 0.6; transform: translateY(-10px) scale(1); }
+  90%  { opacity: 0.3; }
+  100% { opacity: 0; transform: translateY(-120px) scale(0.5); }
+}
+
 /* ─── SECTION COMMONS ─── */
 section { padding: 100px 5%; }
 .container { max-width: 1200px; margin: 0 auto; }
@@ -702,6 +718,7 @@ footer {
   <div class="orb orb-1"></div>
   <div class="orb orb-2"></div>
   <div class="orb orb-3"></div>
+  <div class="particles" id="particles"></div>
 
   <div class="hero-content">
     <div>
@@ -1044,6 +1061,62 @@ footer {
     observer.observe(el);
   });
 
+  // Animated stat counters
+function animateCounter(el, target, suffix, duration) {
+  let start = 0;
+  const step = target / (duration / 16);
+  const tick = setInterval(() => {
+    start += step;
+    if (start >= target) { start = target; clearInterval(tick); }
+    el.textContent = (Number.isInteger(target) ? Math.floor(start) : start.toFixed(0)) + suffix;
+  }, 16);
+}
+window.addEventListener('load', () => {
+  setTimeout(() => {
+    animateCounter(document.querySelector('.stat:nth-child(1) .stat-num'), 0, '', 800);
+    animateCounter(document.querySelector('.stat:nth-child(2) .stat-num'), 3, '', 1000);
+    animateCounter(document.querySelector('.stat:nth-child(3) .stat-num'), 100, '%', 1200);
+  }, 600);
+});
+
+  // Generate floating particles in hero
+const particleContainer = document.getElementById('particles');
+if (particleContainer) {
+  for (let i = 0; i < 40; i++) {
+    const p = document.createElement('div');
+    p.className = 'particle';
+    const size = Math.random() * 3 + 1;
+    p.style.cssText = `
+      width:${size}px; height:${size}px;
+      left:${Math.random() * 100}%;
+      top:${Math.random() * 100}%;
+      animation-duration:${Math.random() * 6 + 4}s;
+      animation-delay:${Math.random() * 6}s;
+    `;
+    particleContainer.appendChild(p);
+  }
+}
+
+// Typewriter effect on hero accent line
+const typeEl = document.querySelector('.line-accent');
+if (typeEl) {
+  const text = typeEl.textContent;
+  typeEl.textContent = '';
+  typeEl.style.borderRight = '2px solid var(--cyan)';
+  typeEl.style.display = 'inline-block';
+  let i = 0;
+  setTimeout(() => {
+    const type = setInterval(() => {
+      typeEl.textContent += text[i];
+      i++;
+      if (i >= text.length) {
+        clearInterval(type);
+        setTimeout(() => { typeEl.style.borderRight = 'none'; }, 800);
+      }
+    }, 60);
+  }, 900);
+}
+  
   // Animate confidence bar on load
   window.addEventListener('load', () => {
     const fill = document.getElementById('confFill');
