@@ -738,7 +738,7 @@ footer {
         <div class="role-pills">
           <div class="role-pill"><div class="rp-dot rp-citizen"></div> Citizen</div>
           <div class="role-pill"><div class="rp-dot rp-officer"></div> TAJ Officer</div>
-          <div class="role-pill"><div class="rp-dot rp-admin"></div> System Admin</div>
+          <div class="role-pill"><div class="rp-dot rp-admin"></div> Supervisor</div>
         </div>
       </div>
 
@@ -758,7 +758,7 @@ footer {
               <div class="arch-icon">⚙️</div>
               <div>
                 <div class="arch-layer-name">Application Logic Layer</div>
-                <div class="arch-layer-desc">Node.js / Express · Authentication · Role routing</div>
+                <div class="arch-layer-desc">Python / Flask REST API · Authentication · Role routing</div>
               </div>
             </div>
             <div class="arch-connector"><div class="arch-line"></div><span>Calls</span><div class="arch-line"></div></div>
@@ -840,19 +840,19 @@ footer {
 
       <div class="role-card reveal delay-3">
         <div class="role-header">
-          <div class="role-icon-wrap ri-gold">⚙️</div>
+          <div class="role-icon-wrap ri-gold">🧑‍💼</div>
           <div>
-            <div class="role-name">System Admin</div>
-            <div class="role-sub">Platform manager — oversight and configuration</div>
+            <div class="role-name">Supervisor</div>
+            <div class="role-sub">Senior TAJ reviewer — full caseload oversight</div>
           </div>
         </div>
         <ul class="role-actions">
-          <li><div class="ra-check ra-gold">✓</div>Create and manage officer and citizen accounts</li>
-          <li><div class="ra-check ra-gold">✓</div>Monitor all applications across the system</li>
-          <li><div class="ra-check ra-gold">✓</div>View audit logs of officer decisions and actions</li>
-          <li><div class="ra-check ra-gold">✓</div>Configure AI confidence thresholds and flags</li>
-          <li><div class="ra-check ra-gold">✓</div>Generate system-wide performance reports</li>
-          <li><div class="ra-check ra-gold">✓</div>Manage system settings and access controls</li>
+          <li><div class="ra-check ra-gold">✓</div>View the full queue including escalated cases across all officers</li>
+          <li><div class="ra-check ra-gold">✓</div>Approve, reject, or request resubmission on any application</li>
+          <li><div class="ra-check ra-gold">✓</div>Return escalated cases back to the assigned officer</li>
+          <li><div class="ra-check ra-gold">✓</div>Draw and save a digital signature for approved licences</li>
+          <li><div class="ra-check ra-gold">✓</div>Receive in-app notifications for escalated cases needing attention</li>
+          <li><div class="ra-check ra-gold">✓</div>Manage officer accounts within their branch</li>
         </ul>
       </div>
 
@@ -885,7 +885,7 @@ footer {
           </div>
           <div class="step-detail">
             <div class="sd-icon">🎭</div>
-            <div class="sd-text"><strong>Role enforcement</strong> — upon login, each user is automatically routed to their correct dashboard (Citizen, Officer, or Admin).</div>
+            <div class="sd-text"><strong>Role enforcement</strong> — upon login, each user is automatically routed to their correct dashboard (Citizen, Officer, or Supervisor).</div>
           </div>
           <div class="step-detail">
             <div class="sd-icon">📱</div>
@@ -908,7 +908,7 @@ footer {
             <div class="role-selector">
               <div class="rs-opt rs-active">👤 Citizen</div>
               <div class="rs-opt">🏛️ TAJ Officer</div>
-              <div class="rs-opt">⚙️ Admin</div>
+              <div class="rs-opt">🧑‍💼 Supervisor</div>
             </div>
           </div>
         </div>
@@ -978,7 +978,7 @@ footer {
           <div class="step-num-label">Step Three</div>
         </div>
         <h3 class="step-heading">AI Identity<br>Verification</h3>
-        <p class="step-desc">This is the core of DLRSJAM. Three separate AI modules run automatically the moment a citizen submits their application — Tesseract.js reads the document text, face-api.js compares the ID photo against a live selfie, and a TensorFlow.js model confirms the selfie is from a real, live person.</p>
+        <p class="step-desc">This is the core of DLRSJAM. Three separate AI modules run automatically the moment a citizen submits their application — Tesseract.js reads the document text, face-api.js compares the ID photo against a live selfie, and a DeepFace's anti-spoof model confirms the selfie is from a real, live person.</p>
         <div class="step-details">
           <div class="step-detail">
             <div class="sd-icon">🔍</div>
@@ -990,7 +990,7 @@ footer {
           </div>
           <div class="step-detail">
             <div class="sd-icon">🎥</div>
-            <div class="sd-text"><strong>Liveness Detection</strong> — a TensorFlow.js model checks for blink patterns and micro-movements to confirm the selfie is not a photo or screen replay.</div>
+           <div class="sd-text"><strong>Liveness Detection</strong> — DeepFace's pre-trained anti-spoof CNN confirms the webcam capture is from a live person present at submission, not a printed photo or screen replay.</div>
           </div>
         </div>
       </div>
@@ -1167,8 +1167,8 @@ footer {
       <div class="ai-module-card reveal delay-1">
         <div class="ai-mod-icon ami-blue">🔍</div>
         <div class="ai-mod-name">OCR Document Reading</div>
-        <div class="ai-mod-lib ml-blue">Tesseract.js</div>
-        <div class="ai-mod-desc">Tesseract.js extracts all text content from the uploaded licence image using optical character recognition. Each field — name, licence number, expiry date, address — is parsed and automatically cross-referenced against the data the citizen entered in their application form.</div>
+        <div class="ai-mod-lib ml-blue">Tesseract (Python)</div>
+        <div class="ai-mod-desc">Tesseract extracts all text content from the uploaded licence image using optical character recognition. Each field — name, licence number, expiry date, address — is parsed and automatically cross-referenced against the data the citizen entered in their application form.</div>
         <div class="ai-mod-metrics">
           <div class="ai-metric"><div class="aim-label">Extraction Accuracy</div><div class="aim-val">98.2%</div></div>
           <div class="ai-metric"><div class="aim-label">Avg. Processing Time</div><div class="aim-val">&lt; 3 seconds</div></div>
@@ -1178,23 +1178,23 @@ footer {
       <div class="ai-module-card reveal delay-2">
         <div class="ai-mod-icon ami-cyan">👤</div>
         <div class="ai-mod-name">Facial Recognition</div>
-        <div class="ai-mod-lib ml-teal">face-api.js</div>
-        <div class="ai-mod-desc">face-api.js generates a 128-dimensional face descriptor for both the photo on the uploaded ID document and the live selfie captured during the application. The cosine similarity between the two descriptors produces a percentage match score, flagging any result below the configured threshold for officer review.</div>
+       <div class="ai-mod-lib ml-teal">face-api (FaceRecognitionNet)</div>
+        <div class="ai-mod-desc">face-api extracts a 128-dimensional face descriptor from the live webcam feed and a second from the uploaded ID photo. The Euclidean distance between the two descriptors is mapped to a 0–100% similarity score — a score of 40% or above passes, accommodating natural variance between a studio ID photo and a live webcam capture.</div>
         <div class="ai-mod-metrics">
-          <div class="ai-metric"><div class="aim-label">Face Match Score</div><div class="aim-val">94.7% avg.</div></div>
-          <div class="ai-metric"><div class="aim-label">Descriptor Points</div><div class="aim-val">128 landmarks</div></div>
-          <div class="ai-metric"><div class="aim-label">Method</div><div class="aim-val">Cosine similarity</div></div>
+          <div class="ai-metric"><div class="aim-label">Pass Threshold</div><div class="aim-val">≥ 40% match</div></div>
+          <div class="ai-metric"><div class="aim-label">Descriptor Dimensions</div><div class="aim-val">128-dimensional</div></div>
+          <div class="ai-metric"><div class="aim-label">Method</div><div class="aim-val">Euclidean distance</div></div>
         </div>
       </div>
       <div class="ai-module-card reveal delay-3">
         <div class="ai-mod-icon ami-teal">🎥</div>
         <div class="ai-mod-name">Liveness Detection</div>
-        <div class="ai-mod-lib ml-gold">TensorFlow.js</div>
-        <div class="ai-mod-desc">A TensorFlow.js model analyses the selfie video stream to confirm the person is physically present in front of the camera — not a printed photo or a screen recording. The model checks for natural eye blinks, micro-expressions, and depth of field cues to confirm liveness before any facial matching can proceed.</div>
+        <div class="ai-mod-lib ml-gold">DeepFace (anti-spoof CNN)</div>
+        <div class="ai-mod-desc">A pre-trained DeepFace anti-spoofing CNN analyses each webcam frame to confirm a live person is present — not a printed photo or screen replay. The webcam frame is decoded and fed into DeepFace with anti-spoofing enabled. A definite spoof result hard-fails the verification; if the model errors or times out, it skips gracefully without failing the applicant.</div>
         <div class="ai-mod-metrics">
-          <div class="ai-metric"><div class="aim-label">Detection Method</div><div class="aim-val">Blink + depth cues</div></div>
-          <div class="ai-metric"><div class="aim-label">Anti-Spoofing</div><div class="aim-val">Photo & replay</div></div>
-          <div class="ai-metric"><div class="aim-label">Framework</div><div class="aim-val">TensorFlow.js</div></div>
+          <div class="ai-metric"><div class="aim-label">Model Type</div><div class="aim-val">Pre-trained CNN</div></div>
+          <div class="ai-metric"><div class="aim-label">Anti-Spoofing</div><div class="aim-val">Photo & screen replay</div></div>
+          <div class="ai-metric"><div class="aim-label">Framework</div><div class="aim-val">DeepFace (Python)</div></div>
         </div>
       </div>
     </div>
@@ -1249,10 +1249,10 @@ footer {
         <div class="tech-desc">Powers the citizen-facing PWA and officer dashboard with component-based, reactive UI architecture.</div>
       </div>
       <div class="tech-card reveal delay-2">
-        <div class="tech-emoji">🟢</div>
+        <div class="tech-emoji">🐍</div>
         <div class="tech-cat">Backend</div>
-        <div class="tech-name">Node.js / Express</div>
-        <div class="tech-desc">Handles all API routing, authentication logic, file processing, and communication between frontend and AI layers.</div>
+        <div class="tech-name">Python / Flask</div>
+        <div class="tech-desc">Flask REST API handles all routing, authentication logic, AI orchestration, and communication between the React frontend and verification services.</div>
       </div>
       <div class="tech-card reveal delay-3">
         <div class="tech-emoji">🔍</div>
@@ -1275,8 +1275,8 @@ footer {
       <div class="tech-card reveal delay-2">
         <div class="tech-emoji">🗄️</div>
         <div class="tech-cat">Database</div>
-        <div class="tech-name">MongoDB</div>
-        <div class="tech-desc">Flexible NoSQL database storing application records, user profiles, verification results, and audit logs.</div>
+        <div class="tech-name">PostgreSQL</div>
+        <div class="tech-desc">Relational database established via Docker, accessed through SQLAlchemy ORM — storing application records, user profiles, verification results, and audit logs.</div>
       </div>
       <div class="tech-card reveal delay-3">
         <div class="tech-emoji">📄</div>
@@ -1335,7 +1335,7 @@ footer {
               <div class="sec-layer-icon">🧱</div>
               <div>
                 <div class="sec-layer-name">Role-Based Access Control</div>
-                <div class="sec-layer-sub">Citizens, Officers, and Admins are strictly isolated</div>
+                <div class="sec-layer-sub">Citizens, Officers, and Supervisors are strictly isolated</div>
               </div>
               <div class="sec-check">Active</div>
             </div>
