@@ -49,15 +49,9 @@ nav {
   backdrop-filter: blur(16px);
   box-shadow: 0 1px 0 var(--border);
 }
-.nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
-.nav-logo-mark {
-  width: 38px; height: 38px; border-radius: 9px;
-  background: linear-gradient(135deg, var(--blue), var(--cyan));
-  display: flex; align-items: center; justify-content: center;
-  font-size: 0.8rem; font-weight: 900; color: white; letter-spacing: -0.03em;
-}
-.nav-logo-text { font-size: 1.05rem; font-weight: 700; color: white; }
-.nav-logo-text span { color: var(--cyan); }
+.nav-logo { display: flex; align-items: center; text-decoration: none; }
+.nav-logo img { height: 36px; width: auto; display: block; }
+.nav-logo-tagline { font-size: 0.7rem; font-weight: 700; color: white; letter-spacing: 0.06em; text-transform: uppercase; line-height: 1; }
 .nav-links { display: flex; align-items: center; gap: 0.2rem; list-style: none; }
 .nav-links a { padding: 0.4rem 0.85rem; border-radius: 6px; text-decoration: none; color: rgba(255,255,255,0.7); font-size: 0.875rem; font-weight: 500; transition: color 0.2s, background 0.2s; }
 .nav-links a:hover { color: white; background: rgba(255,255,255,0.07); }
@@ -177,11 +171,12 @@ section { padding: 100px 5%; }
 .tl-dot {
   width: 48px; height: 48px; border-radius: 50%; flex-shrink: 0;
   display: flex; align-items: center; justify-content: center;
-  font-size: 1rem; position: relative; z-index: 1;
+  position: relative; z-index: 1;
   border: 2px solid;
   background: white;
   transition: transform 0.2s;
 }
+.tl-dot svg { width: 20px; height: 20px; fill: none; stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round; }
 .tl-item:hover .tl-dot { transform: scale(1.1); }
 .tl-blue { border-color: var(--blue); color: var(--blue); background: #EFF6FF; }
 .tl-cyan { border-color: var(--cyan); color: var(--cyan); background: #E0F7FA; }
@@ -308,8 +303,9 @@ section { padding: 100px 5%; }
 .sol-point:hover { border-color: var(--blue); transform: translateX(4px); }
 .sol-icon {
   width: 40px; height: 40px; border-radius: 10px; flex-shrink: 0;
-  display: flex; align-items: center; justify-content: center; font-size: 1rem;
+  display: flex; align-items: center; justify-content: center;
 }
+.sol-icon svg { width: 20px; height: 20px; fill: none; stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round; }
 .si-blue { background: #EFF6FF; } .si-teal { background: #ECFDF5; }
 .si-gold { background: #FFFBEB; } .si-navy { background: var(--off); }
 .sol-point-text h4 { font-size: 0.9rem; font-weight: 700; color: var(--navy); margin-bottom: 2px; }
@@ -342,7 +338,8 @@ section { padding: 100px 5%; }
 }
 .metric-row:hover { background: rgba(255,255,255,0.07); }
 .metric-left { display: flex; align-items: center; gap: 0.75rem; }
-.metric-icon { font-size: 1rem; }
+.metric-icon { display: flex; align-items: center; }
+.metric-icon svg { width: 16px; height: 16px; stroke: var(--blue); fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
 .metric-name { font-size: 0.85rem; color: rgba(255,255,255,0.7); font-weight: 500; }
 .metric-val { font-size: 0.85rem; font-weight: 700; }
 .mv-green { color: var(--green); }
@@ -384,14 +381,20 @@ section { padding: 100px 5%; }
 .btn-outline-white:hover { border-color: white; }
 
 /* ─── FOOTER ─── */
-footer { background: #060E1A; padding: 3rem 5%; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1.5rem; border-top: 1px solid rgba(255,255,255,0.05); }
-.footer-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
-.footer-logo-mark { width: 32px; height: 32px; border-radius: 7px; background: linear-gradient(135deg, var(--blue), var(--cyan)); display: flex; align-items: center; justify-content: center; font-size: 0.7rem; font-weight: 900; color: white; }
-.footer-logo-text { font-size: 0.95rem; font-weight: 700; color: rgba(255,255,255,0.8); }
-.footer-links { display: flex; gap: 1.5rem; flex-wrap: wrap; }
-.footer-links a { color: rgba(255,255,255,0.35); text-decoration: none; font-size: 0.82rem; font-weight: 500; transition: color 0.2s; }
-.footer-links a:hover { color: var(--cyan); }
-.footer-right { font-size: 0.78rem; color: rgba(255,255,255,0.25); text-align: right; line-height: 1.6; }
+footer { background: #060E1A; border-top: 1px solid rgba(255,255,255,0.07); padding: 4rem 5% 2rem; }
+.footer-top { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 3rem; padding-bottom: 2.5rem; border-bottom: 1px solid rgba(255,255,255,0.07); margin-bottom: 2rem; }
+.footer-brand { display: flex; flex-direction: column; gap: 1rem; max-width: 300px; }
+.footer-logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+.footer-logo img { height: 36px; width: auto; display: block; }
+.footer-logo-tagline { font-size: 0.9rem; font-weight: 700; color: white; letter-spacing: 0.05em; text-transform: uppercase; line-height: 1; }
+.footer-desc { font-size: 0.82rem; color: rgba(255,255,255,0.35); line-height: 1.65; }
+.footer-nav { display: flex; gap: 4rem; flex-wrap: wrap; }
+.footer-col h4 { font-size: 0.72rem; font-weight: 700; color: rgba(255,255,255,0.5); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 1rem; }
+.footer-col a { display: block; color: rgba(255,255,255,0.55); text-decoration: none; font-size: 0.85rem; font-weight: 500; margin-bottom: 0.6rem; transition: color 0.2s; }
+.footer-col a:hover { color: var(--cyan); }
+.footer-bottom { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 1rem; align-items: center; }
+.footer-copy { font-size: 0.78rem; color: rgba(255,255,255,0.2); line-height: 1.6; }
+.footer-uni { font-size: 0.78rem; color: rgba(255,255,255,0.2); text-align: right; line-height: 1.6; }
 
 @media (max-width: 900px) {
   .what-grid, .solution-grid { grid-template-columns: 1fr; gap: 3rem; }
@@ -408,15 +411,15 @@ footer { background: #060E1A; padding: 3rem 5%; display: flex; align-items: cent
 <!-- NAV -->
 <nav>
   <a href="index.html" class="nav-logo">
-    <div class="nav-logo-mark">DLRS</div>
-    <span class="nav-logo-text">DLRS<span>JAM</span></span>
+    <img src="assets/logo/DLRSJAM Logo.png" alt="DLRSJAM">
+    <span class="nav-logo-tagline">Driver's Licence Renewal System</span>
   </a>
   <ul class="nav-links">
     <li><a href="index.html">Home</a></li>
     <li><a href="about.html" class="active">About</a></li>
     <li><a href="how-it-works.html">How It Works</a></li>
     <li><a href="team.html">Our Team</a></li>
-    <li><a href="how-it-works.html#demo" class="nav-cta">Watch Demo</a></li>
+    <li><a href="contact.html" class="nav-cta">Contact</a></li>
   </ul>
   <div class="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
 </nav>
@@ -425,7 +428,7 @@ footer { background: #060E1A; padding: 3rem 5%; display: flex; align-items: cent
   <a href="about.html">About</a>
   <a href="how-it-works.html">How It Works</a>
   <a href="team.html">Our Team</a>
-  <a href="how-it-works.html#demo">Watch Demo</a>
+  <a href="how-it-works.html#demo">Watch Video</a>
 </div>
 
 <!-- PAGE HERO -->
@@ -463,28 +466,28 @@ footer { background: #060E1A; padding: 3rem 5%; display: flex; align-items: cent
       <div class="what-visual reveal-right">
         <div class="timeline">
           <div class="tl-item reveal delay-1">
-            <div class="tl-dot tl-blue">💡</div>
+            <div class="tl-dot tl-blue"><svg stroke="var(--blue)" viewBox="0 0 24 24"><line x1="12" y1="2" x2="12" y2="3"/><path d="M9 18h6"/><path d="M10 22h4"/><path d="M12 3a7 7 0 0 1 4 12.74V17H8v-1.26A7 7 0 0 1 12 3z"/></svg></div>
             <div class="tl-content">
               <h4>The Problem Identified</h4>
               <p>Manual TAJ visits, long queues, rural inaccessibility, and fraud risk create daily hardship for Jamaican drivers needing to renew their licences.</p>
             </div>
           </div>
           <div class="tl-item reveal delay-2">
-            <div class="tl-dot tl-cyan">🌍</div>
+            <div class="tl-dot tl-cyan"><svg stroke="var(--cyan)" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div>
             <div class="tl-content">
               <h4>Global Inspiration</h4>
               <p>Countries like Estonia and the UK already use OCR scanning, face matching, and liveness detection for digital ID renewals. Jamaica has the infrastructure to do the same.</p>
             </div>
           </div>
           <div class="tl-item reveal delay-3">
-            <div class="tl-dot tl-green">🏗️</div>
+            <div class="tl-dot tl-green"><svg stroke="var(--green)" viewBox="0 0 24 24"><rect x="2" y="3" width="6" height="18"/><rect x="16" y="3" width="6" height="18"/><path d="M8 12h8"/></svg></div>
             <div class="tl-content">
               <h4>The System Built</h4>
               <p>A Progressive Web App (React + Flask) with three AI modules: OCR, face matching, and liveness detection integrated with a structured TAJ officer approval workflow.</p>
             </div>
           </div>
           <div class="tl-item reveal delay-4">
-            <div class="tl-dot tl-navy">🪪</div>
+            <div class="tl-dot tl-navy"><svg stroke="white" viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg></div>
             <div class="tl-content">
               <h4>The Result</h4>
               <p>A fully functional prototype that takes a driver from application to downloadable digital licence without a single visit to a branch.</p>
@@ -508,24 +511,24 @@ footer { background: #060E1A; padding: 3rem 5%; display: flex; align-items: cent
     <div class="problem-cards">
       <div class="problem-card reveal delay-1">
         <div class="problem-num-tag">Problem 01</div>
-        <div style="font-size:2.2rem;margin-bottom:1rem;">⏳</div>
+        <div style="width:52px;height:52px;border-radius:12px;background:rgba(255,255,255,0.07);display:flex;align-items:center;justify-content:center;margin-bottom:1rem;"><svg style="width:26px;height:26px;stroke:var(--cyan);fill:none;stroke-width:1.75;stroke-linecap:round;stroke-linejoin:round;" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
         <h3>Hours Lost in Queues</h3>
         <p>Every renewal demands a physical visit to a TAJ branch. Long wait times are the norm; citizens spend hours in lines just to hand over documents that could be submitted digitally in seconds.</p>
-        <div class="problem-stat">⏱ Directly affects every single Jamaican driver</div>
+        <div class="problem-stat" style="display:flex;align-items:center;gap:6px;"><svg style="width:12px;height:12px;stroke:rgba(255,255,255,0.4);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0;" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 15 13.5"/></svg> Directly affects every single Jamaican driver</div>
       </div>
       <div class="problem-card reveal delay-2">
         <div class="problem-num-tag">Problem 02</div>
-        <div style="font-size:2.2rem;margin-bottom:1rem;">🗺️</div>
+        <div style="width:52px;height:52px;border-radius:12px;background:rgba(255,255,255,0.07);display:flex;align-items:center;justify-content:center;margin-bottom:1rem;"><svg style="width:26px;height:26px;stroke:var(--cyan);fill:none;stroke-width:1.75;stroke-linecap:round;stroke-linejoin:round;" viewBox="0 0 24 24"><polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"/><line x1="8" y1="2" x2="8" y2="18"/><line x1="16" y1="6" x2="16" y2="22"/></svg></div>
         <h3>Rural Inaccessibility</h3>
         <p>Citizens in parishes without a nearby TAJ branch face expensive, time-consuming travel to access a basic government service creating an unequal and unfair system for rural Jamaicans.</p>
-        <div class="problem-stat">📍 Disproportionately impacts rural communities</div>
+        <div class="problem-stat" style="display:flex;align-items:center;gap:6px;"><svg style="width:12px;height:12px;stroke:rgba(255,255,255,0.4);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0;" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> Disproportionately impacts rural communities</div>
       </div>
       <div class="problem-card reveal delay-3">
         <div class="problem-num-tag">Problem 03</div>
-        <div style="font-size:2.2rem;margin-bottom:1rem;">🕵️</div>
+        <div style="width:52px;height:52px;border-radius:12px;background:rgba(255,255,255,0.07);display:flex;align-items:center;justify-content:center;margin-bottom:1rem;"><svg style="width:26px;height:26px;stroke:var(--cyan);fill:none;stroke-width:1.75;stroke-linecap:round;stroke-linejoin:round;" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/><path d="M11 8v3l2 2"/></svg></div>
         <h3>Document Fraud Risk</h3>
         <p>Manual comparison of documents leaves the process vulnerable to forgeries. Visual inspection is inconsistent and cannot reliably detect sophisticated tampered submissions.</p>
-        <div class="problem-stat">🔍 A systemic security gap with no current solution</div>
+        <div class="problem-stat" style="display:flex;align-items:center;gap:6px;"><svg style="width:12px;height:12px;stroke:rgba(255,255,255,0.4);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0;" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg> A systemic security gap with no current solution</div>
       </div>
     </div>
 
@@ -537,8 +540,8 @@ footer { background: #060E1A; padding: 3rem 5%; display: flex; align-items: cent
     <div class="compare-wrap reveal">
       <div class="compare-header">
         <div class="compare-col-head ch-aspect">Aspect</div>
-        <div class="compare-col-head ch-before">❌ &nbsp;Current TAJ Process</div>
-        <div class="compare-col-head ch-after">✅ &nbsp;With DLRSJAM</div>
+        <div class="compare-col-head ch-before" style="display:flex;align-items:center;gap:7px;"><svg style="width:13px;height:13px;stroke:#F87171;fill:none;stroke-width:2.5;stroke-linecap:round;" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>Current TAJ Process</div>
+        <div class="compare-col-head ch-after" style="display:flex;align-items:center;gap:7px;"><svg style="width:13px;height:13px;stroke:var(--green);fill:none;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round;" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>With DLRSJAM</div>
       </div>
       <div class="compare-row">
         <div class="compare-cell cell-aspect">Location</div>
@@ -628,28 +631,28 @@ footer { background: #060E1A; padding: 3rem 5%; display: flex; align-items: cent
         <p>The AI handles the heavy lifting reading documents, matching faces, and checking liveness — while a real TAJ officer retains final approval authority on every application.</p>
         <div class="solution-points">
           <div class="sol-point reveal delay-1">
-            <div class="sol-icon si-blue">🔐</div>
+            <div class="sol-icon si-blue"><svg stroke="#1557BF" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div>
             <div class="sol-point-text">
               <h4>AI Identity Verification</h4>
               <p>Three AI modules verify who you are automatically OCR, face matching, and liveness detection working in parallel</p>
             </div>
           </div>
           <div class="sol-point reveal delay-2">
-            <div class="sol-icon si-teal">🏛️</div>
+            <div class="sol-icon si-teal"><svg stroke="#0A9E8A" viewBox="0 0 24 24"><line x1="3" y1="22" x2="21" y2="22"/><rect x="2" y="11" width="3" height="11"/><rect x="10.5" y="11" width="3" height="11"/><rect x="19" y="11" width="3" height="11"/><path d="M12 2L2 11h20z"/></svg></div>
             <div class="sol-point-text">
               <h4>Human Officer Oversight</h4>
               <p>Every application is reviewed and approved by a TAJ officer, the AI assists, it never replaces human judgment</p>
             </div>
           </div>
           <div class="sol-point reveal delay-3">
-            <div class="sol-icon si-gold">🪪</div>
+            <div class="sol-icon si-gold"><svg stroke="#F5A623" viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg></div>
             <div class="sol-point-text">
               <h4>Instant Digital Licence</h4>
-              <p>Approved applications generate a downloadable PDF licence with a QR code for verification available immediately</p>
+              <p>Approved applications generate a downloadable digital licence card with the applicant's photo, available immediately upon approval</p>
             </div>
           </div>
           <div class="sol-point reveal delay-4">
-            <div class="sol-icon si-navy">📱</div>
+            <div class="sol-icon si-navy"><svg stroke="#1557BF" viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg></div>
             <div class="sol-point-text">
               <h4>Works on Any Device</h4>
               <p>No app download needed, the PWA runs in any modern browser on phones, tablets, and computers</p>
@@ -663,23 +666,23 @@ footer { background: #060E1A; padding: 3rem 5%; display: flex; align-items: cent
           <div class="sv-inner">
             <div class="sv-title">Application Verification Summary</div>
             <div class="metric-row reveal delay-1">
-              <div class="metric-left"><span class="metric-icon">📄</span><span class="metric-name">Document Upload</span></div>
+              <div class="metric-left"><span class="metric-icon"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></span><span class="metric-name">Document Upload</span></div>
               <span class="metric-val mv-green">✓ Complete</span>
             </div>
             <div class="metric-row reveal delay-2">
-              <div class="metric-left"><span class="metric-icon">🔍</span><span class="metric-name">OCR Text Extraction</span></div>
+              <div class="metric-left"><span class="metric-icon"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></span><span class="metric-name">OCR Text Extraction</span></div>
               <span class="metric-val mv-green">✓ 98.2% accuracy</span>
             </div>
             <div class="metric-row reveal delay-3">
-              <div class="metric-left"><span class="metric-icon">👤</span><span class="metric-name">Face Match Score</span></div>
+              <div class="metric-left"><span class="metric-icon"><svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></span><span class="metric-name">Face Match Score</span></div>
               <span class="metric-val mv-cyan">94.7% match</span>
             </div>
             <div class="metric-row reveal delay-4">
-              <div class="metric-left"><span class="metric-icon">🎥</span><span class="metric-name">Liveness Detection</span></div>
+              <div class="metric-left"><span class="metric-icon"><svg viewBox="0 0 24 24"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg></span><span class="metric-name">Liveness Detection</span></div>
               <span class="metric-val mv-green">✓ Real person confirmed</span>
             </div>
             <div class="metric-row reveal delay-5">
-              <div class="metric-left"><span class="metric-icon">🏛️</span><span class="metric-name">Officer Review</span></div>
+              <div class="metric-left"><span class="metric-icon"><svg viewBox="0 0 24 24"><line x1="3" y1="22" x2="21" y2="22"/><rect x="2" y="11" width="3" height="11"/><rect x="10.5" y="11" width="3" height="11"/><rect x="19" y="11" width="3" height="11"/><path d="M12 2L2 11h20z"/></svg></span><span class="metric-name">Officer Review</span></div>
               <span class="metric-val" style="color:#FBBF24;">In Progress</span>
             </div>
             <div class="sv-divider"></div>
@@ -715,20 +718,34 @@ footer { background: #060E1A; padding: 3rem 5%; display: flex; align-items: cent
 
 <!-- FOOTER -->
 <footer>
-  <a href="index.html" class="footer-logo">
-    <div class="footer-logo-mark">DLR</div>
-    <span class="footer-logo-text">DLRSJAM</span>
-  </a>
-  <div class="footer-links">
-    <a href="index.html">Home</a>
-    <a href="about.html">About</a>
-    <a href="how-it-works.html">How It Works</a>
-    <a href="team.html">Team</a>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <a href="index.html" class="footer-logo">
+        <img src="assets/logo/DLRSJAM Logo.png" alt="DLRSJAM">
+        <span class="footer-logo-tagline">Driver's Licence Renewal System</span>
+      </a>
+      <p class="footer-desc">A digital solution for Jamaican drivers to renew their licence online — no queues, no branch visit, no day off work.</p>
+    </div>
+    <div class="footer-nav">
+      <div class="footer-col">
+        <h4>Navigate</h4>
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="how-it-works.html">How It Works</a>
+        <a href="team.html">Our Team</a>
+        <a href="contact.html">Contact</a>
+      </div>
+      <div class="footer-col">
+        <h4>Project</h4>
+        <a href="about.html#mission">Our Mission</a>
+        <a href="how-it-works.html">The System</a>
+        <a href="index.html#demo">Watch Demo</a>
+      </div>
+    </div>
   </div>
-  <div class="footer-right">
-    COMP3901 Capstone Project<br>
-    University of the West Indies · 2026<br>
-    Supervised by Prof. Gunjan Mansingh
+  <div class="footer-bottom">
+    <p class="footer-copy">&copy; 2026 DLRSJAM. COMP3901 Capstone Project.</p>
+    <p class="footer-uni">University of the West Indies &middot; Supervised by Prof. Gunjan Mansingh</p>
   </div>
 </footer>
 

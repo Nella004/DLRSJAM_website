@@ -1,10 +1,10 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>How It Works – DLRSJAM</title>
-<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Lora:ital,wght@0,400;0,600;1,400&family=IBM+Plex+Sans:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
 
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
@@ -48,15 +48,9 @@ nav {
   backdrop-filter: blur(16px);
   box-shadow: 0 1px 0 var(--border);
 }
-.nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
-.nav-logo-mark {
-  width: 38px; height: 38px; border-radius: 9px;
-  background: linear-gradient(135deg, var(--blue), var(--cyan));
-  display: flex; align-items: center; justify-content: center;
-  font-size: 0.8rem; font-weight: 900; color: white; letter-spacing: -0.03em;
-}
-.nav-logo-text { font-size: 1.05rem; font-weight: 700; color: white; }
-.nav-logo-text span { color: var(--cyan); }
+.nav-logo { display: flex; align-items: center; text-decoration: none; }
+.nav-logo img { height: 36px; width: auto; display: block; }
+.nav-logo-tagline { font-size: 0.7rem; font-weight: 700; color: white; letter-spacing: 0.06em; text-transform: uppercase; line-height: 1; }
 .nav-links { display: flex; align-items: center; gap: 0.2rem; list-style: none; }
 .nav-links a { padding: 0.4rem 0.85rem; border-radius: 6px; text-decoration: none; color: rgba(255,255,255,0.7); font-size: 0.875rem; font-weight: 500; transition: color 0.2s, background 0.2s; }
 .nav-links a:hover { color: white; background: rgba(255,255,255,0.07); }
@@ -214,7 +208,8 @@ section { padding: 100px 5%; }
 .arch-layer.al-teal   { background: rgba(10,158,138,0.12); border: 1px solid rgba(10,158,138,0.25); }
 .arch-layer.al-gold   { background: rgba(245,166,35,0.1);  border: 1px solid rgba(245,166,35,0.2); }
 .arch-layer.al-green  { background: rgba(16,185,129,0.1);  border: 1px solid rgba(16,185,129,0.22); }
-.arch-icon { font-size: 1.2rem; flex-shrink: 0; }
+.arch-icon { flex-shrink: 0; display: flex; align-items: center; }
+.arch-icon svg { width: 20px; height: 20px; fill: none; stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round; }
 .arch-layer-name { font-size: 0.875rem; font-weight: 700; color: white; }
 .arch-layer-desc { font-size: 0.75rem; color: rgba(255,255,255,0.45); margin-top: 1px; }
 .arch-connector { display: flex; align-items: center; justify-content: center; gap: 0.35rem; }
@@ -240,8 +235,9 @@ section { padding: 100px 5%; }
 .role-icon-wrap {
   width: 52px; height: 52px; border-radius: 14px;
   display: flex; align-items: center; justify-content: center;
-  font-size: 1.5rem; flex-shrink: 0;
+  flex-shrink: 0;
 }
+.role-icon-wrap svg { width: 24px; height: 24px; fill: none; stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round; }
 .ri-blue  { background: rgba(21,87,191,0.1);  }
 .ri-teal  { background: rgba(10,158,138,0.1); }
 .ri-gold  { background: rgba(245,166,35,0.1); }
@@ -302,7 +298,8 @@ section { padding: 100px 5%; }
   background: var(--off); border: 1px solid var(--border2);
   border-radius: 10px; padding: 0.75rem 1rem;
 }
-.sd-icon { font-size: 1rem; flex-shrink: 0; margin-top: 1px; }
+.sd-icon { flex-shrink: 0; margin-top: 1px; display: flex; align-items: center; }
+.sd-icon svg { width: 16px; height: 16px; stroke: var(--blue); fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
 .sd-text { font-size: 0.85rem; color: var(--navy); line-height: 1.5; }
 .sd-text strong { color: var(--blue); font-weight: 700; }
 
@@ -390,8 +387,8 @@ section { padding: 100px 5%; }
   background: linear-gradient(135deg, rgba(21,87,191,0.4), rgba(0,180,216,0.3));
   border: 2px solid rgba(0,180,216,0.3);
   margin: 0 auto 0.5rem; display: flex; align-items: center; justify-content: center;
-  font-size: 1.6rem;
 }
+.face-placeholder svg { width: 28px; height: 28px; stroke: rgba(255,255,255,0.7); fill: none; stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round; }
 .face-box-label { font-size: 0.68rem; color: rgba(255,255,255,0.35); font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; }
 .face-match-score {
   background: rgba(16,185,129,0.1); border: 1px solid rgba(16,185,129,0.25);
@@ -433,48 +430,209 @@ section { padding: 100px 5%; }
 .asc-approve:hover { opacity: 0.9; }
 .asc-reject  { background: rgba(239,68,68,0.15); color: #EF4444; border: 1px solid rgba(239,68,68,0.25); }
 
-/* Licence visual */
-.licence-card {
-  background: linear-gradient(135deg, var(--blue), var(--navy2));
-  border-radius: 16px; padding: 1.5rem;
-  border: 1px solid rgba(21,87,191,0.4);
+/* ─── DIGITAL LICENCE CARD (redesigned) ─── */
+@keyframes shimmer-slide {
+  0%   { transform: translateX(-100%); }
+  100% { transform: translateX(400%); }
+}
+@keyframes verified-pulse {
+  0%,100% { box-shadow: 0 0 0 0 rgba(16,185,129,0.55); }
+  50%      { box-shadow: 0 0 0 6px rgba(16,185,129,0); }
+}
+@keyframes guilloche-drift {
+  from { stroke-dashoffset: 0; }
+  to   { stroke-dashoffset: 120; }
+}
+.digital-licence-section {
+  background: #05101e;
+  padding: 90px 5%;
+  display: flex; flex-direction: column; align-items: center;
+}
+.dlc-section-heading {
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  font-weight: 700; color: #fff;
+  text-align: center; margin-bottom: 0.55rem;
+}
+.dlc-section-sub {
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-size: 0.95rem; color: rgba(180,200,240,0.65);
+  text-align: center; max-width: 540px;
+  margin: 0 auto 2.4rem;
+  line-height: 1.7;
+}
+.dlc-wrap {
+  width: 600px; max-width: 100%;
+  display: flex; flex-direction: column; align-items: center; gap: 1rem;
+}
+.dlc-card {
+  width: 600px; height: 378px; max-width: 100%;
+  border-radius: 18px;
+  background:
+    radial-gradient(700px 400px at 100% 0%, oklch(0.97 0.08 95 / 0.85), transparent 60%),
+    radial-gradient(600px 360px at 0% 100%, oklch(0.95 0.06 240 / 0.55), transparent 60%),
+    linear-gradient(180deg, #fafbff 0%, #f7f8fc 100%);
   position: relative; overflow: hidden;
+  font-family: 'IBM Plex Sans', sans-serif;
+  box-shadow: 0 32px 80px rgba(0,0,10,0.55), 0 0 0 1px rgba(30,50,120,0.12);
 }
-.lc-bg-pattern {
-  position: absolute; inset: 0; opacity: 0.05;
-  background-image: repeating-linear-gradient(45deg, white 0, white 1px, transparent 0, transparent 50%);
-  background-size: 10px 10px;
+.dlc-card.dlc-back { display: none; flex-direction: column; }
+.dlc-card.dlc-back.active { display: flex; }
+.dlc-card.dlc-front.hidden { display: none; }
+.dlc-guilloche {
+  position: absolute; inset: 0; width: 100%; height: 100%;
+  pointer-events: none; z-index: 1; opacity: 0.06;
 }
-.lc-inner { position: relative; z-index: 1; }
-.lc-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1.25rem; }
-.lc-gov { font-size: 0.68rem; font-weight: 800; letter-spacing: 0.06em; color: rgba(255,255,255,0.5); text-transform: uppercase; }
-.lc-type { font-size: 1rem; font-weight: 900; color: white; letter-spacing: -0.02em; }
-.lc-flag { font-size: 1.5rem; }
-.lc-body { display: grid; grid-template-columns: auto 1fr; gap: 1rem; align-items: center; }
-.lc-photo {
-  width: 56px; height: 70px; border-radius: 8px;
-  background: rgba(255,255,255,0.12); border: 2px solid rgba(255,255,255,0.2);
-  display: flex; align-items: center; justify-content: center; font-size: 1.75rem;
+.dlc-guilloche path { animation: guilloche-drift 8s linear infinite; }
+.dlc-flare {
+  position: absolute; top: -60px; right: -60px;
+  width: 260px; height: 260px;
+  background: conic-gradient(from 200deg at 70% 30%,
+    transparent 0deg, rgba(245,166,35,0.18) 20deg,
+    transparent 40deg, rgba(21,87,191,0.12) 70deg,
+    transparent 100deg, rgba(245,166,35,0.1) 130deg,
+    transparent 160deg);
+  pointer-events: none; z-index: 2;
 }
-.lc-fields { display: flex; flex-direction: column; gap: 4px; }
-.lc-field-label { font-size: 0.6rem; color: rgba(255,255,255,0.35); font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; }
-.lc-field-value { font-size: 0.82rem; color: white; font-weight: 700; }
-.lc-footer { margin-top: 1rem; padding-top: 0.85rem; border-top: 1px solid rgba(255,255,255,0.1); display: flex; justify-content: space-between; align-items: center; }
-.lc-qr {
-  width: 42px; height: 42px; border-radius: 6px;
-  background: rgba(255,255,255,0.9); display: flex; align-items: center; justify-content: center;
+.dlc-stripe {
+  position: absolute; left: 0; top: 0; bottom: 0; width: 40px;
+  background: #0a4a2e;
+  display: flex; flex-direction: column; align-items: center;
+  justify-content: space-between;
+  padding: 14px 0;
+  z-index: 3;
 }
-.lc-qr-inner { font-size: 1.4rem; }
-.lc-exp { font-size: 0.65rem; color: rgba(255,255,255,0.4); }
-.lc-exp strong { color: rgba(255,255,255,0.75); display: block; font-size: 0.8rem; font-weight: 700; }
+.dlc-stripe-dots { display: flex; flex-direction: column; gap: 5px; }
+.dlc-stripe-dots span { width: 6px; height: 6px; border-radius: 50%; background: #2ecc71; opacity: 0.8; }
+.dlc-stripe-text {
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.55rem; font-weight: 600;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  color: rgba(255,255,255,0.75);
+}
+.dlc-main {
+  position: absolute; left: 40px; right: 0; top: 0; bottom: 0;
+  display: flex; flex-direction: column;
+  padding: 12px 14px 10px;
+  z-index: 4;
+}
+.dlc-topbar {
+  display: flex; align-items: center; gap: 10px;
+  padding-bottom: 9px;
+  border-bottom: 1px solid rgba(30,50,120,0.1);
+  margin-bottom: 8px;
+}
+.dlc-coat {
+  width: 34px; height: 34px; flex-shrink: 0;
+  background: #0a4a2e; border-radius: 50%;
+  border: 1.5px solid rgba(10,74,46,0.3);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 18px; line-height: 1;
+}
+.dlc-topbar-text { flex: 1; min-width: 0; }
+.dlc-gov-name {
+  font-size: 0.58rem; font-weight: 700;
+  letter-spacing: 0.08em; text-transform: uppercase;
+  color: rgba(20,35,80,0.65);
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.dlc-lic-title {
+  font-size: 0.85rem; font-weight: 700;
+  background: linear-gradient(90deg, #1557BF, #F5A623);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text; line-height: 1.1;
+}
+.dlc-verified {
+  display: flex; align-items: center; gap: 5px;
+  background: rgba(16,185,129,0.12);
+  border: 1px solid rgba(16,185,129,0.35);
+  border-radius: 100px; padding: 3px 9px;
+  font-size: 0.6rem; font-weight: 700; color: #10B981;
+  letter-spacing: 0.05em; text-transform: uppercase;
+  animation: verified-pulse 2.4s ease infinite;
+  flex-shrink: 0;
+}
+.dlc-verified-dot { width: 6px; height: 6px; border-radius: 50%; background: #10B981; }
+.dlc-body-grid {
+  display: grid; grid-template-columns: 3fr 2fr;
+  gap: 0 10px; flex: 1; min-height: 0;
+}
+.dlc-left { display: grid; grid-template-columns: 1fr 1fr; gap: 5px 8px; align-content: start; }
+.dlc-right {
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: space-between;
+  padding-bottom: 4px;
+  border-left: 1px solid rgba(30,50,120,0.08);
+  padding-left: 10px;
+}
+.dlc-field {
+  background: rgba(255,255,255,0.18);
+  border: 1px solid rgba(30,50,120,0.1);
+  border-radius: 6px; padding: 4px 7px;
+}
+.dlc-field.span2 { grid-column: 1 / -1; }
+.dlc-fl { font-size: 0.5rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(20,35,80,0.45); margin-bottom: 1px; }
+.dlc-fv { font-family: 'IBM Plex Mono', monospace; font-size: 0.72rem; font-weight: 600; color: #0d1e3f; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.dlc-fv.name { font-family: 'IBM Plex Sans', sans-serif; font-size: 0.85rem; font-weight: 700; }
+.dlc-photo {
+  width: 70px; flex: 1;
+  background: rgba(255,255,255,0.25);
+  border: 1.5px solid rgba(30,50,120,0.12);
+  border-radius: 8px;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  gap: 4px; max-height: 120px;
+}
+.dlc-photo svg { width: 34px; height: 34px; stroke: rgba(13,30,63,0.38); fill: none; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+.dlc-sig-wrap { width: 100%; text-align: center; }
+.dlc-sig-line { width: 100%; height: 1px; background: rgba(30,50,120,0.2); margin-bottom: 2px; }
+.dlc-sig-label { font-size: 0.45rem; color: rgba(20,35,80,0.4); letter-spacing: 0.05em; text-transform: uppercase; }
+.dlc-shimmer {
+  position: absolute; top: 0; right: 0; bottom: 0; width: 150px;
+  pointer-events: none; z-index: 5; overflow: hidden;
+  border-radius: 0 18px 18px 0;
+}
+.dlc-shimmer::after {
+  content: '';
+  position: absolute; top: 0; left: -60px; bottom: 0; width: 60px;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.22) 50%, transparent);
+  animation: shimmer-slide 4s ease-in-out infinite;
+}
+/* Back face */
+.dlc-back-inner {
+  padding: 18px 18px 14px;
+  display: flex; flex-direction: column; gap: 10px;
+  height: 100%; box-sizing: border-box;
+}
+.dlc-back-title { font-size: 0.65rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(20,35,80,0.55); }
+.dlc-endorse-table { width: 100%; border-collapse: collapse; }
+.dlc-endorse-table th { font-size: 0.5rem; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; color: rgba(20,35,80,0.45); padding: 4px 8px; border-bottom: 1px solid rgba(30,50,120,0.12); text-align: left; }
+.dlc-endorse-table td { font-family: 'IBM Plex Mono', monospace; font-size: 0.68rem; color: #0d1e3f; padding: 5px 8px; border-bottom: 1px solid rgba(30,50,120,0.06); background: rgba(255,255,255,0.18); }
+.dlc-back-row { display: flex; gap: 14px; align-items: flex-end; }
+.dlc-ctrl { flex: 1; }
+.dlc-ctrl-label { font-size: 0.5rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(20,35,80,0.45); margin-bottom: 3px; }
+.dlc-ctrl-val { font-family: 'IBM Plex Mono', monospace; font-size: 0.78rem; font-weight: 600; color: #0d1e3f; }
+.dlc-barcode { display: flex; align-items: flex-end; gap: 1.5px; height: 38px; }
+.dlc-barcode .bar { background: #0d1e3f; border-radius: 1px; }
+/* Toggle + download */
+.dlc-toggle-btn {
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 8px; padding: 0.55rem 1.4rem;
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-size: 0.8rem; font-weight: 600; color: rgba(255,255,255,0.8);
+  cursor: pointer; transition: background 0.2s, border-color 0.2s;
+  letter-spacing: 0.03em;
+}
+.dlc-toggle-btn:hover { background: rgba(255,255,255,0.11); border-color: rgba(255,255,255,0.28); }
 .download-btn-mock {
   display: flex; align-items: center; gap: 0.5rem; justify-content: center;
-  margin-top: 0.9rem;
-  background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2);
+  background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.15);
   border-radius: 8px; padding: 0.6rem 1rem;
-  font-size: 0.8rem; font-weight: 700; color: white;
+  font-size: 0.8rem; font-weight: 700; color: rgba(255,255,255,0.75);
 }
-
 /* ─── AI DEEP DIVE ─── */
 .ai-section { background: var(--navy); padding: 100px 5%; }
 .ai-section .section-tag { color: var(--cyan); }
@@ -492,8 +650,9 @@ section { padding: 100px 5%; }
 .ai-mod-icon {
   width: 54px; height: 54px; border-radius: 14px;
   display: flex; align-items: center; justify-content: center;
-  font-size: 1.5rem; margin-bottom: 1.25rem;
+  margin-bottom: 1.25rem;
 }
+.ai-mod-icon svg { width: 26px; height: 26px; fill: none; stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round; }
 .ami-blue { background: rgba(21,87,191,0.25); }
 .ami-cyan { background: rgba(0,180,216,0.15); }
 .ami-teal { background: rgba(10,158,138,0.18); }
@@ -551,7 +710,8 @@ section { padding: 100px 5%; }
   transition: transform 0.25s, box-shadow 0.25s;
 }
 .tech-card:hover { transform: translateY(-3px); box-shadow: 0 10px 30px rgba(21,87,191,0.08); }
-.tech-emoji { font-size: 1.8rem; margin-bottom: 0.75rem; }
+.tech-emoji { margin-bottom: 0.75rem; display: flex; align-items: center; }
+.tech-emoji svg { width: 28px; height: 28px; stroke: var(--blue); fill: none; stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round; }
 .tech-cat  { font-size: 0.65rem; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; color: var(--blue); margin-bottom: 0.3rem; }
 .tech-name { font-size: 0.975rem; font-weight: 800; color: var(--navy); margin-bottom: 0.4rem; }
 .tech-desc { font-size: 0.78rem; color: #5A7090; line-height: 1.55; }
@@ -565,7 +725,8 @@ section { padding: 100px 5%; }
   background: var(--off); border: 1px solid var(--border2);
   border-radius: 12px; padding: 1rem 1.1rem;
 }
-.sec-pillar-icon { font-size: 1.25rem; margin-bottom: 0.4rem; }
+.sec-pillar-icon { margin-bottom: 0.4rem; display: flex; align-items: center; }
+.sec-pillar-icon svg { width: 22px; height: 22px; stroke: var(--blue); fill: none; stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round; }
 .sec-pillar-name { font-size: 0.85rem; font-weight: 800; color: var(--navy); margin-bottom: 0.25rem; }
 .sec-pillar-desc { font-size: 0.75rem; color: #5A7090; line-height: 1.5; }
 .sec-visual {
@@ -582,7 +743,8 @@ section { padding: 100px 5%; }
 .sec-layer.sl-2 { background: rgba(0,180,216,0.1);  border: 1px solid rgba(0,180,216,0.2); }
 .sec-layer.sl-3 { background: rgba(10,158,138,0.1); border: 1px solid rgba(10,158,138,0.2); }
 .sec-layer.sl-4 { background: rgba(16,185,129,0.1); border: 1px solid rgba(16,185,129,0.2); }
-.sec-layer-icon { font-size: 1.25rem; flex-shrink: 0; }
+.sec-layer-icon { flex-shrink: 0; display: flex; align-items: center; }
+.sec-layer-icon svg { width: 18px; height: 18px; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
 .sec-layer-name { font-size: 0.875rem; font-weight: 700; color: white; }
 .sec-layer-sub  { font-size: 0.75rem; color: rgba(255,255,255,0.4); margin-top: 1px; }
 .sec-check { margin-left: auto; font-size: 0.7rem; font-weight: 700; color: var(--green); background: rgba(16,185,129,0.12); border: 1px solid rgba(16,185,129,0.2); border-radius: 100px; padding: 3px 9px; flex-shrink: 0; }
@@ -611,24 +773,20 @@ section { padding: 100px 5%; }
 .btn-outline-white:hover { background: rgba(255,255,255,0.07); }
 
 /* ─── FOOTER ─── */
-footer {
-  background: var(--navy); border-top: 1px solid var(--border);
-  padding: 2.5rem 5%;
-  display: flex; align-items: center; justify-content: space-between;
-  flex-wrap: wrap; gap: 1.5rem;
-}
-.footer-logo { display: flex; align-items: center; gap: 9px; text-decoration: none; }
-.footer-logo-mark {
-  width: 34px; height: 34px; border-radius: 8px;
-  background: linear-gradient(135deg, var(--blue), var(--cyan));
-  display: flex; align-items: center; justify-content: center;
-  font-size: 0.68rem; font-weight: 900; color: white;
-}
-.footer-logo-text { font-size: 0.95rem; font-weight: 700; color: white; }
-.footer-links { display: flex; gap: 0.3rem; flex-wrap: wrap; }
-.footer-links a { padding: 0.3rem 0.7rem; color: rgba(255,255,255,0.4); text-decoration: none; font-size: 0.82rem; border-radius: 6px; transition: color 0.2s; }
-.footer-links a:hover { color: white; }
-.footer-right { font-size: 0.78rem; color: rgba(255,255,255,0.25); line-height: 1.6; text-align: right; }
+footer { background: var(--navy); border-top: 1px solid var(--border); padding: 4rem 5% 2rem; }
+.footer-top { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 3rem; padding-bottom: 2.5rem; border-bottom: 1px solid rgba(255,255,255,0.07); margin-bottom: 2rem; }
+.footer-brand { display: flex; flex-direction: column; gap: 1rem; max-width: 300px; }
+.footer-logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+.footer-logo img { height: 36px; width: auto; display: block; }
+.footer-logo-tagline { font-size: 0.9rem; font-weight: 700; color: white; letter-spacing: 0.05em; text-transform: uppercase; line-height: 1; }
+.footer-desc { font-size: 0.82rem; color: rgba(255,255,255,0.35); line-height: 1.65; }
+.footer-nav { display: flex; gap: 4rem; flex-wrap: wrap; }
+.footer-col h4 { font-size: 0.72rem; font-weight: 700; color: rgba(255,255,255,0.5); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 1rem; }
+.footer-col a { display: block; color: rgba(255,255,255,0.55); text-decoration: none; font-size: 0.85rem; font-weight: 500; margin-bottom: 0.6rem; transition: color 0.2s; }
+.footer-col a:hover { color: var(--cyan); }
+.footer-bottom { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 1rem; align-items: center; }
+.footer-copy { font-size: 0.78rem; color: rgba(255,255,255,0.2); line-height: 1.6; }
+.footer-uni { font-size: 0.78rem; color: rgba(255,255,255,0.2); text-align: right; line-height: 1.6; }
 
 /* ─── RESPONSIVE ─── */
 @media (max-width: 960px) {
@@ -657,8 +815,8 @@ footer {
 <!-- ─── NAV ─── -->
 <nav id="navbar">
   <a href="index.html" class="nav-logo">
-    <div class="nav-logo-mark">DLRS</div>
-    <span class="nav-logo-text">DLRS<span>JAM</span></span>
+    <img src="assets/logo/DLRSJAM Logo.png" alt="DLRSJAM">
+    <span class="nav-logo-tagline">Driver's Licence Renewal System</span>
   </a>
   <ul class="nav-links">
     <li><a href="index.html">Home</a></li>
@@ -732,11 +890,11 @@ footer {
         <h2 class="section-title">One platform,<br>three user roles.</h2>
         <p>DLRSJAM is a role-based Progressive Web Application that brings together three distinct user types each with their own dashboard, permissions, and workflow, all connected through a single secure platform.</p>
         <div class="highlight-box">
-          "The AI handles the heavy lifting. The TAJ officer makes the final call. The citizen gets their licence from home, in minutes."
+          "The AI handles the heavy lifting. The TAJ officer makes the final call. The applicant gets their licence from home, in minutes."
         </div>
-        <p>No app store downloads. No dedicated hardware. Any modern smartphone, tablet, or computer with a camera and internet connection is all a citizen needs to complete the full renewal process.</p>
+        <p>No app store downloads. No dedicated hardware. Any modern smartphone, tablet, or computer with a camera and internet connection is all an applicant needs to complete the full renewal process.</p>
         <div class="role-pills">
-          <div class="role-pill"><div class="rp-dot rp-citizen"></div> Citizen</div>
+          <div class="role-pill"><div class="rp-dot rp-citizen"></div> Applicant</div>
           <div class="role-pill"><div class="rp-dot rp-officer"></div> TAJ Officer</div>
           <div class="role-pill"><div class="rp-dot rp-admin"></div> Supervisor</div>
         </div>
@@ -747,15 +905,15 @@ footer {
           <div class="arch-title">System Architecture: Layer View</div>
           <div class="arch-layers">
             <div class="arch-layer al-blue">
-              <div class="arch-icon">🌐</div>
+              <div class="arch-icon"><svg stroke="var(--cyan)" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div>
               <div>
-                <div class="arch-layer-name">Citizen PWA Interface</div>
+                <div class="arch-layer-name">Applicant PWA Interface</div>
                 <div class="arch-layer-desc">React · Responsive on any device · No install needed</div>
               </div>
             </div>
             <div class="arch-connector"><div class="arch-line"></div><span>API</span><div class="arch-line"></div></div>
             <div class="arch-layer al-cyan">
-              <div class="arch-icon">⚙️</div>
+              <div class="arch-icon"><svg stroke="var(--cyan)" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg></div>
               <div>
                 <div class="arch-layer-name">Application Logic Layer</div>
                 <div class="arch-layer-desc">Python / Flask REST API · Authentication · Role routing</div>
@@ -763,15 +921,15 @@ footer {
             </div>
             <div class="arch-connector"><div class="arch-line"></div><span>Calls</span><div class="arch-line"></div></div>
             <div class="arch-layer al-teal">
-              <div class="arch-icon">🤖</div>
+              <div class="arch-icon"><svg stroke="var(--cyan)" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="10" rx="2"/><path d="M12 2a3 3 0 0 1 3 3v6H9V5a3 3 0 0 1 3-3z"/><line x1="8" y1="16" x2="8.01" y2="16"/><line x1="12" y1="16" x2="12.01" y2="16"/><line x1="16" y1="16" x2="16.01" y2="16"/></svg></div>
               <div>
                 <div class="arch-layer-name">AI Verification Engine</div>
-                <div class="arch-layer-desc">Tesseract.js · face-api.js · TensorFlow Liveness</div>
+                <div class="arch-layer-desc">Python Tesseract · DeepFace · Anti-Spoof CNN</div>
               </div>
             </div>
             <div class="arch-connector"><div class="arch-line"></div><span>Stores</span><div class="arch-line"></div></div>
             <div class="arch-layer al-gold">
-              <div class="arch-icon">🏛️</div>
+              <div class="arch-icon"><svg stroke="var(--cyan)" viewBox="0 0 24 24"><line x1="3" y1="22" x2="21" y2="22"/><rect x="2" y="11" width="3" height="11"/><rect x="10.5" y="11" width="3" height="11"/><rect x="19" y="11" width="3" height="11"/><path d="M12 2L2 11h20z"/></svg></div>
               <div>
                 <div class="arch-layer-name">Officer Review Dashboard</div>
                 <div class="arch-layer-desc">AI results · Override controls · Approval workflow</div>
@@ -779,7 +937,7 @@ footer {
             </div>
             <div class="arch-connector"><div class="arch-line"></div><span>Issues</span><div class="arch-line"></div></div>
             <div class="arch-layer al-green">
-              <div class="arch-icon">🪪</div>
+              <div class="arch-icon"><svg stroke="var(--cyan)" viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg></div>
               <div>
                 <div class="arch-layer-name">Digital Licence Output</div>
                 <div class="arch-layer-desc">PDF + QR Code generation · Instant download</div>
@@ -804,17 +962,17 @@ footer {
 
       <div class="role-card reveal delay-1">
         <div class="role-header">
-          <div class="role-icon-wrap ri-blue">👤</div>
+          <div class="role-icon-wrap ri-blue"><svg stroke="#1557BF" viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
           <div>
-            <div class="role-name">Citizen</div>
-            <div class="role-sub">The applicant applying for renewal</div>
+            <div class="role-name">Applicant</div>
+            <div class="role-sub">The person applying for renewal</div>
           </div>
         </div>
         <ul class="role-actions">
           <li><div class="ra-check ra-blue">✓</div>Create a secure account and log in</li>
           <li><div class="ra-check ra-blue">✓</div>Fill out the digital renewal application form</li>
           <li><div class="ra-check ra-blue">✓</div>Upload current licence and supporting ID documents</li>
-          <li><div class="ra-check ra-blue">✓</div>Complete the liveness detection selfie check</li>
+          <li><div class="ra-check ra-blue">✓</div>Complete the liveness detection webcam check</li>
           <li><div class="ra-check ra-blue">✓</div>Track application status in real time</li>
           <li><div class="ra-check ra-blue">✓</div>Download the approved digital licence as a PDF</li>
         </ul>
@@ -822,7 +980,7 @@ footer {
 
       <div class="role-card reveal delay-2">
         <div class="role-header">
-          <div class="role-icon-wrap ri-teal">🏛️</div>
+          <div class="role-icon-wrap ri-teal"><svg stroke="#0A9E8A" viewBox="0 0 24 24"><line x1="3" y1="22" x2="21" y2="22"/><rect x="2" y="11" width="3" height="11"/><rect x="10.5" y="11" width="3" height="11"/><rect x="19" y="11" width="3" height="11"/><path d="M12 2L2 11h20z"/></svg></div>
           <div>
             <div class="role-name">TAJ Officer</div>
             <div class="role-sub">Government reviewer, final approval authority</div>
@@ -831,7 +989,7 @@ footer {
         <ul class="role-actions">
           <li><div class="ra-check ra-teal">✓</div>View a queue of all submitted applications</li>
           <li><div class="ra-check ra-teal">✓</div>Review AI-generated verification scores and flags</li>
-          <li><div class="ra-check ra-teal">✓</div>Inspect uploaded documents and selfie images</li>
+          <li><div class="ra-check ra-teal">✓</div>Inspect uploaded documents and applicant photos</li>
           <li><div class="ra-check ra-teal">✓</div>Approve or reject applications with written notes</li>
           <li><div class="ra-check ra-teal">✓</div>Override AI results when professional judgment requires</li>
           <li><div class="ra-check ra-teal">✓</div>Trigger digital licence generation on approval</li>
@@ -840,7 +998,7 @@ footer {
 
       <div class="role-card reveal delay-3">
         <div class="role-header">
-          <div class="role-icon-wrap ri-gold">🧑‍💼</div>
+          <div class="role-icon-wrap ri-gold"><svg stroke="#F5A623" viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/><line x1="12" y1="12" x2="12.01" y2="12"/><path d="M2 12h20"/></svg></div>
           <div>
             <div class="role-name">Supervisor</div>
             <div class="role-sub">Senior TAJ reviewer, full caseload oversight</div>
@@ -866,7 +1024,7 @@ footer {
     <div class="section-header reveal">
       <div class="section-tag">Step-by-Step Walkthrough</div>
       <h2 class="section-title">The full renewal journey,<br>explained in detail.</h2>
-      <p class="section-sub">Every step a citizen takes from creating their account to holding their digital licence.</p>
+      <p class="section-sub">Every step an applicant takes from creating their account to holding their digital licence — seven steps, no branch visit required.</p>
     </div>
 
     <!-- STEP 1 -->
@@ -877,18 +1035,18 @@ footer {
           <div class="step-num-label">Step One</div>
         </div>
         <h3 class="step-heading">Register &<br>Secure Login</h3>
-        <p class="step-desc">Citizens create an account using their name, TRN (Taxpayer Registration Number), email, and a strong password. DLRSJAM uses role-based authentication to ensure each user only ever sees what they're permitted to access; there's no risk of a citizen accessing officer tools.</p>
+        <p class="step-desc">Applicants create an account using their name, TRN (Taxpayer Registration Number), email, and a strong password. DLRSJAM uses role-based authentication to ensure each user only ever sees what they're permitted to access; there's no risk of an applicant accessing officer tools.</p>
         <div class="step-details">
           <div class="step-detail">
-            <div class="sd-icon">🔐</div>
+            <div class="sd-icon"><svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div>
             <div class="sd-text"><strong>Secure credentials</strong> — password hashing and session tokens protect every account from unauthorised access.</div>
           </div>
           <div class="step-detail">
-            <div class="sd-icon">🎭</div>
-            <div class="sd-text"><strong>Role enforcement</strong> — upon login, each user is automatically routed to their correct dashboard (Citizen, Officer, or Supervisor).</div>
+            <div class="sd-icon"><svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
+            <div class="sd-text"><strong>Role enforcement</strong> — upon login, each user is automatically routed to their correct dashboard (Applicant, Officer, or Supervisor).</div>
           </div>
           <div class="step-detail">
-            <div class="sd-icon">📱</div>
+            <div class="sd-icon"><svg viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg></div>
             <div class="sd-text"><strong>Works on any device</strong> — registration requires no app download; the PWA runs in any modern browser.</div>
           </div>
         </div>
@@ -906,9 +1064,9 @@ footer {
             <div class="form-field-mock"><div class="ff-label">Password</div><div class="ff-dot-row"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div></div>
             <div style="font-size:0.7rem;color:rgba(255,255,255,0.3);margin:1rem 0 0.4rem;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;">Select your role</div>
             <div class="role-selector">
-              <div class="rs-opt rs-active">👤 Citizen</div>
-              <div class="rs-opt">🏛️ TAJ Officer</div>
-              <div class="rs-opt">🧑‍💼 Supervisor</div>
+              <div class="rs-opt rs-active">Applicant</div>
+              <div class="rs-opt">TAJ Officer</div>
+              <div class="rs-opt">Supervisor</div>
             </div>
           </div>
         </div>
@@ -922,20 +1080,20 @@ footer {
           <div class="step-num-circle sn-2">2</div>
           <div class="step-num-label">Step Two</div>
         </div>
-        <h3 class="step-heading">Submit Your<br>Application</h3>
-        <p class="step-desc">After logging in, citizens complete a structured digital form capturing their renewal details and upload two key documents: their current driver's licence and a supporting form of ID. The upload interface guides users through each requirement with clear instructions.</p>
+        <h3 class="step-heading">Select Your<br>Transaction</h3>
+        <p class="step-desc">After logging in, the applicant selects the type of transaction they need: a standard renewal, a replacement for a lost or damaged licence, or an amendment to update personal details. The system retrieves the applicant's existing licence record automatically from the database so they don't have to re-enter information that's already on file.</p>
         <div class="step-details">
           <div class="step-detail">
-            <div class="sd-icon">📋</div>
-            <div class="sd-text"><strong>Digital form</strong> — captures personal details, licence number, and renewal type in a clean, validated interface.</div>
+            <div class="sd-icon"><svg viewBox="0 0 24 24"><path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="1"/></svg></div>
+            <div class="sd-text"><strong>Three transaction types</strong> — Renewal, Replacement, or Amendment, each with a tailored flow and document requirements.</div>
           </div>
           <div class="step-detail">
-            <div class="sd-icon">📎</div>
-            <div class="sd-text"><strong>Document upload</strong> — accepts photos or scans of the current licence and one supporting ID (passport, national ID).</div>
+            <div class="sd-icon"><svg viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg></div>
+            <div class="sd-text"><strong>Record retrieval</strong> — the system looks up the applicant's current licence record so pre-existing details are auto-populated.</div>
           </div>
           <div class="step-detail">
-            <div class="sd-icon">📡</div>
-            <div class="sd-text"><strong>Instant submission</strong> — once documents are uploaded, the application is sent to the AI pipeline in real time.</div>
+            <div class="sd-icon"><svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
+            <div class="sd-text"><strong>Guided interface</strong> — each transaction type shows only the fields and uploads relevant to that specific request.</div>
           </div>
         </div>
       </div>
@@ -943,7 +1101,53 @@ footer {
         <div class="step-visual">
           <div class="sv-topbar">
             <div class="sv-dot sv-dot-r"></div><div class="sv-dot sv-dot-y"></div><div class="sv-dot sv-dot-g"></div>
-            <div class="sv-topbar-title">DLRSJAM · New Application</div>
+            <div class="sv-topbar-title">DLRSJAM · Select Transaction</div>
+          </div>
+          <div class="sv-body">
+            <div style="font-size:0.7rem;color:rgba(255,255,255,0.3);font-weight:700;letter-spacing:0.07em;text-transform:uppercase;margin-bottom:1rem;">What do you need to do?</div>
+            <div style="display:flex;flex-direction:column;gap:0.5rem;">
+              <div style="background:rgba(21,87,191,0.25);border:1px solid rgba(21,87,191,0.5);border-radius:8px;padding:0.8rem 1rem;font-size:0.82rem;color:white;font-weight:600;display:flex;align-items:center;justify-content:space-between;"><span>Renew Licence</span><span style="font-size:0.65rem;background:rgba(21,87,191,0.4);color:var(--cyan);padding:2px 8px;border-radius:100px;">Selected</span></div>
+              <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);border-radius:8px;padding:0.8rem 1rem;font-size:0.82rem;color:rgba(255,255,255,0.5);">Replace Lost / Damaged Licence</div>
+              <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);border-radius:8px;padding:0.8rem 1rem;font-size:0.82rem;color:rgba(255,255,255,0.5);">Amend Personal Details</div>
+            </div>
+            <div style="margin-top:1rem;background:rgba(0,180,216,0.07);border:1px solid rgba(0,180,216,0.15);border-radius:8px;padding:0.75rem 1rem;">
+              <div style="font-size:0.7rem;color:rgba(255,255,255,0.3);font-weight:700;letter-spacing:0.05em;text-transform:uppercase;margin-bottom:0.35rem;">Retrieved from record</div>
+              <div style="font-size:0.78rem;color:rgba(255,255,255,0.6);">Licence No: <span style="color:var(--cyan);font-weight:700;">J-2019-04821</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- STEP 3 -->
+    <div class="step-block">
+      <div class="reveal-left">
+        <div class="step-number-badge">
+          <div class="step-num-circle sn-3">3</div>
+          <div class="step-num-label">Step Three</div>
+        </div>
+        <h3 class="step-heading">Upload Your<br>Documents</h3>
+        <p class="step-desc">The applicant uploads two documents: their current driver's licence and a supporting photo ID. The upload interface guides them through each requirement with clear instructions. Once submitted, the files are sent directly into the AI verification pipeline.</p>
+        <div class="step-details">
+          <div class="step-detail">
+            <div class="sd-icon"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div>
+            <div class="sd-text"><strong>Current driver's licence</strong> — uploaded as a photo or scan; used for OCR extraction and face matching.</div>
+          </div>
+          <div class="step-detail">
+            <div class="sd-icon"><svg viewBox="0 0 24 24"><path d="M21.44 11.05l-9.19 9.19a6 6 0 0 1-8.49-8.49l9.19-9.19a4 4 0 0 1 5.66 5.66l-9.2 9.19a2 2 0 0 1-2.83-2.83l8.49-8.48"/></svg></div>
+            <div class="sd-text"><strong>Supporting ID</strong> — passport or national ID accepted; cross-referenced against the application form data.</div>
+          </div>
+          <div class="step-detail">
+            <div class="sd-icon"><svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
+            <div class="sd-text"><strong>Instant pipeline entry</strong> — once uploaded, the AI modules begin processing automatically in the background.</div>
+          </div>
+        </div>
+      </div>
+      <div class="reveal-right">
+        <div class="step-visual">
+          <div class="sv-topbar">
+            <div class="sv-dot sv-dot-r"></div><div class="sv-dot sv-dot-y"></div><div class="sv-dot sv-dot-g"></div>
+            <div class="sv-topbar-title">DLRSJAM · Upload Documents</div>
           </div>
           <div class="sv-body">
             <div class="ocr-box">
@@ -958,7 +1162,7 @@ footer {
               </div>
               <div style="display:flex;gap:0.5rem;margin-top:0.85rem;">
                 <div style="flex:1;background:rgba(255,255,255,0.05);border:1px dashed rgba(255,255,255,0.12);border-radius:8px;padding:0.8rem;text-align:center;font-size:0.75rem;color:rgba(255,255,255,0.35);">
-                  📁 Upload ID Doc
+                  <svg style="width:13px;height:13px;stroke:rgba(255,255,255,0.4);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;display:inline-block;vertical-align:middle;margin-right:4px;" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg> Upload ID Doc
                 </div>
                 <div style="flex:1;background:rgba(21,87,191,0.15);border:1px solid rgba(21,87,191,0.3);border-radius:8px;padding:0.8rem;text-align:center;font-size:0.75rem;color:var(--cyan);font-weight:700;">
                   ✓ Licence Uploaded
@@ -970,45 +1174,45 @@ footer {
       </div>
     </div>
 
-    <!-- STEP 3 -->
-    <div class="step-block">
-      <div class="reveal-left">
+    <!-- STEP 4 -->
+    <div class="step-block reverse">
+      <div class="reveal-right">
         <div class="step-number-badge">
-          <div class="step-num-circle sn-3">3</div>
-          <div class="step-num-label">Step Three</div>
+          <div class="step-num-circle sn-4">4</div>
+          <div class="step-num-label">Step Four</div>
         </div>
-        <h3 class="step-heading">AI Identity<br>Verification</h3>
-        <p class="step-desc">This is the core of DLRSJAM. Three separate AI modules run automatically the moment a citizen submits their application Tesseract.js reads the document text, face-api.js compares the ID photo against a live selfie, and a DeepFace's anti-spoof model confirms the selfie is from a real, live person.</p>
+        <h3 class="step-heading">Verify Your<br>Identity</h3>
+        <p class="step-desc">This is the core of DLRSJAM. Three separate AI modules run automatically the moment an applicant submits their application — Python Tesseract reads the document text, DeepFace compares the uploaded ID photo against the applicant's live webcam capture, and DeepFace's anti-spoof model confirms a live person is present.</p>
         <div class="step-details">
           <div class="step-detail">
-            <div class="sd-icon">🔍</div>
-            <div class="sd-text"><strong>OCR Text Extraction</strong> — Tesseract.js reads every field on the uploaded licence and cross-checks details against the application form at 98.2% accuracy.</div>
+            <div class="sd-icon"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div>
+            <div class="sd-text"><strong>OCR Text Extraction</strong> — Python Tesseract reads every field on the uploaded licence and cross-checks details against the application form at 98.2% accuracy.</div>
           </div>
           <div class="step-detail">
-            <div class="sd-icon">👤</div>
-            <div class="sd-text"><strong>Facial Recognition</strong> — face-api.js generates a 128-point face descriptor and computes a similarity score between the ID photo and the live selfie.</div>
+            <div class="sd-icon"><svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
+            <div class="sd-text"><strong>Facial Recognition</strong> — DeepFace computes a similarity score between the uploaded ID photo and the applicant's live webcam capture.</div>
           </div>
           <div class="step-detail">
-            <div class="sd-icon">🎥</div>
+            <div class="sd-icon"><svg viewBox="0 0 24 24"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg></div>
            <div class="sd-text"><strong>Liveness Detection</strong> — DeepFace's pre-trained anti-spoof CNN confirms the webcam capture is from a live person present at submission, not a printed photo or screen replay.</div>
           </div>
         </div>
       </div>
-      <div class="reveal-right">
+      <div class="reveal-left">
         <div class="step-visual">
           <div class="sv-topbar">
             <div class="sv-dot sv-dot-r"></div><div class="sv-dot sv-dot-y"></div><div class="sv-dot sv-dot-g"></div>
-            <div class="sv-topbar-title">DLRSJAM · AI Verification</div>
+            <div class="sv-topbar-title">DLRSJAM · Identity Verification</div>
           </div>
           <div class="sv-body">
             <div class="face-match-grid">
               <div class="face-box">
-                <div class="face-placeholder">🪪</div>
+                <div class="face-placeholder"><svg viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg></div>
                 <div class="face-box-label">ID Photo</div>
               </div>
               <div class="face-box">
-                <div class="face-placeholder">🤳</div>
-                <div class="face-box-label">Live Selfie</div>
+                <div class="face-placeholder"><svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
+                <div class="face-box-label">Live Capture</div>
               </div>
             </div>
             <div class="face-match-score">
@@ -1032,26 +1236,71 @@ footer {
       </div>
     </div>
 
-    <!-- STEP 4 -->
+    <!-- STEP 5 -->
+    <div class="step-block">
+      <div class="reveal-left">
+        <div class="step-number-badge">
+          <div class="step-num-circle sn-5">5</div>
+          <div class="step-num-label">Step Five</div>
+        </div>
+        <h3 class="step-heading">Review, Sign<br>&amp; Pay</h3>
+        <p class="step-desc">Before submission the applicant reviews a summary of their application, confirms their personal details are correct, signs a digital declaration, and pays the renewal fee securely through the integrated Stripe payment flow. Nothing is submitted until the applicant explicitly confirms everything.</p>
+        <div class="step-details">
+          <div class="step-detail">
+            <div class="sd-icon"><svg viewBox="0 0 24 24"><path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="1"/><line x1="9" y1="12" x2="15" y2="12"/><line x1="9" y1="16" x2="13" y2="16"/></svg></div>
+            <div class="sd-text"><strong>Application summary</strong> — all submitted details are shown in full for the applicant to confirm before anything is sent for processing.</div>
+          </div>
+          <div class="step-detail">
+            <div class="sd-icon"><svg viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg></div>
+            <div class="sd-text"><strong>Digital declaration</strong> — the applicant signs a statutory declaration confirming the accuracy of their submission.</div>
+          </div>
+          <div class="step-detail">
+            <div class="sd-icon"><svg viewBox="0 0 24 24"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg></div>
+            <div class="sd-text"><strong>Secure payment</strong> — the renewal fee is collected via Stripe before the application enters the officer review queue.</div>
+          </div>
+        </div>
+      </div>
+      <div class="reveal-right">
+        <div class="step-visual">
+          <div class="sv-topbar">
+            <div class="sv-dot sv-dot-r"></div><div class="sv-dot sv-dot-y"></div><div class="sv-dot sv-dot-g"></div>
+            <div class="sv-topbar-title">DLRSJAM · Review &amp; Pay</div>
+          </div>
+          <div class="sv-body">
+            <div style="font-size:0.7rem;color:rgba(255,255,255,0.3);font-weight:700;letter-spacing:0.07em;text-transform:uppercase;margin-bottom:0.85rem;">Application Summary</div>
+            <div class="form-field-mock"><div class="ff-label">Name</div><div class="ff-value">Marcus A. Campbell</div></div>
+            <div class="form-field-mock"><div class="ff-label">Transaction</div><div class="ff-value" style="color:var(--cyan);">Renewal</div></div>
+            <div class="form-field-mock"><div class="ff-label">Licence No.</div><div class="ff-value">J-2019-04821</div></div>
+            <div style="margin-top:0.85rem;background:rgba(16,185,129,0.08);border:1px solid rgba(16,185,129,0.2);border-radius:8px;padding:0.75rem 1rem;display:flex;align-items:center;justify-content:space-between;">
+              <span style="font-size:0.78rem;color:rgba(255,255,255,0.6);">Renewal Fee</span>
+              <span style="font-size:0.9rem;font-weight:800;color:var(--green);">J$3,000</span>
+            </div>
+            <button style="margin-top:0.85rem;width:100%;background:linear-gradient(135deg,var(--blue),var(--blue2));border:none;border-radius:8px;padding:0.75rem;font-size:0.85rem;font-weight:700;color:white;cursor:pointer;">Pay &amp; Submit Application</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- STEP 6 -->
     <div class="step-block reverse">
       <div class="reveal-right">
         <div class="step-number-badge">
-          <div class="step-num-circle sn-4">4</div>
-          <div class="step-num-label">Step Four</div>
+          <div class="step-num-circle sn-4">6</div>
+          <div class="step-num-label">Step Six</div>
         </div>
         <h3 class="step-heading">TAJ Officer<br>Review & Approval</h3>
         <p class="step-desc">Every application, regardless of its AI confidence score, passes through a TAJ officer before any licence is issued. The officer dashboard presents the AI results in a clear, structured format. Officers can approve, reject, or flag an application for further review, and can override AI results when professional judgment requires it.</p>
         <div class="step-details">
           <div class="step-detail">
-            <div class="sd-icon">📊</div>
+            <div class="sd-icon"><svg viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg></div>
             <div class="sd-text"><strong>AI-assisted review</strong> — officers see confidence scores, OCR output, and face match results side by side, saving significant review time.</div>
           </div>
           <div class="step-detail">
-            <div class="sd-icon">🔁</div>
+            <div class="sd-icon"><svg viewBox="0 0 24 24"><polyline points="17 1 21 5 17 9"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><polyline points="7 23 3 19 7 15"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg></div>
             <div class="sd-text"><strong>Human override</strong> — the AI assists but never replaces. Officers retain full authority to approve or reject regardless of AI results.</div>
           </div>
           <div class="step-detail">
-            <div class="sd-icon">📝</div>
+            <div class="sd-icon"><svg viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg></div>
             <div class="sd-text"><strong>Audit trail</strong> — every decision is logged with a timestamp, officer ID, and written notes for full accountability.</div>
           </div>
         </div>
@@ -1085,27 +1334,27 @@ footer {
       </div>
     </div>
 
-    <!-- STEP 5 -->
+    <!-- STEP 7 -->
     <div class="step-block">
       <div class="reveal-left">
         <div class="step-number-badge">
-          <div class="step-num-circle sn-5">5</div>
-          <div class="step-num-label">Step Five</div>
+          <div class="step-num-circle sn-5">7</div>
+          <div class="step-num-label">Step Seven</div>
         </div>
         <h3 class="step-heading">Download Your<br>Digital Licence</h3>
-        <p class="step-desc">The moment a TAJ officer approves an application, DLRSJAM automatically generates a personalised digital driver's licence as a downloadable PDF. The licence includes all standard identification fields and a unique QR code that allows on-the-spot verification by any authority with a QR scanner.</p>
+        <p class="step-desc">The moment a TAJ officer approves an application, DLRSJAM automatically generates a personalised digital driver's licence as a downloadable image card. The licence is rendered as a styled React component with the applicant's background-removed photo and all standard identification fields.</p>
         <div class="step-details">
           <div class="step-detail">
-            <div class="sd-icon">📄</div>
-            <div class="sd-text"><strong>Instant PDF generation</strong> — the digital licence is created and available for download immediately upon officer approval.</div>
+            <div class="sd-icon"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div>
+            <div class="sd-text"><strong>Instant digital licence</strong> — the licence card is generated and available for download immediately upon officer approval, with no wait time.</div>
           </div>
           <div class="step-detail">
-            <div class="sd-icon">📲</div>
-            <div class="sd-text"><strong>QR verification code</strong> — each licence carries a unique QR code that links to a tamper-proof verification record for law enforcement and authorities.</div>
+            <div class="sd-icon"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg></div>
+            <div class="sd-text"><strong>Background-removed photo</strong> — the applicant's uploaded ID-style photo is processed to remove the background, giving the licence a clean, professional appearance.</div>
           </div>
           <div class="step-detail">
-            <div class="sd-icon">🔒</div>
-            <div class="sd-text"><strong>Tamper-proof design</strong> — the document is cryptographically signed and cannot be forged or altered without invalidating the QR verification.</div>
+            <div class="sd-icon"><svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div>
+            <div class="sd-text"><strong>Secure delivery</strong> — the licence is tied to the applicant's verified identity and only accessible through their authenticated account.</div>
           </div>
         </div>
       </div>
@@ -1113,43 +1362,115 @@ footer {
         <div class="step-visual">
           <div class="sv-topbar">
             <div class="sv-dot sv-dot-r"></div><div class="sv-dot sv-dot-y"></div><div class="sv-dot sv-dot-g"></div>
-            <div class="sv-topbar-title">DLRSJAM · Your Digital Licence</div>
+            <div class="sv-topbar-title">DLRSJAM &middot; Your Digital Licence</div>
           </div>
-          <div class="sv-body">
-            <div class="licence-card">
-              <div class="lc-bg-pattern"></div>
-              <div class="lc-inner">
-                <div class="lc-header">
-                  <div>
-                    <div class="lc-gov">Government of Jamaica</div>
-                    <div class="lc-type">Driver's Licence</div>
+          <div class="sv-body" style="padding:1rem;background:#05101e;border-radius:0 0 14px 14px;">
+
+            <!-- FRONT FACE -->
+            <div class="dlc-card dlc-front" id="dlcFront">
+              <!-- Guilloche SVG waves -->
+              <svg class="dlc-guilloche" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 378" preserveAspectRatio="none">
+                <path d="M0,60 Q75,30 150,60 Q225,90 300,60 Q375,30 450,60 Q525,90 600,60" fill="none" stroke="#1557BF" stroke-width="1.2" stroke-dasharray="8 4" opacity="1"/>
+                <path d="M0,100 Q75,70 150,100 Q225,130 300,100 Q375,70 450,100 Q525,130 600,100" fill="none" stroke="#1557BF" stroke-width="1.2" stroke-dasharray="8 4" opacity="1"/>
+                <path d="M0,140 Q75,110 150,140 Q225,170 300,140 Q375,110 450,140 Q525,170 600,140" fill="none" stroke="#1557BF" stroke-width="1.2" stroke-dasharray="8 4" opacity="1"/>
+                <path d="M0,180 Q75,150 150,180 Q225,210 300,180 Q375,150 450,180 Q525,210 600,180" fill="none" stroke="#0a9e8a" stroke-width="1.2" stroke-dasharray="8 4" opacity="1"/>
+                <path d="M0,220 Q75,190 150,220 Q225,250 300,220 Q375,190 450,220 Q525,250 600,220" fill="none" stroke="#0a9e8a" stroke-width="1.2" stroke-dasharray="8 4" opacity="1"/>
+                <path d="M0,260 Q75,230 150,260 Q225,290 300,260 Q375,230 450,260 Q525,290 600,260" fill="none" stroke="#1557BF" stroke-width="1.2" stroke-dasharray="8 4" opacity="1"/>
+                <path d="M0,300 Q75,270 150,300 Q225,330 300,300 Q375,270 450,300 Q525,330 600,300" fill="none" stroke="#1557BF" stroke-width="1.2" stroke-dasharray="8 4" opacity="1"/>
+                <path d="M0,340 Q75,310 150,340 Q225,370 300,340 Q375,310 450,340 Q525,370 600,340" fill="none" stroke="#0a9e8a" stroke-width="1.2" stroke-dasharray="8 4" opacity="1"/>
+              </svg>
+              <!-- Conic flare -->
+              <div class="dlc-flare"></div>
+              <!-- Left stripe -->
+              <div class="dlc-stripe">
+                <div class="dlc-stripe-dots"><span></span><span></span><span></span></div>
+                <div class="dlc-stripe-text">Jamaica</div>
+                <div class="dlc-stripe-dots"><span></span><span></span><span></span></div>
+              </div>
+              <!-- Main content -->
+              <div class="dlc-main">
+                <!-- Top bar -->
+                <div class="dlc-topbar">
+                  <div class="dlc-coat">&#9812;</div>
+                  <div class="dlc-topbar-text">
+                    <div class="dlc-gov-name">Government of Jamaica</div>
+                    <div class="dlc-lic-title">Driver's Licence</div>
                   </div>
-                  <div class="lc-flag">🇯🇲</div>
+                  <div class="dlc-verified">
+                    <span class="dlc-verified-dot"></span>
+                    Verified
+                  </div>
                 </div>
-                <div class="lc-body">
-                  <div class="lc-photo">👤</div>
-                  <div class="lc-fields">
-                    <div class="lc-field-label">Full Name</div>
-                    <div class="lc-field-value">Marcus A. Campbell</div>
-                    <div class="lc-field-label" style="margin-top:6px;">Licence No.</div>
-                    <div class="lc-field-value">JA-2026-00847</div>
-                    <div class="lc-field-label" style="margin-top:6px;">Class</div>
-                    <div class="lc-field-value">Class A — Private</div>
+                <!-- Body grid 60/40 -->
+                <div class="dlc-body-grid">
+                  <div class="dlc-left">
+                    <div class="dlc-field"><div class="dlc-fl">Class</div><div class="dlc-fv">A &mdash; Private</div></div>
+                    <div class="dlc-field"><div class="dlc-fl">TRN</div><div class="dlc-fv">102-384-756</div></div>
+                    <div class="dlc-field"><div class="dlc-fl">Date Issued</div><div class="dlc-fv">12 May 2026</div></div>
+                    <div class="dlc-field"><div class="dlc-fl">Expiry</div><div class="dlc-fv">11 May 2031</div></div>
+                    <div class="dlc-field"><div class="dlc-fl">Date of Birth</div><div class="dlc-fv">04 Mar 1990</div></div>
+                    <div class="dlc-field"><div class="dlc-fl">Sex</div><div class="dlc-fv">M</div></div>
+                    <div class="dlc-field span2"><div class="dlc-fl">Full Name</div><div class="dlc-fv name">Marcus A. Campbell</div></div>
+                    <div class="dlc-field span2"><div class="dlc-fl">Address</div><div class="dlc-fv">14 Constant Spring Rd, Kingston 8</div></div>
                   </div>
-                </div>
-                <div class="lc-footer">
-                  <div class="lc-exp">
-                    <div class="lc-field-label">Expires</div>
-                    <strong>May 2031</strong>
+                  <div class="dlc-right">
+                    <div class="dlc-photo">
+                      <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                    </div>
+                    <div class="dlc-sig-wrap">
+                      <div class="dlc-sig-line"></div>
+                      <div class="dlc-sig-label">Signature of Licensee</div>
+                    </div>
                   </div>
-                  <div class="lc-qr"><div class="lc-qr-inner">▦</div></div>
                 </div>
               </div>
+              <!-- Shimmer band -->
+              <div class="dlc-shimmer"></div>
             </div>
-            <div class="download-btn-mock">⬇ Download PDF Licence</div>
+
+            <!-- BACK FACE -->
+            <div class="dlc-card dlc-back" id="dlcBack">
+              <!-- Guilloche on back too -->
+              <svg class="dlc-guilloche" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 378" preserveAspectRatio="none">
+                <path d="M0,80 Q150,50 300,80 Q450,110 600,80" fill="none" stroke="#1557BF" stroke-width="1" stroke-dasharray="6 4" opacity="1"/>
+                <path d="M0,160 Q150,130 300,160 Q450,190 600,160" fill="none" stroke="#0a9e8a" stroke-width="1" stroke-dasharray="6 4" opacity="1"/>
+                <path d="M0,240 Q150,210 300,240 Q450,270 600,240" fill="none" stroke="#1557BF" stroke-width="1" stroke-dasharray="6 4" opacity="1"/>
+                <path d="M0,320 Q150,290 300,320 Q450,350 600,320" fill="none" stroke="#0a9e8a" stroke-width="1" stroke-dasharray="6 4" opacity="1"/>
+              </svg>
+              <div class="dlc-flare"></div>
+              <div class="dlc-back-inner">
+                <div class="dlc-back-title">Endorsements &amp; Restrictions</div>
+                <table class="dlc-endorse-table">
+                  <thead>
+                    <tr><th>Code</th><th>Description</th><th>Date</th><th>Authority</th></tr>
+                  </thead>
+                  <tbody>
+                    <tr><td>01</td><td>Corrective Lenses Required</td><td>2026-05-12</td><td>TAJ/KGN</td></tr>
+                    <tr><td>05</td><td>Valid for Private Use Only</td><td>2026-05-12</td><td>TAJ/KGN</td></tr>
+                    <tr><td>12</td><td>No Night Driving</td><td>2026-05-12</td><td>TAJ/KGN</td></tr>
+                  </tbody>
+                </table>
+                <div class="dlc-back-row">
+                  <div class="dlc-ctrl">
+                    <div class="dlc-ctrl-label">Control Number</div>
+                    <div class="dlc-ctrl-val">JA-2026-00847-CTL</div>
+                  </div>
+                  <div class="dlc-barcode">
+                    <div class="bar" style="width:2px;height:28px;"></div><div class="bar" style="width:1px;height:35px;"></div><div class="bar" style="width:3px;height:22px;"></div><div class="bar" style="width:1px;height:38px;"></div><div class="bar" style="width:2px;height:18px;"></div><div class="bar" style="width:2px;height:30px;"></div><div class="bar" style="width:1px;height:25px;"></div><div class="bar" style="width:3px;height:35px;"></div><div class="bar" style="width:2px;height:20px;"></div><div class="bar" style="width:1px;height:32px;"></div><div class="bar" style="width:2px;height:28px;"></div><div class="bar" style="width:1px;height:22px;"></div><div class="bar" style="width:3px;height:35px;"></div><div class="bar" style="width:1px;height:18px;"></div><div class="bar" style="width:2px;height:30px;"></div><div class="bar" style="width:2px;height:25px;"></div><div class="bar" style="width:1px;height:38px;"></div><div class="bar" style="width:3px;height:20px;"></div><div class="bar" style="width:2px;height:32px;"></div><div class="bar" style="width:1px;height:15px;"></div><div class="bar" style="width:2px;height:28px;"></div><div class="bar" style="width:1px;height:22px;"></div><div class="bar" style="width:3px;height:35px;"></div><div class="bar" style="width:1px;height:18px;"></div><div class="bar" style="width:2px;height:30px;"></div><div class="bar" style="width:2px;height:25px;"></div>
+                  </div>
+                </div>
+              </div>
+              <div class="dlc-shimmer"></div>
+            </div>
+
+            <!-- Toggle + download -->
+            <div style="display:flex;gap:0.75rem;justify-content:center;margin-top:0.85rem;">
+              <button class="dlc-toggle-btn" id="dlcToggleBtn" onclick="var f=document.getElementById('dlcFront'),b=document.getElementById('dlcBack');if(b.classList.contains('active')){b.classList.remove('active');f.classList.remove('hidden');document.getElementById('dlcToggleBtn').textContent='Show Back';}else{b.classList.add('active');f.classList.add('hidden');document.getElementById('dlcToggleBtn').textContent='Show Front';}">Show Back</button>
+              <div class="download-btn-mock">&#8595; Download PDF Licence</div>
+            </div>
+
           </div>
         </div>
-      </div>
     </div>
 
   </div>
@@ -1165,10 +1486,10 @@ footer {
     </div>
     <div class="ai-modules">
       <div class="ai-module-card reveal delay-1">
-        <div class="ai-mod-icon ami-blue">🔍</div>
+        <div class="ai-mod-icon ami-blue"><svg stroke="var(--cyan)" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div>
         <div class="ai-mod-name">OCR Document Reading</div>
         <div class="ai-mod-lib ml-blue">Tesseract (Python)</div>
-        <div class="ai-mod-desc">Tesseract extracts all text content from the uploaded licence image using optical character recognition. Each field name, licence number, expiry date and address is parsed and automatically cross-referenced against the data the citizen entered in their application form.</div>
+        <div class="ai-mod-desc">Tesseract extracts all text content from the uploaded licence image using optical character recognition. Each field name, licence number, expiry date and address is parsed and automatically cross-referenced against the data the applicant entered in their application form.</div>
         <div class="ai-mod-metrics">
           <div class="ai-metric"><div class="aim-label">Extraction Accuracy</div><div class="aim-val">98.2%</div></div>
           <div class="ai-metric"><div class="aim-label">Avg. Processing Time</div><div class="aim-val">&lt; 3 seconds</div></div>
@@ -1176,10 +1497,10 @@ footer {
         </div>
       </div>
       <div class="ai-module-card reveal delay-2">
-        <div class="ai-mod-icon ami-cyan">👤</div>
+        <div class="ai-mod-icon ami-cyan"><svg stroke="var(--cyan)" viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
         <div class="ai-mod-name">Facial Recognition</div>
-       <div class="ai-mod-lib ml-teal">face-api (FaceRecognitionNet)</div>
-        <div class="ai-mod-desc">face-api extracts a 128-dimensional face descriptor from the live webcam feed and a second from the uploaded ID photo. The Euclidean distance between the two descriptors is mapped to a 0–100% similarity score, a score of 40% or above passes, accommodating natural variance between a studio ID photo and a live webcam capture.</div>
+       <div class="ai-mod-lib ml-teal">DeepFace (Python)</div>
+        <div class="ai-mod-desc">DeepFace computes a similarity score between the uploaded ID photo and the applicant's live webcam capture. The Euclidean distance between face embeddings is mapped to a 0–100% similarity score — a score of 40% or above passes, accommodating natural variance between a studio ID photo and a live webcam capture.</div>
         <div class="ai-mod-metrics">
           <div class="ai-metric"><div class="aim-label">Pass Threshold</div><div class="aim-val">≥ 40% match</div></div>
           <div class="ai-metric"><div class="aim-label">Descriptor Dimensions</div><div class="aim-val">128-dimensional</div></div>
@@ -1187,7 +1508,7 @@ footer {
         </div>
       </div>
       <div class="ai-module-card reveal delay-3">
-        <div class="ai-mod-icon ami-teal">🎥</div>
+        <div class="ai-mod-icon ami-teal"><svg stroke="var(--teal)" viewBox="0 0 24 24"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg></div>
         <div class="ai-mod-name">Liveness Detection</div>
         <div class="ai-mod-lib ml-gold">DeepFace (anti-spoof CNN)</div>
         <div class="ai-mod-desc">A pre-trained DeepFace anti-spoofing CNN analyses each webcam frame to confirm a live person is present, not a printed photo or screen replay. The webcam frame is decoded and fed into DeepFace with anti-spoofing enabled. A definite spoof result hard-fails the verification; if the model errors or times out, it skips gracefully without failing the applicant.</div>
@@ -1243,49 +1564,49 @@ footer {
     </div>
     <div class="tech-grid">
       <div class="tech-card reveal delay-1">
-        <div class="tech-emoji">⚛️</div>
+        <div class="tech-emoji"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="2.5"/><ellipse cx="12" cy="12" rx="10" ry="4" transform="rotate(0)"/><ellipse cx="12" cy="12" rx="10" ry="4" transform="rotate(60)"/><ellipse cx="12" cy="12" rx="10" ry="4" transform="rotate(120)"/></svg></div>
         <div class="tech-cat">Frontend</div>
         <div class="tech-name">React.js</div>
-        <div class="tech-desc">Powers the citizen-facing PWA and officer dashboard with component-based, reactive UI architecture.</div>
+        <div class="tech-desc">Powers the applicant-facing PWA and officer dashboard with component-based, reactive UI architecture.</div>
       </div>
       <div class="tech-card reveal delay-2">
-        <div class="tech-emoji">🐍</div>
+        <div class="tech-emoji"><svg viewBox="0 0 24 24"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg></div>
         <div class="tech-cat">Backend</div>
         <div class="tech-name">Python / Flask</div>
         <div class="tech-desc">Flask REST API handles all routing, authentication logic, AI orchestration, and communication between the React frontend and verification services.</div>
       </div>
       <div class="tech-card reveal delay-3">
-        <div class="tech-emoji">🔍</div>
+        <div class="tech-emoji"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div>
         <div class="tech-cat">OCR</div>
-        <div class="tech-name">Tesseract.js</div>
-        <div class="tech-desc">Open-source optical character recognition engine that extracts and validates all text from uploaded licence documents.</div>
+        <div class="tech-name">Python Tesseract</div>
+        <div class="tech-desc">Server-side optical character recognition engine that extracts and validates all text fields from uploaded licence documents via the Python pytesseract binding.</div>
       </div>
       <div class="tech-card reveal delay-4">
-        <div class="tech-emoji">👁️</div>
+        <div class="tech-emoji"><svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></div>
         <div class="tech-cat">Face AI</div>
-        <div class="tech-name">face-api.js</div>
-        <div class="tech-desc">JavaScript face recognition library built on TensorFlow.js, powering the 128-point facial descriptor and matching pipeline.</div>
+        <div class="tech-name">DeepFace</div>
+        <div class="tech-desc">Python face recognition and analysis library powering both the facial similarity scoring and the anti-spoofing liveness detection on the backend.</div>
       </div>
       <div class="tech-card reveal delay-1">
-        <div class="tech-emoji">🧠</div>
+        <div class="tech-emoji"><svg viewBox="0 0 24 24"><path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96-.46 2.5 2.5 0 0 1-2.96-3.08 3 3 0 0 1-.34-5.58 2.5 2.5 0 0 1 1.32-4.24 2.5 2.5 0 0 1 4.44-1.14Z"/><path d="M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96-.46 2.5 2.5 0 0 0 2.96-3.08 3 3 0 0 0 .34-5.58 2.5 2.5 0 0 0-1.32-4.24 2.5 2.5 0 0 0-4.44-1.14Z"/></svg></div>
         <div class="tech-cat">Liveness</div>
-        <div class="tech-name">TensorFlow.js</div>
-        <div class="tech-desc">ML runtime used for liveness detection, analysing blink patterns and depth cues in the real-time selfie video stream.</div>
+        <div class="tech-name">DeepFace Anti-Spoof</div>
+        <div class="tech-desc">DeepFace's pre-trained anti-spoofing CNN analyses webcam frames server-side to confirm a live person is present, blocking photo and screen-replay attacks.</div>
       </div>
       <div class="tech-card reveal delay-2">
-        <div class="tech-emoji">🗄️</div>
+        <div class="tech-emoji"><svg viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg></div>
         <div class="tech-cat">Database</div>
         <div class="tech-name">PostgreSQL</div>
         <div class="tech-desc">Relational database established via Docker, accessed through SQLAlchemy ORM storing application records, user profiles, verification results, and audit logs.</div>
       </div>
       <div class="tech-card reveal delay-3">
-        <div class="tech-emoji">📄</div>
-        <div class="tech-cat">Documents</div>
-        <div class="tech-name">PDFKit</div>
-        <div class="tech-desc">Generates the formatted digital driver's licence PDF with embedded QR codes on application approval.</div>
+        <div class="tech-emoji"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div>
+        <div class="tech-cat">Licence Output</div>
+        <div class="tech-name">React + Base64 Image</div>
+        <div class="tech-desc">The digital licence is rendered as a styled React component and exported as a base64 image card, with the applicant's background-removed photo embedded directly.</div>
       </div>
       <div class="tech-card reveal delay-4">
-        <div class="tech-emoji">☁️</div>
+        <div class="tech-emoji"><svg viewBox="0 0 24 24"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"/></svg></div>
         <div class="tech-cat">Hosting</div>
         <div class="tech-name">GitHub Pages</div>
         <div class="tech-desc">Static site hosting for the frontend PWA with CI/CD integration; fast, reliable, and free for academic deployment.</div>
@@ -1305,22 +1626,22 @@ footer {
         <p>Crucially, human oversight is itself a security feature. The AI never makes the final call, a real TAJ officer reviews every application before a licence is issued. This hybrid model combines the speed and consistency of AI with the judgment and accountability of a human institution.</p>
         <div class="sec-pillars">
           <div class="sec-pillar">
-            <div class="sec-pillar-icon">🔐</div>
+            <div class="sec-pillar-icon"><svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div>
             <div class="sec-pillar-name">Encrypted Passwords</div>
-            <div class="sec-pillar-desc">bcrypt hashing ensures stored passwords are never recoverable, even in a breach.</div>
+            <div class="sec-pillar-desc">Werkzeug's password hashing ensures stored passwords are never recoverable, even in a breach.</div>
           </div>
           <div class="sec-pillar">
-            <div class="sec-pillar-icon">🎫</div>
+            <div class="sec-pillar-icon"><svg viewBox="0 0 24 24"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg></div>
             <div class="sec-pillar-name">JWT Sessions</div>
             <div class="sec-pillar-desc">JSON Web Tokens enforce role-based access on every protected API endpoint.</div>
           </div>
           <div class="sec-pillar">
-            <div class="sec-pillar-icon">🔒</div>
+            <div class="sec-pillar-icon"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
             <div class="sec-pillar-name">HTTPS Everywhere</div>
-            <div class="sec-pillar-desc">All data in transit is encrypted: documents, selfies, and form data never travel in plain text.</div>
+            <div class="sec-pillar-desc">All data in transit is encrypted: documents, photos, and form data never travel in plain text.</div>
           </div>
           <div class="sec-pillar">
-            <div class="sec-pillar-icon">📋</div>
+            <div class="sec-pillar-icon"><svg viewBox="0 0 24 24"><path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="1"/><line x1="9" y1="12" x2="15" y2="12"/><line x1="9" y1="16" x2="13" y2="16"/></svg></div>
             <div class="sec-pillar-name">Full Audit Trail</div>
             <div class="sec-pillar-desc">Every officer decision and system action is logged with timestamps for full accountability.</div>
           </div>
@@ -1332,23 +1653,23 @@ footer {
           <div class="sec-visual-title">Security Stack — Defence in Depth</div>
           <div class="sec-layers">
             <div class="sec-layer sl-1">
-              <div class="sec-layer-icon">🧱</div>
+              <div class="sec-layer-icon"><svg stroke="var(--cyan)" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="4" rx="1"/><rect x="3" y="10" width="18" height="4" rx="1"/><rect x="3" y="17" width="18" height="4" rx="1"/></svg></div>
               <div>
                 <div class="sec-layer-name">Role-Based Access Control</div>
-                <div class="sec-layer-sub">Citizens, Officers, and Supervisors are strictly isolated</div>
+                <div class="sec-layer-sub">Applicants, Officers, and Supervisors are strictly isolated</div>
               </div>
               <div class="sec-check">Active</div>
             </div>
             <div class="sec-layer sl-2">
-              <div class="sec-layer-icon">🔐</div>
+              <div class="sec-layer-icon"><svg stroke="var(--cyan)" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div>
               <div>
-                <div class="sec-layer-name">bcrypt + JWT Authentication</div>
+                <div class="sec-layer-name">Werkzeug + JWT Authentication</div>
                 <div class="sec-layer-sub">Password hashing and signed session tokens</div>
               </div>
               <div class="sec-check">Active</div>
             </div>
             <div class="sec-layer sl-2">
-              <div class="sec-layer-icon">🌐</div>
+              <div class="sec-layer-icon"><svg stroke="var(--cyan)" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div>
               <div>
                 <div class="sec-layer-name">TLS / HTTPS Encryption</div>
                 <div class="sec-layer-sub">All API traffic and document uploads are encrypted</div>
@@ -1356,7 +1677,7 @@ footer {
               <div class="sec-check">Active</div>
             </div>
             <div class="sec-layer sl-3">
-              <div class="sec-layer-icon">🎥</div>
+              <div class="sec-layer-icon"><svg stroke="var(--green)" viewBox="0 0 24 24"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg></div>
               <div>
                 <div class="sec-layer-name">Liveness Anti-Spoofing</div>
                 <div class="sec-layer-sub">Blocks photo and screen-replay attacks in real time</div>
@@ -1364,15 +1685,15 @@ footer {
               <div class="sec-check">Active</div>
             </div>
             <div class="sec-layer sl-3">
-              <div class="sec-layer-icon">📲</div>
+              <div class="sec-layer-icon"><svg stroke="var(--green)" viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg></div>
               <div>
-                <div class="sec-layer-name">QR Cryptographic Signing</div>
-                <div class="sec-layer-sub">Digital licences are signed and tamper-evident</div>
+                <div class="sec-layer-name">Secure Licence Delivery</div>
+                <div class="sec-layer-sub">Digital licences are only accessible via authenticated accounts</div>
               </div>
               <div class="sec-check">Active</div>
             </div>
             <div class="sec-layer sl-4">
-              <div class="sec-layer-icon">🏛️</div>
+              <div class="sec-layer-icon"><svg stroke="var(--gold)" viewBox="0 0 24 24"><line x1="3" y1="22" x2="21" y2="22"/><rect x="2" y="11" width="3" height="11"/><rect x="10.5" y="11" width="3" height="11"/><rect x="19" y="11" width="3" height="11"/><path d="M12 2L2 11h20z"/></svg></div>
               <div>
                 <div class="sec-layer-name">Human Officer Oversight</div>
                 <div class="sec-layer-sub">Every application reviewed by a TAJ officer before issue</div>
@@ -1401,20 +1722,34 @@ footer {
 
 <!-- ─── FOOTER ─── -->
 <footer>
-  <a href="index.html" class="footer-logo">
-    <div class="footer-logo-mark">DLR</div>
-    <span class="footer-logo-text">DLRSJAM</span>
-  </a>
-  <div class="footer-links">
-    <a href="index.html">Home</a>
-    <a href="about.html">About</a>
-    <a href="how-it-works.html">How It Works</a>
-    <a href="team.html">Team</a>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <a href="index.html" class="footer-logo">
+        <img src="assets/logo/DLRSJAM Logo.png" alt="DLRSJAM">
+        <span class="footer-logo-tagline">Driver's Licence Renewal System</span>
+      </a>
+      <p class="footer-desc">A digital solution for Jamaican drivers to renew their licence online — no queues, no branch visit, no day off work.</p>
+    </div>
+    <div class="footer-nav">
+      <div class="footer-col">
+        <h4>Navigate</h4>
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="how-it-works.html">How It Works</a>
+        <a href="team.html">Our Team</a>
+        <a href="contact.html">Contact</a>
+      </div>
+      <div class="footer-col">
+        <h4>Project</h4>
+        <a href="about.html#mission">Our Mission</a>
+        <a href="how-it-works.html">The System</a>
+        <a href="index.html#demo">Watch Demo</a>
+      </div>
+    </div>
   </div>
-  <div class="footer-right">
-    COMP3901 Capstone Project<br>
-    University of the West Indies · 2026<br>
-    Supervised by Prof. Gunjan Mansingh
+  <div class="footer-bottom">
+    <p class="footer-copy">&copy; 2026 DLRSJAM. COMP3901 Capstone Project.</p>
+    <p class="footer-uni">University of the West Indies &middot; Supervised by Prof. Gunjan Mansingh</p>
   </div>
 </footer>
 

@@ -64,6 +64,8 @@ body {
 .delay-3 { transition-delay: 0.3s; }
 .delay-4 { transition-delay: 0.4s; }
 .delay-5 { transition-delay: 0.5s; }
+.delay-6 { transition-delay: 0.6s; }
+.delay-7 { transition-delay: 0.7s; }
 
 /* ─── NAV ─── */
 nav {
@@ -82,18 +84,8 @@ nav.scrolled {
   display: flex; align-items: center; gap: 10px;
   text-decoration: none;
 }
-.nav-logo-mark {
-  width: 38px; height: 38px; border-radius: 9px;
-  background: linear-gradient(135deg, var(--blue), var(--cyan));
-  display: flex; align-items: center; justify-content: center;
-  font-size: 0.8rem; font-weight: 900; color: white;
-  letter-spacing: -0.03em;
-}
-.nav-logo-text {
-  font-size: 1.05rem; font-weight: 700; color: white;
-  letter-spacing: 0.01em;
-}
-.nav-logo-text span { color: var(--cyan); }
+.nav-logo img { height: 36px; width: auto; display: block; }
+.nav-logo-tagline { font-size: 0.7rem; font-weight: 700; color: white; letter-spacing: 0.06em; text-transform: uppercase; line-height: 1; }
 .nav-links {
   display: flex; align-items: center; gap: 0.2rem;
   list-style: none;
@@ -319,8 +311,8 @@ nav.scrolled {
   width: 36px; height: 36px; border-radius: 8px;
   background: rgba(255,255,255,0.15);
   display: flex; align-items: center; justify-content: center;
-  font-size: 1rem;
 }
+.card-icon svg { width: 18px; height: 18px; stroke: white; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
 .card-header-title { font-size: 0.85rem; font-weight: 700; color: white; }
 .card-header-sub { font-size: 0.7rem; color: rgba(255,255,255,0.55); }
 .card-status-live {
@@ -345,7 +337,8 @@ nav.scrolled {
 }
 .verification-item:hover { background: rgba(255,255,255,0.06); }
 .v-left { display: flex; align-items: center; gap: 8px; }
-.v-icon { font-size: 0.9rem; }
+.v-icon { width: 16px; height: 16px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.v-icon svg { width: 14px; height: 14px; stroke: rgba(255,255,255,0.45); fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
 .badge {
   font-size: 0.68rem; font-weight: 700; padding: 2px 8px;
   border-radius: 100px;
@@ -440,6 +433,7 @@ section { padding: 100px 5%; }
 .section-header { margin-bottom: 4rem; }
 .section-header.center { text-align: center; }
 .section-header.center .section-sub { margin: 0 auto; }
+.section-header.center .section-tag { display: flex; justify-content: center; }
 
 /* ─── ABOUT / WHAT IS IT ─── */
 .about { background: var(--white); }
@@ -509,7 +503,8 @@ section { padding: 100px 5%; }
   font-size: 0.7rem; font-weight: 800; letter-spacing: 0.1em;
   text-transform: uppercase; color: var(--cyan); margin-bottom: 1.25rem;
 }
-.problem-icon { font-size: 2rem; margin-bottom: 1rem; }
+.problem-icon { width: 48px; height: 48px; margin-bottom: 1rem; display: flex; align-items: center; justify-content: center; border-radius: 10px; background: rgba(255,255,255,0.06); }
+.problem-icon svg { width: 26px; height: 26px; stroke: var(--cyan); fill: none; stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round; }
 .problem-card h3 { font-size: 1.05rem; font-weight: 700; color: white; margin-bottom: 0.65rem; }
 .problem-card p { font-size: 0.875rem; color: rgba(255,255,255,0.5); line-height: 1.75; }
 .problem-impact {
@@ -536,8 +531,8 @@ section { padding: 100px 5%; }
 .why-icon-wrap {
   width: 52px; height: 52px; border-radius: 12px; flex-shrink: 0;
   display: flex; align-items: center; justify-content: center;
-  font-size: 1.4rem;
 }
+.why-icon-wrap svg { width: 24px; height: 24px; fill: none; stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round; }
 .wi-blue { background: #EFF6FF; }
 .wi-teal { background: #ECFDF5; }
 .wi-gold { background: #FFFBEB; }
@@ -548,7 +543,7 @@ section { padding: 100px 5%; }
 /* ─── QUICK PROCESS ─── */
 .process { background: white; }
 .process-steps {
-  display: grid; grid-template-columns: repeat(5,1fr);
+  display: grid; grid-template-columns: repeat(7,1fr);
   gap: 1rem; position: relative;
 }
 .process-steps::before {
@@ -573,7 +568,9 @@ section { padding: 100px 5%; }
 .sc-2 { border-color: rgba(21,87,191,0.3); color: var(--blue); }
 .sc-3 { border-color: rgba(21,87,191,0.3); color: var(--blue); }
 .sc-4 { border-color: rgba(21,87,191,0.3); color: var(--blue); }
-.sc-5 { background: var(--navy); color: white; border-color: var(--navy); }
+.sc-5 { border-color: rgba(21,87,191,0.3); color: var(--blue); }
+.sc-6 { border-color: rgba(21,87,191,0.3); color: var(--blue); }
+.sc-7 { background: var(--navy); color: white; border-color: var(--navy); }
 .process-step h4 { font-size: 0.85rem; font-weight: 700; color: var(--navy); margin-bottom: 0.35rem; }
 .process-step p { font-size: 0.78rem; color: #7A90AC; line-height: 1.55; }
 
@@ -655,18 +652,27 @@ section { padding: 100px 5%; }
 /* ─── FOOTER ─── */
 footer {
   background: #060E1A;
-  padding: 3rem 5%;
-  display: flex; align-items: center; justify-content: space-between;
-  flex-wrap: wrap; gap: 1.5rem;
-  border-top: 1px solid rgba(255,255,255,0.05);
+  border-top: 1px solid rgba(255,255,255,0.07);
+  padding: 4rem 5% 2rem;
 }
-.footer-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
-.footer-logo-mark { width: 32px; height: 32px; border-radius: 7px; background: linear-gradient(135deg, var(--blue), var(--cyan)); display: flex; align-items: center; justify-content: center; font-size: 0.7rem; font-weight: 900; color: white; }
-.footer-logo-text { font-size: 0.95rem; font-weight: 700; color: rgba(255,255,255,0.8); }
-.footer-links { display: flex; gap: 1.5rem; flex-wrap: wrap; }
-.footer-links a { color: rgba(255,255,255,0.35); text-decoration: none; font-size: 0.82rem; font-weight: 500; transition: color 0.2s; }
-.footer-links a:hover { color: var(--cyan); }
-.footer-right { font-size: 0.78rem; color: rgba(255,255,255,0.25); text-align: right; line-height: 1.6; }
+.footer-top {
+  display: flex; justify-content: space-between; flex-wrap: wrap; gap: 3rem;
+  padding-bottom: 2.5rem;
+  border-bottom: 1px solid rgba(255,255,255,0.07);
+  margin-bottom: 2rem;
+}
+.footer-brand { display: flex; flex-direction: column; gap: 1rem; max-width: 300px; }
+.footer-logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+.footer-logo img { height: 36px; width: auto; display: block; }
+.footer-logo-tagline { font-size: 0.9rem; font-weight: 700; color: white; letter-spacing: 0.05em; text-transform: uppercase; line-height: 1; }
+.footer-desc { font-size: 0.82rem; color: rgba(255,255,255,0.35); line-height: 1.65; }
+.footer-nav { display: flex; gap: 4rem; flex-wrap: wrap; }
+.footer-col h4 { font-size: 0.72rem; font-weight: 700; color: rgba(255,255,255,0.5); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 1rem; }
+.footer-col a { display: block; color: rgba(255,255,255,0.55); text-decoration: none; font-size: 0.85rem; font-weight: 500; margin-bottom: 0.6rem; transition: color 0.2s; }
+.footer-col a:hover { color: var(--cyan); }
+.footer-bottom { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 1rem; align-items: center; }
+.footer-copy { font-size: 0.78rem; color: rgba(255,255,255,0.2); line-height: 1.6; }
+.footer-uni { font-size: 0.78rem; color: rgba(255,255,255,0.2); text-align: right; line-height: 1.6; }
 
 /* ─── RESPONSIVE ─── */
 @media (max-width: 900px) {
@@ -689,15 +695,15 @@ footer {
 <!-- NAV -->
 <nav id="navbar">
   <a href="index.html" class="nav-logo">
-    <div class="nav-logo-mark">DLRS</div>
-    <span class="nav-logo-text">DLRS<span>JAM</span></span>
+    <img src="assets/logo/DLRSJAM Logo.png" alt="DLRSJAM">
+    <span class="nav-logo-tagline">Driver's Licence Renewal System</span>
   </a>
   <ul class="nav-links">
     <li><a href="index.html" class="active">Home</a></li>
     <li><a href="about.html">About</a></li>
     <li><a href="how-it-works.html">How It Works</a></li>
     <li><a href="team.html">Our Team</a></li>
-    <li><a href="how-it-works.html#demo" class="nav-cta">Watch Demo</a></li>
+    <li><a href="contact.html" class="nav-cta">Contact</a></li>
   </ul>
   <div class="hamburger" id="hamburger" onclick="toggleMenu()">
     <span></span><span></span><span></span>
@@ -709,7 +715,7 @@ footer {
   <a href="about.html">About</a>
   <a href="how-it-works.html">How It Works</a>
   <a href="team.html">Our Team</a>
-  <a href="how-it-works.html#demo">Watch Demo</a>
+  <a href="contact.html">Contact</a>
 </div>
 
 <!-- HERO -->
@@ -744,8 +750,8 @@ footer {
           <div class="stat-label">Branch visits required</div>
         </div>
         <div class="stat">
-          <div class="stat-num">3</div>
-          <div class="stat-label">AI verification layers</div>
+          <div class="stat-num"><svg style="width:24px;height:24px;stroke:var(--cyan);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;" viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div>
+          <div class="stat-label">Minutes, not hours</div>
         </div>
         <div class="stat">
           <div class="stat-num">100%</div>
@@ -757,12 +763,12 @@ footer {
     <div class="hero-visual">
       <div style="position:relative;">
         <div class="float-badge float-badge-1">
-          <span>✅</span> Liveness Verified
+          <svg style="width:16px;height:16px;stroke:white;fill:none;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round;" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Liveness Verified
         </div>
         <div class="app-card">
           <div class="card-header">
             <div class="card-header-left">
-              <div class="card-icon">🪪</div>
+              <div class="card-icon"><svg viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg></div>
               <div>
                 <div class="card-header-title">Renewal Application</div>
                 <div class="card-header-sub">APP-2026-0047 · John Brown</div>
@@ -774,27 +780,27 @@ footer {
           </div>
           <div class="card-body">
             <div class="verification-item">
-              <span class="v-left"><span class="v-icon">📄</span> Document Uploaded</span>
+              <span class="v-left"><span class="v-icon"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></span> Document Uploaded</span>
               <span class="badge b-green">Complete</span>
             </div>
             <div class="verification-item">
-              <span class="v-left"><span class="v-icon">🔍</span> OCR Extraction</span>
+              <span class="v-left"><span class="v-icon"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></span> OCR Extraction</span>
               <span class="badge b-green">Complete</span>
             </div>
             <div class="verification-item">
-              <span class="v-left"><span class="v-icon">👤</span> Face Matching</span>
+              <span class="v-left"><span class="v-icon"><svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></span> Face Matching</span>
               <span class="badge b-green">Passed</span>
             </div>
             <div class="verification-item">
-              <span class="v-left"><span class="v-icon">🎥</span> Liveness Detection</span>
+              <span class="v-left"><span class="v-icon"><svg viewBox="0 0 24 24"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg></span> Liveness Detection</span>
               <span class="badge b-green">Passed</span>
             </div>
             <div class="verification-item">
-              <span class="v-left"><span class="v-icon">🏛️</span> Officer Review</span>
+              <span class="v-left"><span class="v-icon"><svg viewBox="0 0 24 24"><line x1="3" y1="22" x2="21" y2="22"/><rect x="2" y="11" width="3" height="11"/><rect x="10.5" y="11" width="3" height="11"/><rect x="19" y="11" width="3" height="11"/><path d="M12 2L2 11h20z"/></svg></span> Officer Review</span>
               <span class="badge b-yellow">In Progress</span>
             </div>
             <div class="verification-item">
-              <span class="v-left"><span class="v-icon">⬇️</span> Digital Licence</span>
+              <span class="v-left"><span class="v-icon"><svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></span> Digital Licence</span>
               <span class="badge b-gray">Pending</span>
             </div>
             <div class="confidence-section">
@@ -811,7 +817,7 @@ footer {
           </div>
         </div>
         <div class="float-badge float-badge-2">
-          <span>🪪</span> Licence Ready to Download
+          <svg style="width:16px;height:16px;stroke:white;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;" viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg> Licence Ready to Download
         </div>
       </div>
     </div>
@@ -842,7 +848,7 @@ footer {
         </div>
         <div class="mini-card reveal delay-2">
           <div class="mini-num">3</div>
-          <div class="mini-label">AI verification checks run on every application</div>
+          <div class="mini-label">Independent AI checks: OCR, face match, liveness</div>
         </div>
         <div class="mini-card reveal delay-3">
           <div class="mini-num">OCR</div>
@@ -860,32 +866,80 @@ footer {
 <!-- PROBLEMS -->
 <section class="problems">
   <div class="container">
-    <div class="section-header reveal">
+    <div class="section-header center reveal">
       <div class="section-tag">The Problem</div>
       <h2 class="section-title" style="color:white;">Why Jamaica needs<br>a digital solution.</h2>
-      <p class="section-sub">The current TAJ driver's licence renewal process has three major failures that affect thousands of Jamaicans every year.</p>
+      <p class="section-sub" style="margin:0 auto;">The current TAJ driver's licence renewal process has three major failures that affect thousands of Jamaicans every year.</p>
     </div>
     <div class="problems-grid">
       <div class="problem-card reveal delay-1">
         <div class="problem-num">Problem 01</div>
-        <div class="problem-icon">⏳</div>
+        <div class="problem-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
         <h3>Hours Lost in Queues</h3>
         <p>Every renewal requires a physical visit to a TAJ branch, where long wait times are the norm, wasting time that citizens simply cannot afford to lose.</p>
-        <div class="problem-impact">📍 Affects every single Jamaican driver</div>
+        <div class="problem-impact"><svg style="width:12px;height:12px;stroke:rgba(255,255,255,0.4);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0;" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> Affects every single Jamaican driver</div>
       </div>
       <div class="problem-card reveal delay-2">
         <div class="problem-num">Problem 02</div>
-        <div class="problem-icon">🗺️</div>
+        <div class="problem-icon"><svg viewBox="0 0 24 24"><polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"/><line x1="8" y1="2" x2="8" y2="18"/><line x1="16" y1="6" x2="16" y2="22"/></svg></div>
         <h3>Rural Inaccessibility</h3>
         <p>Citizens in parishes far from a TAJ branch face expensive travel costs and full days out of work just to access a basic government service, creating an unequal system.</p>
-        <div class="problem-impact">📍 Disproportionately affects rural residents</div>
+        <div class="problem-impact"><svg style="width:12px;height:12px;stroke:rgba(255,255,255,0.4);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0;" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> Disproportionately affects rural residents</div>
       </div>
       <div class="problem-card reveal delay-3">
         <div class="problem-num">Problem 03</div>
-        <div class="problem-icon">🕵️</div>
+        <div class="problem-icon"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/><path d="M11 8v3l2 2"/></svg></div>
         <h3>Fraud Through Manual Checks</h3>
         <p>Manual document comparison by officers is inconsistent and cannot reliably detect sophisticated forgeries. AI verification removes this vulnerability entirely.</p>
-        <div class="problem-impact">📍 A systemic security gap in the process</div>
+        <div class="problem-impact"><svg style="width:12px;height:12px;stroke:rgba(255,255,255,0.4);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0;" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> A systemic security gap in the process</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BEFORE VS AFTER COMPARISON -->
+<section style="background:#060E1A;padding:100px 5%;">
+  <div class="container">
+    <div class="section-header center reveal" style="margin-bottom:3rem;">
+      <div class="section-tag" style="color:rgba(255,255,255,0.4);justify-content:center;"><span style="display:inline-block;width:20px;height:2px;background:rgba(255,255,255,0.2);border-radius:2px;margin-right:6px;"></span>Before vs After</div>
+      <h2 class="section-title" style="color:white;">The old process vs DLRSJAM.</h2>
+      <p class="section-sub" style="color:rgba(255,255,255,0.5);margin:0 auto;">The difference isn't subtle. Here's what renewing a licence looks like with DLRSJAM compared to today's TAJ process.</p>
+    </div>
+    <div class="reveal" style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-radius:20px;overflow:hidden;">
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;background:rgba(255,255,255,0.04);border-bottom:1px solid rgba(255,255,255,0.07);">
+        <div style="padding:1rem 1.5rem;font-size:0.82rem;font-weight:700;color:rgba(255,255,255,0.35);">Aspect</div>
+        <div style="padding:1rem 1.5rem;font-size:0.82rem;font-weight:700;color:#F87171;display:flex;align-items:center;gap:7px;"><svg style="width:14px;height:14px;stroke:#F87171;fill:none;stroke-width:2.5;stroke-linecap:round;" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>Current TAJ Process</div>
+        <div style="padding:1rem 1.5rem;font-size:0.82rem;font-weight:700;color:var(--green);display:flex;align-items:center;gap:7px;"><svg style="width:14px;height:14px;stroke:var(--green);fill:none;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round;" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>With DLRSJAM</div>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;border-bottom:1px solid rgba(255,255,255,0.05);">
+        <div style="padding:0.9rem 1.5rem;font-size:0.85rem;color:rgba(255,255,255,0.4);font-weight:600;">Location</div>
+        <div style="padding:0.9rem 1.5rem;font-size:0.85rem;color:rgba(255,255,255,0.4);display:flex;align-items:center;gap:7px;"><span style="color:#F87171;">✗</span> Must travel to a TAJ branch</div>
+        <div style="padding:0.9rem 1.5rem;font-size:0.85rem;color:rgba(255,255,255,0.75);display:flex;align-items:center;gap:7px;"><span style="color:var(--green);">✓</span> Apply from any device, anywhere</div>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;border-bottom:1px solid rgba(255,255,255,0.05);">
+        <div style="padding:0.9rem 1.5rem;font-size:0.85rem;color:rgba(255,255,255,0.4);font-weight:600;">Wait Time</div>
+        <div style="padding:0.9rem 1.5rem;font-size:0.85rem;color:rgba(255,255,255,0.4);display:flex;align-items:center;gap:7px;"><span style="color:#F87171;">✗</span> Hours in queues</div>
+        <div style="padding:0.9rem 1.5rem;font-size:0.85rem;color:rgba(255,255,255,0.75);display:flex;align-items:center;gap:7px;"><span style="color:var(--green);">✓</span> AI verification runs in seconds</div>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;border-bottom:1px solid rgba(255,255,255,0.05);">
+        <div style="padding:0.9rem 1.5rem;font-size:0.85rem;color:rgba(255,255,255,0.4);font-weight:600;">ID Verification</div>
+        <div style="padding:0.9rem 1.5rem;font-size:0.85rem;color:rgba(255,255,255,0.4);display:flex;align-items:center;gap:7px;"><span style="color:#F87171;">✗</span> Manual visual inspection</div>
+        <div style="padding:0.9rem 1.5rem;font-size:0.85rem;color:rgba(255,255,255,0.75);display:flex;align-items:center;gap:7px;"><span style="color:var(--green);">✓</span> OCR + face matching + liveness</div>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;border-bottom:1px solid rgba(255,255,255,0.05);">
+        <div style="padding:0.9rem 1.5rem;font-size:0.85rem;color:rgba(255,255,255,0.4);font-weight:600;">Fraud Risk</div>
+        <div style="padding:0.9rem 1.5rem;font-size:0.85rem;color:rgba(255,255,255,0.4);display:flex;align-items:center;gap:7px;"><span style="color:#F87171;">✗</span> High: easy to forge visually</div>
+        <div style="padding:0.9rem 1.5rem;font-size:0.85rem;color:rgba(255,255,255,0.75);display:flex;align-items:center;gap:7px;"><span style="color:var(--green);">✓</span> Low: AI flags anomalies instantly</div>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;border-bottom:1px solid rgba(255,255,255,0.05);">
+        <div style="padding:0.9rem 1.5rem;font-size:0.85rem;color:rgba(255,255,255,0.4);font-weight:600;">Licence Delivery</div>
+        <div style="padding:0.9rem 1.5rem;font-size:0.85rem;color:rgba(255,255,255,0.4);display:flex;align-items:center;gap:7px;"><span style="color:#F87171;">✗</span> Days or weeks to receive</div>
+        <div style="padding:0.9rem 1.5rem;font-size:0.85rem;color:rgba(255,255,255,0.75);display:flex;align-items:center;gap:7px;"><span style="color:var(--green);">✓</span> Download instantly upon approval</div>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;">
+        <div style="padding:0.9rem 1.5rem;font-size:0.85rem;color:rgba(255,255,255,0.4);font-weight:600;">Rural Access</div>
+        <div style="padding:0.9rem 1.5rem;font-size:0.85rem;color:rgba(255,255,255,0.4);display:flex;align-items:center;gap:7px;"><span style="color:#F87171;">✗</span> Expensive travel required</div>
+        <div style="padding:0.9rem 1.5rem;font-size:0.85rem;color:rgba(255,255,255,0.75);display:flex;align-items:center;gap:7px;"><span style="color:var(--green);">✓</span> Full access with any internet device</div>
       </div>
     </div>
   </div>
@@ -901,31 +955,31 @@ footer {
     </div>
     <div class="why-grid">
       <div class="why-card reveal delay-1">
-        <div class="why-icon-wrap wi-blue">🏠</div>
+        <div class="why-icon-wrap wi-blue"><svg stroke="#1557BF" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
         <div>
           <h3>Renew from Anywhere</h3>
           <p>No travel, no time off work. Apply from your phone, tablet, or computer at home, at the office, or anywhere with an internet connection and a camera.</p>
         </div>
       </div>
       <div class="why-card reveal delay-2">
-        <div class="why-icon-wrap wi-teal">⚡</div>
+        <div class="why-icon-wrap wi-teal"><svg stroke="#0A9E8A" viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div>
         <div>
           <h3>Minutes, Not Hours</h3>
           <p>AI verification runs in seconds. Submit your application and wait for officer approval; there is no queue to stand in, and no day wasted at a branch.</p>
         </div>
       </div>
       <div class="why-card reveal delay-3">
-        <div class="why-icon-wrap wi-gold">🛡️</div>
+        <div class="why-icon-wrap wi-gold"><svg stroke="#F5A623" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
         <div>
           <h3>More Secure Than Manual</h3>
           <p>Face matching, liveness detection, and OCR cross-referencing work together to verify your identity with a level of accuracy that visual inspection simply cannot match.</p>
         </div>
       </div>
       <div class="why-card reveal delay-4">
-        <div class="why-icon-wrap wi-navy">🪪</div>
+        <div class="why-icon-wrap wi-navy"><svg stroke="#1557BF" viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg></div>
         <div>
           <h3>Your Licence, Instantly</h3>
-          <p>Once a TAJ officer approves your application, your digital driver's licence is ready to download immediately with a QR code for on-the-spot verification anywhere.</p>
+          <p>Once a TAJ officer approves your application, your digital driver's licence is ready to download immediately — no waiting, no branch visit, straight to your device.</p>
         </div>
       </div>
     </div>
@@ -937,8 +991,8 @@ footer {
   <div class="container">
     <div class="section-header center reveal">
       <div class="section-tag">The Process</div>
-      <h2 class="section-title">How it works in 5 steps.</h2>
-      <p class="section-sub">The complete renewal journey from first login to downloading your digital licence.</p>
+      <h2 class="section-title">How it works in 7 steps.</h2>
+      <p class="section-sub">The complete renewal journey from first login to downloading your digital licence. Select your transaction, upload documents, verify your identity, pay online, and you're done.</p>
     </div>
     <div class="process-steps">
       <div class="process-step reveal delay-1">
@@ -948,23 +1002,33 @@ footer {
       </div>
       <div class="process-step reveal delay-2">
         <div class="step-circle sc-2">2</div>
-        <h4>Submit Application</h4>
-        <p>Fill the digital form and upload your ID documents</p>
+        <h4>Select Transaction</h4>
+        <p>Choose renewal, replacement, or amendment</p>
       </div>
       <div class="process-step reveal delay-3">
         <div class="step-circle sc-3">3</div>
-        <h4>AI Verification</h4>
-        <p>OCR, face matching &amp; liveness detection run automatically</p>
+        <h4>Upload Documents</h4>
+        <p>System retrieves your record; you upload your ID</p>
       </div>
       <div class="process-step reveal delay-4">
         <div class="step-circle sc-4">4</div>
-        <h4>Officer Approval</h4>
-        <p>A TAJ officer reviews the AI results and approves</p>
+        <h4>Verify Identity</h4>
+        <p>Live camera check confirms it's really you</p>
       </div>
       <div class="process-step reveal delay-5">
         <div class="step-circle sc-5">5</div>
+        <h4>Review & Pay</h4>
+        <p>Confirm details, sign the declaration, pay online</p>
+      </div>
+      <div class="process-step reveal delay-6">
+        <div class="step-circle sc-6">6</div>
+        <h4>Officer Review</h4>
+        <p>A TAJ officer checks everything and approves</p>
+      </div>
+      <div class="process-step reveal delay-7">
+        <div class="step-circle sc-7">7</div>
         <h4>Download Licence</h4>
-        <p>Get your digital licence with QR code instantly</p>
+        <p>Your digital licence is ready instantly</p>
       </div>
     </div>
     <div style="text-align:center;margin-top:3rem;" class="reveal">
@@ -977,28 +1041,28 @@ footer {
 <section class="video-section" id="demo">
   <div class="container">
     <div class="section-header center reveal" style="margin-bottom:3rem;">
-      <div class="section-tag" style="color:var(--cyan);justify-content:center;">
-        <span style="display:inline-block;width:20px;height:2px;background:var(--cyan);border-radius:2px;"></span>
-        Live Demonstration
-      </div>
-      <h2 class="section-title" style="color:white;">See DLRSJAM in action.</h2>
+      <div class="section-tag" style="color:var(--cyan);--blue:var(--cyan);">Watch</div>
+      <h2 class="section-title" style="color:white;">No more lines. No more wait.</h2>
       <p class="section-sub" style="color:rgba(255,255,255,0.5);margin:0 auto;">
-        Watch a complete walkthrough from account creation to downloading your finished digital driver's licence.
+        See how Jamaicans are renewing their driver's licence in the digital age — from any device, anywhere.
       </p>
     </div>
     <div class="video-wrapper reveal">
       <div class="video-bar">
         <div class="video-dots"><div class="vd vd-r"></div><div class="vd vd-y"></div><div class="vd vd-g"></div></div>
-        <span class="video-bar-title">DLRSJAM - System Demonstration · COMP3901 UWI 2026</span>
-        <span style="font-size:0.72rem;color:rgba(255,255,255,0.2);">demo.mp4</span>
+        <span class="video-bar-title">DLRSJAM · COMP3901 Capstone · University of the West Indies 2026</span>
+        <span style="font-size:0.72rem;color:rgba(255,255,255,0.2);">marketing.mp4</span>
       </div>
-      <div class="video-placeholder">
-        <div class="play-btn">
-          <svg width="28" height="28" fill="white" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+      <div class="video-placeholder" id="videoPlaceholder" style="cursor:pointer;" onclick="startVideo()">
+        <video id="demoVideo" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;" preload="metadata">
+          <source src="assets/videos/DLRSJAM Marketing Video.mp4" type="video/mp4">
+        </video>
+        <div id="playOverlay" style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1.5rem;background:rgba(5,13,26,0.45);z-index:2;">
+          <div class="play-btn" id="playBtn">
+            <svg width="28" height="28" fill="white" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+          </div>
+          <h3 style="color:white;font-size:1.15rem;font-weight:700;">See it for yourself.</h3>
         </div>
-        <h3>System Demo Video</h3>
-        <p>Upload your screen recording to replace this placeholder.</p>
-        <div class="demo-label">📹 Replace with: assets/videos/demo.mp4</div>
       </div>
     </div>
   </div>
@@ -1018,20 +1082,34 @@ footer {
 
 <!-- FOOTER -->
 <footer>
-  <a href="index.html" class="footer-logo">
-    <div class="footer-logo-mark">DLR</div>
-    <span class="footer-logo-text">DLRSJAM</span>
-  </a>
-  <div class="footer-links">
-    <a href="index.html">Home</a>
-    <a href="about.html">About</a>
-    <a href="how-it-works.html">How It Works</a>
-    <a href="team.html">Team</a>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <a href="index.html" class="footer-logo">
+        <img src="assets/logo/DLRSJAM Logo.png" alt="DLRSJAM">
+        <span class="footer-logo-tagline">Driver's Licence Renewal System</span>
+      </a>
+      <p class="footer-desc">A digital solution for Jamaican drivers to renew their licence online — no queues, no branch visit, no day off work.</p>
+    </div>
+    <div class="footer-nav">
+      <div class="footer-col">
+        <h4>Navigate</h4>
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="how-it-works.html">How It Works</a>
+        <a href="team.html">Our Team</a>
+        <a href="contact.html">Contact</a>
+      </div>
+      <div class="footer-col">
+        <h4>Project</h4>
+        <a href="about.html#mission">Our Mission</a>
+        <a href="how-it-works.html">The System</a>
+        <a href="index.html#demo">Watch Demo</a>
+      </div>
+    </div>
   </div>
-  <div class="footer-right">
-    COMP3901 Capstone Project<br>
-    University of the West Indies · 2026<br>
-    Supervised by Prof. Gunjan Mansingh
+  <div class="footer-bottom">
+    <p class="footer-copy">&copy; 2026 DLRSJAM. COMP3901 Capstone Project.</p>
+    <p class="footer-uni">University of the West Indies &middot; Supervised by Prof. Gunjan Mansingh</p>
   </div>
 </footer>
 
@@ -1074,7 +1152,6 @@ function animateCounter(el, target, suffix, duration) {
 window.addEventListener('load', () => {
   setTimeout(() => {
     animateCounter(document.querySelector('.stat:nth-child(1) .stat-num'), 0, '', 800);
-    animateCounter(document.querySelector('.stat:nth-child(2) .stat-num'), 3, '', 1000);
     animateCounter(document.querySelector('.stat:nth-child(3) .stat-num'), 100, '%', 1200);
   }, 600);
 });
@@ -1117,6 +1194,18 @@ if (typeEl) {
   }, 900);
 }
   
+  // Video play button
+  function startVideo() {
+    const video = document.getElementById('demoVideo');
+    const overlay = document.getElementById('playOverlay');
+    const placeholder = document.getElementById('videoPlaceholder');
+    overlay.style.display = 'none';
+    placeholder.onclick = null;
+    placeholder.style.cursor = 'default';
+    video.setAttribute('controls', '');
+    video.play();
+  }
+
   // Animate confidence bar on load
   window.addEventListener('load', () => {
     const fill = document.getElementById('confFill');
