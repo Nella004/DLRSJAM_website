@@ -27,4 +27,4 @@ cd DLRSJAM_website
 
 ## Live Site
 
-Coming soon via GitHub Pages.
+Done via GitHub Pages.
